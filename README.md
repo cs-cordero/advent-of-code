@@ -23,7 +23,7 @@ Day 01: No Time for a Taxicab | \*\*
 Day 02: Bathroom Security | \*\*
 Day 03: Squares With Three Sides | \*\*
 Day 04: Security Through Obscurity | \*\*
-Day 05: ??? |
+Day 05: How About a Nice Game of Chess? | \*\*
 Day 06: ??? |
 Day 07: ??? |
 Day 08: ??? |

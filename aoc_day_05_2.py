@@ -2,7 +2,6 @@
 
 import hashlib
 
-
 def find_code(door_id):
     s = [None] * 8
     i = 0

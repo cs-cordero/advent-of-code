@@ -24,7 +24,7 @@ Day 02: Bathroom Security | \*\*
 Day 03: Squares With Three Sides | \*\*
 Day 04: Security Through Obscurity | \*\*
 Day 05: How About a Nice Game of Chess? | \*\*
-Day 06: ??? |
+Day 06: Signals and Noise | \*\*
 Day 07: ??? |
 Day 08: ??? |
 Day 09: ??? |

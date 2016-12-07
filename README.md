@@ -25,7 +25,7 @@ Day 03: Squares With Three Sides | \*\*
 Day 04: Security Through Obscurity | \*\*
 Day 05: How About a Nice Game of Chess? | \*\*
 Day 06: Signals and Noise | \*\*
-Day 07: ??? |
+Day 07: Internet Protocol Version 7 | \*\*
 Day 08: ??? |
 Day 09: ??? |
 Day 10: ??? |

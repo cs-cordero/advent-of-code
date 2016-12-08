@@ -26,7 +26,7 @@ Day 04: Security Through Obscurity | \*\*
 Day 05: How About a Nice Game of Chess? | \*\*
 Day 06: Signals and Noise | \*\*
 Day 07: Internet Protocol Version 7 | \*\*
-Day 08: ??? |
+Day 08: Two-Factor Authentication | \*\*
 Day 09: ??? |
 Day 10: ??? |
 Day 11: ??? |

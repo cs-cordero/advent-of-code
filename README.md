@@ -4,7 +4,7 @@
 Advent of Code is a series of small programming puzzles for a variety of skill levels. They are self-contained and are just as appropriate for an expert who wants to stay sharp as they are for a beginner who is just learning to code. Each puzzle calls upon different skills and has two parts that build on a theme.
 
 [http://adventofcode.com/2016](http://adventofcode.com/2016)
-
+a
 ## Credits
 
 **Repository:** Christopher Cordero
@@ -27,7 +27,7 @@ Day 05: How About a Nice Game of Chess? | \*\*
 Day 06: Signals and Noise | \*\*
 Day 07: Internet Protocol Version 7 | \*\*
 Day 08: Two-Factor Authentication | \*\*
-Day 09: ??? |
+Day 09: Explosives in Cyberspace | \*\*
 Day 10: ??? |
 Day 11: ??? |
 Day 12: ??? |

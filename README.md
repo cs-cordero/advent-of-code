@@ -28,7 +28,7 @@ Day 06: Signals and Noise | \*\*
 Day 07: Internet Protocol Version 7 | \*\*
 Day 08: Two-Factor Authentication | \*\*
 Day 09: Explosives in Cyberspace | \*\*
-Day 10: ??? |
+Day 10: Balance Bots | \*\*
 Day 11: ??? |
 Day 12: ??? |
 Day 13: ??? |

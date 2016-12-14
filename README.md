@@ -29,9 +29,9 @@ Day 07: Internet Protocol Version 7 | \*\*
 Day 08: Two-Factor Authentication | \*\*
 Day 09: Explosives in Cyberspace | \*\*
 Day 10: Balance Bots | \*\*
-Day 11: ??? |
-Day 12: ??? |
-Day 13: ??? |
+Day 11: Radioisotope Thermoelectric Generators |
+Day 12: Leonardo's Monorail | \*\*
+Day 13: A Maze of Twisty Little Cubicles | \*\*
 Day 14: ??? |
 Day 15: ??? |
 Day 16: ??? |

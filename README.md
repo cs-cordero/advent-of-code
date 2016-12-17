@@ -4,7 +4,7 @@
 Advent of Code is a series of small programming puzzles for a variety of skill levels. They are self-contained and are just as appropriate for an expert who wants to stay sharp as they are for a beginner who is just learning to code. Each puzzle calls upon different skills and has two parts that build on a theme.
 
 [http://adventofcode.com/2016](http://adventofcode.com/2016)
-a
+
 ## Credits
 
 **Repository:** Christopher Cordero
@@ -35,7 +35,7 @@ Day 13: [A Maze of Twisty Little Cubicles](http://adventofcode.com/2016/day/13) 
 Day 14: [One-Time Pad](http://adventofcode.com/2016/day/14) | \*\*
 Day 15: [Timing is Everything](http://adventofcode.com/2016/day/15) | \*\*
 Day 16: [Dragon Checksum](http://adventofcode.com/2016/day/16) | \*\*
-Day 17: [Two Steps Forward](http://adventofcode.com/2016/day/17) |
+Day 17: [Two Steps Forward](http://adventofcode.com/2016/day/17) | \*\*
 Day 18: [???](http://adventofcode.com/2016/day/18) |
 Day 19: [???](http://adventofcode.com/2016/day/19) |
 Day 20: [???](http://adventofcode.com/2016/day/20) |

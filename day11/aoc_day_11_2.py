@@ -113,8 +113,6 @@ def load_inputs(version='input'):
             i += 1
     return floors
 
-floors = load_inputs('input')
-# floors = {1: [('hydrogen','generator'), ('hydrogen','microchip'), ('lithium','microchip')]}
-print(solve(floors, 1, 0))
 
-# print(floor_isValid(floors, 1))
+floors = load_inputs('input2')
+print(solve(floors, 1, 0))

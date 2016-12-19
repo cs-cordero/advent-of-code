@@ -51,5 +51,6 @@ def main():
     print('Solve Part 1: %d' % solve_partone())
     print('Solve Part 2: %d' % solve_parttwo())
 
+
 if __name__ == '__main__':
     main()

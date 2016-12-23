@@ -1,12 +1,13 @@
 #!/bin/python3
 
 import re
-# SCRAMBLE = 'abcdefgh'
-# SCRAMBLE2 = 'fbgdceah'
+SCRAMBLE = 'abcdefgh'
+SCRAMBLE2 = 'fbgdceah'
 # SCRAMBLE2 = 'gbhafcde'
-SCRAMBLE = 'abcde'
-SCRAMBLE2 = 'decab'
+# SCRAMBLE = 'abcde'
+# SCRAMBLE2 = 'decab'
 S_LEN = len(SCRAMBLE)
+# S_LEN = 8
 
 def swappos(s, x, y):
     x, y = map(int, (x, y))
@@ -24,7 +25,7 @@ def swapltr(s, a, b):
 
 
 def rotate(s, steps, direction='right'):
-    steps = int(steps)
+    steps = int(steps) % S_LEN
     steps *= -1 if direction == 'right' else 1
     s = s[steps:] + s[:steps]
     return s
@@ -37,6 +38,18 @@ def rotate_on_ltr(s, x, rev='right'):
             break
     steps += 2 if steps >= 4 else 1
     steps %= S_LEN
+    
+    undo = {0: (1, 'left'),
+            1: (1, 'left'),
+            2: (2, 'right'),
+            3: (2, 'left'),
+            4: (1, 'right'),
+            5: (3, 'left'),
+            6: (0, 'right'),
+            7: (4, 'right')
+    }
+    if rev == 'left':
+        steps, rev = undo[i]
     return rotate(s, steps, rev)
 
 
@@ -63,7 +76,7 @@ def main():
     rev_pos = re.compile(r'(\d) through (\d)')
     move_pos = re.compile(r'position (\w) to position (\w)')
 
-    with open('aoc_day21_sample.txt') as f:
+    with open('aoc_day_21_input.txt') as f:
         inst_stack = f.readlines()
 
     for line in inst_stack:
@@ -90,29 +103,30 @@ def main():
         line = inst_stack.pop()
         if line.startswith('rotate based'):
             letter = rotateltr.search(line).group(1)
+            print('trying to rotate on %s' % letter)
             t = rotate_on_ltr(t, letter, 'left')
-            print(''.join(t))
+            print(line, ''.join(t))
         elif line.startswith('rotate'):
             d, n = rotatenum.search(line).groups()
             e = 'right' if d == 'left' else 'left'
             t = rotate(t, n, e)
-            print(''.join(t))
+            print(line, ''.join(t))
         elif line.startswith('swap letter'):
             a, b = swap_ltr.search(line).groups()
             t = swapltr(t, a, b)
-            print(''.join(t))
+            print(line, ''.join(t))
         elif line.startswith('swap position'):
             x, y = swap_pos.search(line).groups()
             t = swappos(t, x, y)
-            print(''.join(t))
+            print(line, ''.join(t))
         elif line.startswith('reverse positions'):
             x, y = rev_pos.search(line).groups()
             t = reverse_s(t, x, y)
-            print(''.join(t))
+            print(line, ''.join(t))
         elif line.startswith('move position'):
             x, y = move_pos.search(line).groups()
             t = move(t, y, x)
-            print(''.join(t))
+            print(line, ''.join(t))
 
 
     print('Part One: %s ' % (''.join(s)))
@@ -120,5 +134,14 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+    # print('a_______', ''.join(rotate_on_ltr([x for x in 'a_______'], 'a')))
+    # print('_a______', ''.join(rotate_on_ltr([x for x in '_a______'], 'a')))
+    # print('__a_____', ''.join(rotate_on_ltr([x for x in '__a_____'], 'a')))
+    # print('___a____', ''.join(rotate_on_ltr([x for x in '___a____'], 'a')))
+    # print('____a___', ''.join(rotate_on_ltr([x for x in '____a___'], 'a')))
+    # print('_____a__', ''.join(rotate_on_ltr([x for x in '_____a__'], 'a')))
+    # print('______a_', ''.join(rotate_on_ltr([x for x in '______a_'], 'a')))
+    # print('_______a', ''.join(rotate_on_ltr([x for x in '_______a'], 'a')))
 
 # fehcgadb

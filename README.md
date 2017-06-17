@@ -55,8 +55,8 @@ Day 01: [Not Quite Lisp](http://adventofcode.com/2015/day/1) | \*\*
 Day 02: [I Was Told There Would Be No Math](http://adventofcode.com/2015/day/2) | \*\*
 Day 03: [Perfectly Spherical Houses in a Vacuum](http://adventofcode.com/2015/day/3) | \*\*
 Day 04: [The Ideal Stocking Stuffer](http://adventofcode.com/2015/day/4) | \*\*
-Day 05: [Doesn't He Have Intern-Elves For This?](http://adventofcode.com/2015/day/5) |
-Day 06: [Probably a Fire Hazard](http://adventofcode.com/2015/day/6) |
+Day 05: [Doesn't He Have Intern-Elves For This?](http://adventofcode.com/2015/day/5) | \*\*
+Day 06: [Probably a Fire Hazard](http://adventofcode.com/2015/day/6) | \*\*
 Day 07: [Some Assembly Required](http://adventofcode.com/2015/day/7) |
 Day 08: [Matchsticks](http://adventofcode.com/2015/day/8) |
 Day 09: [All in a Single Night](http://adventofcode.com/2015/day/9) |

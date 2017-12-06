@@ -25,10 +25,10 @@ Challenge | Status
 --- | :---:
 Day 01: [Inverse Captcha](http://adventofcode.com/2017/day/1) | \*\*
 Day 02: [Corruption Checksum](http://adventofcode.com/2017/day/2) | \*\*
-Day 03: [???](http://adventofcode.com/2017/day/3) |
-Day 04: [???](http://adventofcode.com/2017/day/4) |
-Day 05: [???](http://adventofcode.com/2017/day/5) |
-Day 06: [???](http://adventofcode.com/2017/day/6) |
+Day 03: [Spiral Memory](http://adventofcode.com/2017/day/3) | \*\*
+Day 04: [High-Entropy Passphrases](http://adventofcode.com/2017/day/4) | \*\*
+Day 05: [A Maze of Twisty Trampoplines, All Alike](http://adventofcode.com/2017/day/5) | \*\*
+Day 06: [Memory Reallocation](http://adventofcode.com/2017/day/6) | \*\*
 Day 07: [???](http://adventofcode.com/2017/day/7) |
 Day 08: [???](http://adventofcode.com/2017/day/8) |
 Day 09: [???](http://adventofcode.com/2017/day/9) |

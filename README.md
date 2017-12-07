@@ -29,7 +29,7 @@ Day 03: [Spiral Memory](http://adventofcode.com/2017/day/3) | \*\*
 Day 04: [High-Entropy Passphrases](http://adventofcode.com/2017/day/4) | \*\*
 Day 05: [A Maze of Twisty Trampolines, All Alike](http://adventofcode.com/2017/day/5) | \*\*
 Day 06: [Memory Reallocation](http://adventofcode.com/2017/day/6) | \*\*
-Day 07: [???](http://adventofcode.com/2017/day/7) |
+Day 07: [Recursive Circus](http://adventofcode.com/2017/day/7) | \*\*
 Day 08: [???](http://adventofcode.com/2017/day/8) |
 Day 09: [???](http://adventofcode.com/2017/day/9) |
 Day 10: [???](http://adventofcode.com/2017/day/10) |

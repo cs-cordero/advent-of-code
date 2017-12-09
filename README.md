@@ -31,7 +31,7 @@ Day 05: [A Maze of Twisty Trampolines, All Alike](http://adventofcode.com/2017/d
 Day 06: [Memory Reallocation](http://adventofcode.com/2017/day/6) | \*\*
 Day 07: [Recursive Circus](http://adventofcode.com/2017/day/7) | \*\*
 Day 08: [I Heard You Like Registers](http://adventofcode.com/2017/day/8) | \*\*
-Day 09: [???](http://adventofcode.com/2017/day/9) |
+Day 09: [Stream Processing](http://adventofcode.com/2017/day/9) | \*\*
 Day 10: [???](http://adventofcode.com/2017/day/10) |
 Day 11: [???](http://adventofcode.com/2017/day/11) |
 Day 12: [???](http://adventofcode.com/2017/day/12) |

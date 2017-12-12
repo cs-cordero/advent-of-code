@@ -34,7 +34,7 @@ Day 08: [I Heard You Like Registers](http://adventofcode.com/2017/day/8) | \*\*
 Day 09: [Stream Processing](http://adventofcode.com/2017/day/9) | \*\*
 Day 10: [Knot Hash](http://adventofcode.com/2017/day/10) | \*\*
 Day 11: [Hex Ed](http://adventofcode.com/2017/day/11) | \*\*
-Day 12: [???](http://adventofcode.com/2017/day/12) |
+Day 12: [Digital Plumber](http://adventofcode.com/2017/day/12) | \*\*
 Day 13: [???](http://adventofcode.com/2017/day/13) |
 Day 14: [???](http://adventofcode.com/2017/day/14) |
 Day 15: [???](http://adventofcode.com/2017/day/15) |

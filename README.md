@@ -38,7 +38,7 @@ Day 12: [Digital Plumber](http://adventofcode.com/2017/day/12) | \*\*
 Day 13: [Packet Scanners](http://adventofcode.com/2017/day/13) | \*\*
 Day 14: [Disk Defragmentation](http://adventofcode.com/2017/day/14) | \*\*
 Day 15: [Dueling Generators](http://adventofcode.com/2017/day/15) | \*\*
-Day 16: [???](http://adventofcode.com/2017/day/16) |
+Day 16: [Permutation Promenade](http://adventofcode.com/2017/day/16) | \*\*
 Day 17: [???](http://adventofcode.com/2017/day/17) |
 Day 18: [???](http://adventofcode.com/2017/day/18) |
 Day 19: [???](http://adventofcode.com/2017/day/19) |

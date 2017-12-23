@@ -41,7 +41,7 @@ Day 15: [Dueling Generators](http://adventofcode.com/2017/day/15) | \*\*
 Day 16: [Permutation Promenade](http://adventofcode.com/2017/day/16) | \*\*
 Day 17: [Spinlock](http://adventofcode.com/2017/day/17) | \*\*
 Day 18: [Duet](http://adventofcode.com/2017/day/18) | \*\*
-Day 19: [???](http://adventofcode.com/2017/day/19) |
+Day 19: [A Series of Tubes](http://adventofcode.com/2017/day/19) | \*\*
 Day 20: [???](http://adventofcode.com/2017/day/20) |
 Day 21: [???](http://adventofcode.com/2017/day/21) |
 Day 22: [???](http://adventofcode.com/2017/day/22) |

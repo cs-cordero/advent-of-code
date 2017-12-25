@@ -1,0 +1,24 @@
+b = 105700
+c = 122700
+
+while b < c:
+    f = 1
+    d = 2
+    while d < b:
+        e = 2
+        while e < b:
+            if d * e == b:
+                f = 0
+            e += 1
+        d += 1
+    if f == 0:
+        h += 1
+    b += 17
+
+
+while b < c;
+    while d < b:
+        while e < b:
+            e = b
+        d = b
+    b = c

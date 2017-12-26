@@ -46,7 +46,7 @@ Day 20: [???](http://adventofcode.com/2017/day/20) |
 Day 21: [???](http://adventofcode.com/2017/day/21) |
 Day 22: [???](http://adventofcode.com/2017/day/22) |
 Day 23: [???](http://adventofcode.com/2017/day/23) |
-Day 24: [???](http://adventofcode.com/2017/day/24) |
+Day 24: [Electromagnetic Moat](http://adventofcode.com/2017/day/24) | \*\*
 Day 25: [???](http://adventofcode.com/2017/day/25) |
 
 ### 2016

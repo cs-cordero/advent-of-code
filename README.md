@@ -47,7 +47,7 @@ Day 21: [Fractal Art](http://adventofcode.com/2017/day/21) | \*\*
 Day 22: [Sporifica Virus](http://adventofcode.com/2017/day/22) | \*\*
 Day 23: [Coprocessor Conflagration](http://adventofcode.com/2017/day/23) | \*\*
 Day 24: [Electromagnetic Moat](http://adventofcode.com/2017/day/24) | \*\*
-Day 25: [???](http://adventofcode.com/2017/day/25) |
+Day 25: [The Halting Problem](http://adventofcode.com/2017/day/25) | \*\*
 
 ### 2016
 Challenge | Status

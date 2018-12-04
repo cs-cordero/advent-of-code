@@ -25,7 +25,7 @@ Advent of Code is a series of small programming puzzles for a variety of skill l
 Challenge | Status
 --- | :---:
 Day 01: [Chronal Calibration](http://adventofcode.com/2018/day/1) | \*\*
-Day 02: [---](http://adventofcode.com/2018/day/2) |
+Day 02: [Inventory Management System](http://adventofcode.com/2018/day/2) | \*\*
 Day 03: [---](http://adventofcode.com/2018/day/3) |
 Day 04: [---](http://adventofcode.com/2018/day/4) |
 Day 05: [---](http://adventofcode.com/2018/day/5) |

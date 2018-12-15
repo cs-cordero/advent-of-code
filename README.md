@@ -29,7 +29,7 @@ Day 02: [Inventory Management System](http://adventofcode.com/2018/day/2) | \*\*
 Day 03: [No Matter How You Slice It](http://adventofcode.com/2018/day/3) | \*\*
 Day 04: [Repose Record](http://adventofcode.com/2018/day/4) | \*\*
 Day 05: [Alchemical Reduction](http://adventofcode.com/2018/day/5) | \*\*
-Day 06: [---](http://adventofcode.com/2018/day/6) |
+Day 06: [Chronal Coordinates](http://adventofcode.com/2018/day/6) | \*\*
 Day 07: [---](http://adventofcode.com/2018/day/7) |
 Day 08: [---](http://adventofcode.com/2018/day/8) |
 Day 09: [---](http://adventofcode.com/2018/day/9) |

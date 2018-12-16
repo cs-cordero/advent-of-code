@@ -7,69 +7,86 @@ def read_file(filepath):
         for line in f.readlines():
             yield line.strip()
 
+
 def addr(registers, A, B, C):
     registers[C] = registers[A] + registers[B]
     return registers
+
 
 def addi(registers, A, B, C):
     registers[C] = registers[A] + B
     return registers
 
+
 def mulr(registers, A, B, C):
     registers[C] = registers[A] * registers[B]
     return registers
+
 
 def muli(registers, A, B, C):
     registers[C] = registers[A] * B
     return registers
 
+
 def banr(registers, A, B, C):
     registers[C] = registers[A] & registers[B]
     return registers
+
 
 def bani(registers, A, B, C):
     registers[C] = registers[A] & B
     return registers
 
+
 def borr(registers, A, B, C):
     registers[C] = registers[A] | registers[B]
     return registers
+
 
 def bori(registers, A, B, C):
     registers[C] = registers[A] | B
     return registers
 
+
 def setr(registers, A, B, C):
     registers[C] = registers[A]
     return registers
+
 
 def seti(registers, A, B, C):
     registers[C] = A
     return registers
 
+
 def gtir(registers, A, B, C):
     registers[C] = 1 if A > registers[B] else 0
     return registers
+
 
 def gtri(registers, A, B, C):
     registers[C] = 1 if registers[A] > B else 0
     return registers
 
+
 def gtrr(registers, A, B, C):
     registers[C] = 1 if registers[A] > registers[B] else 0
     return registers
+
 
 def eqir(registers, A, B, C):
     registers[C] = 1 if A == registers[B] else 0
     return registers
 
+
 def eqri(registers, A, B, C):
     registers[C] = 1 if registers[A] == B else 0
     return registers
 
+
 def eqrr(registers, A, B, C):
     registers[C] = 1 if registers[A] == registers[B] else 0
     return registers
+
 
 def solution():
     operations = {
@@ -142,5 +159,6 @@ def solution():
         operation(registers, a, b, c)
 
     return count, registers
+
 
 print(solution())

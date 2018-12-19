@@ -35,7 +35,7 @@ Day 08: [Memory Maneuver](http://adventofcode.com/2018/day/8) | \*\*
 Day 09: [Marble Mania](http://adventofcode.com/2018/day/9) | \*\*
 Day 10: [The Stars Align](http://adventofcode.com/2018/day/10) | \*\*
 Day 11: [Chronal Charge](http://adventofcode.com/2018/day/11) | \*\*
-Day 12: [---](http://adventofcode.com/2018/day/12) |
+Day 12: [Subterranean Sustainability](http://adventofcode.com/2018/day/12) | \*\*
 Day 13: [---](http://adventofcode.com/2018/day/13) |
 Day 14: [---](http://adventofcode.com/2018/day/14) |
 Day 15: [---](http://adventofcode.com/2018/day/15) |

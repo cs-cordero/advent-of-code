@@ -28,21 +28,11 @@ def solution(n, verbose=False):
     state_padding_size = 1000
     state = list('.' * state_padding_size + initial_state + '.' * state_padding_size)
 
-    # if verbose:
-    #     print(f'0: {"".join(state)}')
-
-    foo = []
     for i in range(1, n+1):
         state = spread_plants(spread_patterns, state)
-        # if verbose:
-        #     print(f'{i}: {"".join(state)}')
-        if verbose:
-            foo.append(sum(i-state_padding_size for i in range(len(state)) if state[i] == '#'))
 
-    bar = [foo[i] - foo[i-1] for i in range(1, len(foo))]
-    import pdb; pdb.set_trace()
     return sum(i-state_padding_size for i in range(len(state)) if state[i] == '#')
 
 
-# print(solution(20))
-print(solution(2000, verbose = True))
+print(solution(20))
+# part 2 done manually

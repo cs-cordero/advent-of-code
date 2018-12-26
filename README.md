@@ -43,7 +43,7 @@ Day 16: [Chronal Classification](http://adventofcode.com/2018/day/16) | \*\*
 Day 17: [Reservoir Research](http://adventofcode.com/2018/day/17) | \*\*
 Day 18: [Settlers of The North Pole](http://adventofcode.com/2018/day/18) | \*\*
 Day 19: [Go With The Flow](http://adventofcode.com/2018/day/19) | \*\*
-Day 20: [---](http://adventofcode.com/2018/day/20) |
+Day 20: [A Regular Map](http://adventofcode.com/2018/day/20) | \*\*
 Day 21: [---](http://adventofcode.com/2018/day/21) |
 Day 22: [---](http://adventofcode.com/2018/day/22) |
 Day 23: [---](http://adventofcode.com/2018/day/23) |

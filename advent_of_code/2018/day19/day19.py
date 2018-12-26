@@ -148,5 +148,5 @@ def solution2():
     return sum(factors)
 
 
-# print(solution(False))
+print(solution(False))
 print(solution2())

@@ -38,7 +38,6 @@ for equipment, region_types in EQUIPMENT_TO_REGION_TYPE_MAP.items():
 
 
 class Node(NamedTuple):
-    minutes: int
     x: int
     y: int
     equipment: Equipment
@@ -105,40 +104,38 @@ def solution():
     final_target = (*TARGET, Equipment.TORCH)
     time_distances = {(0, 0, Equipment.TORCH): 0, final_target: 1 << 31}
 
-    queue = [Node(0, 0, 0, Equipment.TORCH)]
+    queue = [(0, Node(0, 0, Equipment.TORCH))]
     while queue:
-        minutes, *state = heapq.heappop(queue)
-        point, equipment = (state[0], state[1]), state[2]
+        minutes, node = heapq.heappop(queue)
+        *point, equipment = node
 
-        state = tuple(state)
-        if state == final_target:
+        if node == final_target:
             return part1, minutes
 
-        if minutes > time_distances.setdefault(state, 1 << 31):
+        if minutes > time_distances.setdefault(node, 1 << 31):
             continue
 
-        time_distances[state] = minutes
+        time_distances[node] = minutes
 
+        # Add to Queue any valid Adjacent Node
         for adjacent_point in adjacent_points(point):
-            adjacent_state = (*adjacent_point, equipment)
+            next_node = Node(*adjacent_point, equipment)
+            next_minutes = minutes + 1
 
+            # Can reach the adjacent point with my current equipment
             if cave[adjacent_point] in EQUIPMENT_TO_REGION_TYPE_MAP[equipment]:
-                # can reach the adjacent point with my current equipment
-                adjacent_point_time = time_distances.setdefault(adjacent_state, 1 << 31)
-                if minutes + 1 < adjacent_point_time:
-                    time_distances[adjacent_state] = minutes + 1
-                    heapq.heappush(queue, Node(minutes+1, *adjacent_state))
+                adjacent_point_time = time_distances.setdefault(next_node, 1 << 31)
+                if next_minutes < adjacent_point_time:
+                    time_distances[next_node] = next_minutes
+                    heapq.heappush(queue, (next_minutes, next_node))
 
-        # switch to the other equipment
+        # Add to Queue current node with second set of equipment
         next_equipment = list(REGION_TYPE_TO_EQUIPMENT_MAP[cave[point]] - {equipment})[0]
-        current_point_other_equipment_time = time_distances.setdefault(
-            (*adjacent_point, next_equipment),
-            1 << 31,
-        )
-        if minutes + 7 < current_point_other_equipment_time:
-            next_state = (*point, next_equipment)
-            time_distances[next_state] = minutes + 7
-            heapq.heappush(queue, Node(minutes+7, *next_state))
+        next_node = Node(*point, next_equipment)
+        next_minutes = minutes + 7
+        if next_minutes < time_distances.setdefault(next_node, 1 << 31):
+            time_distances[next_node] = next_minutes
+            heapq.heappush(queue, (next_minutes, next_node))
 
     assert False, "Could not reach the target!"
 

@@ -1,0 +1,14 @@
+r4 = 65536
+r5 = 3935295
+while True:
+    r2 = r4 & 255
+    r5 = ((((r5 + r2) & 16777215) * 65899) & 16777215)
+    if r4 < 256:
+        if r5 == r0:
+            EXIT
+        else:
+            r4 = r5 | 65536  # instruction 06
+            r5 = 3935295     # instruction 07
+            continue
+    elif r4 >= 256:
+        r4 //= 256

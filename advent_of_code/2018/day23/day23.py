@@ -1,4 +1,4 @@
-from typing import NamedTuple, List, Union, Tuple, Iterable, Iterator, Optional
+from typing import NamedTuple, List, Union, Tuple, Iterable, Iterator, Optional, Generator
 import heapq
 import re
 
@@ -106,32 +106,29 @@ class SearchSpace:
     def is_better_than(self, other: 'SearchSpace') -> bool:
         if self.bot_count < other.bot_count:
             return False
-
         elif self.bot_count > other.bot_count:
             return True
-
         return self < other
 
-    def split(self) -> List['SearchSpace']:
-        start, width = self.cube
-        next_width = width // 2
-        deltas_to_next_corners_shallow = [
-            (0, 0, 0),
-            (next_width, 0, 0),
-            (0, next_width, 0),
-            (next_width, next_width, 0),
+    def split(self) -> Generator['SearchSpace', None, None]:
+        starting_point, width = self.cube
+        offset = width // 2
+        deltas = [
+            (     0,      0,      0),
+            (offset,      0,      0),
+            (     0, offset,      0),
+            (offset, offset,      0),
+            (     0,      0, offset),
+            (offset,      0, offset),
+            (     0, offset, offset),
+            (offset, offset, offset),
         ]
-        deltas_to_next_corners_deep = [
-            (0, 0, next_width),
-            (next_width, 0, next_width),
-            (0, next_width, next_width),
-            (next_width, next_width, next_width),
-        ]
-        shallow_search_spaces = [SearchSpace(start+delta, next_width, self.all_bots)
-                                 for delta in deltas_to_next_corners_shallow]
-        deep_search_spaces = [SearchSpace(start+delta, next_width + (width%2), self.all_bots)
-                              for delta in deltas_to_next_corners_deep]
-        return shallow_search_spaces + deep_search_spaces
+        for i, delta in enumerate(deltas):
+            # SearchSpace width should be the size of the offset
+            # But for half of the newly created SearchSpaces, we add width%2
+            # to handle any rounding down by integer division
+            next_width = offset if i < 4 else offset + width % 2
+            yield SearchSpace(starting_point + delta, next_width, self.all_bots)
 
 
 def get_bots() -> List[Sphere]:
@@ -195,4 +192,4 @@ def solution() -> Tuple[int, int]:
     return (part1, part2.cube.corner.manhattan_distance_to((0,0,0)))
 
 
-# print(', '.join(f'Part {i+1}: {answer}' for i, answer in enumerate(solution())))
+print(', '.join(f'Part {i+1}: {answer}' for i, answer in enumerate(solution())))

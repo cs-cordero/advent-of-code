@@ -1,12 +1,17 @@
+from typing import NamedTuple, List, Union, Tuple, Iterable, Iterator, Optional
 import heapq
 import re
-from typing import NamedTuple, List, Union, Tuple, Iterable
 
 
-class Point3D(NamedTuple):
-    x: int
-    y: int
-    z: int
+class Point3D(Iterable[int]):
+    def __init__(self, x: int, y: int, z: int) -> None:
+        self.x = x
+        self.y = y
+        self.z = z
+
+    def __iter__(self) -> Iterator[int]:
+        for coordinate in (self.x, self.y, self.z):
+            yield coordinate
 
     def __add__(self, other: Union['Point3D', Tuple[int, int, int]]) -> 'Point3D':
         x1, y1, z1 = self
@@ -66,7 +71,7 @@ class SearchSpace:
     def __init__(self, corner: Point3D, width: int, bots: List[Sphere]) -> None:
         self.cube = Cube(corner, width)
         self.all_bots = bots
-        self._bot_count = None
+        self._bot_count: Optional[int] = None
         self.distance_from_origin = corner.manhattan_distance_to((0,0,0))
 
     def __repr__(self) -> str:
@@ -78,7 +83,8 @@ class SearchSpace:
     def __le__(self, other: 'SearchSpace') -> bool:
         return self.distance_from_origin <= other.distance_from_origin
 
-    def __eq__(self, other: 'SearchSpace') -> bool:
+    def __eq__(self, other: object) -> bool:
+        assert isinstance(other, SearchSpace), 'Invalid comparison.'
         return self.distance_from_origin == other.distance_from_origin
 
     @property
@@ -128,7 +134,7 @@ class SearchSpace:
         return shallow_search_spaces + deep_search_spaces
 
 
-def get_bots():
+def get_bots() -> List[Sphere]:
     def read_file(filepath):
         with open(filepath) as f:
             for line in f.readlines():
@@ -147,12 +153,15 @@ def get_bots():
     bots = []
     pattern = re.compile(r'^pos=<([-\d]+),([-\d]+),([-\d]+)>, r=(\d+)$')
     for line in read_file('input.txt'):
-        x, y, z, r = map(int, pattern.match(line).groups())
+        match = pattern.match(line)
+        if not match:
+            continue
+        x, y, z, r = map(int, match.groups())
         bots.append(Sphere(center=Point3D(x, y, z), radius=r))
     return bots
 
 
-def solution():
+def solution() -> Tuple[int, int]:
     bots = get_bots()
     bot_with_largest_r = max(bots, key=lambda bot: bot.radius)
     bcenter, bradius = bot_with_largest_r
@@ -163,7 +172,7 @@ def solution():
                                max(maxx-minx, maxy-miny, maxz-minz),
                                bots)
 
-    part2 = None
+    part2: Optional[SearchSpace] = None
     heap = [(1000, search_space)]
     while heap:
         _, current_space = heapq.heappop(heap)
@@ -182,7 +191,8 @@ def solution():
             priority = -smaller_space.bot_count
             heapq.heappush(heap, (priority, smaller_space))
 
+    assert part2 is not None
     return (part1, part2.cube.corner.manhattan_distance_to((0,0,0)))
 
 
-print(', '.join(f'Part {i+1}: {answer}' for i, answer in enumerate(solution())))
+# print(', '.join(f'Part {i+1}: {answer}' for i, answer in enumerate(solution())))

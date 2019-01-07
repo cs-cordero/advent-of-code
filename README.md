@@ -48,7 +48,7 @@ Day 21: [Chronal Conversation](http://adventofcode.com/2018/day/21) | \*\*
 Day 22: [Mode Maze](http://adventofcode.com/2018/day/22) | \*\*
 Day 23: [Experimental Emergency Teleportation](http://adventofcode.com/2018/day/23) | \*\*
 Day 24: [Immune System Simulator 20XX](http://adventofcode.com/2018/day/24) | \*\*
-Day 25: [---](http://adventofcode.com/2018/day/25) |
+Day 25: [Four-Dimensional Adventure](http://adventofcode.com/2018/day/25) | \*\*
 
 ### 2017
 Challenge | Status

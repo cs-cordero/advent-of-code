@@ -38,7 +38,7 @@ Day 11: [Chronal Charge](http://adventofcode.com/2018/day/11) | \*\*
 Day 12: [Subterranean Sustainability](http://adventofcode.com/2018/day/12) | \*\*
 Day 13: [Mine Cart Madness](http://adventofcode.com/2018/day/13) | \*\*
 Day 14: [Chocolate Charts](http://adventofcode.com/2018/day/14) | \*\*
-Day 15: [---](http://adventofcode.com/2018/day/15) |
+Day 15: [Beverage Bandit](http://adventofcode.com/2018/day/15) | \*\*
 Day 16: [Chronal Classification](http://adventofcode.com/2018/day/16) | \*\*
 Day 17: [Reservoir Research](http://adventofcode.com/2018/day/17) | \*\*
 Day 18: [Settlers of The North Pole](http://adventofcode.com/2018/day/18) | \*\*

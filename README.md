@@ -120,7 +120,7 @@ Day 06: [Probably a Fire Hazard](http://adventofcode.com/2015/day/6) | \*\*
 Day 07: [Some Assembly Required](http://adventofcode.com/2015/day/7) | \*\*
 Day 08: [Matchsticks](http://adventofcode.com/2015/day/8) | \*\*
 Day 09: [All in a Single Night](http://adventofcode.com/2015/day/9) | \*\*
-Day 10: [Elves Look, Elves Say](http://adventofcode.com/2015/day/10) |
+Day 10: [Elves Look, Elves Say](http://adventofcode.com/2015/day/10) | \*\*
 Day 11: [Corporate Policy](http://adventofcode.com/2015/day/11) |
 Day 12: [JSAbacusFramework.io](http://adventofcode.com/2015/day/12) |
 Day 13: [Knights of the Dinner Table](http://adventofcode.com/2015/day/13) |

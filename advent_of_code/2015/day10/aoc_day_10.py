@@ -17,9 +17,9 @@ def solution(value: str, iterations: int) -> str:
         value = ''.join(''.join(tup) for tup in break_string(value))
     return value
 
-
 assert solution('1', 5) == '312211'
-part1 = len(solution('1113222113', 40))
+PUZZLE_INPUT = '1113222113'
+part1 = len(solution(PUZZLE_INPUT, 40))
 print(f'Part 1: {part1}')
-part2 = len(solution('1113222113', 50))
+part2 = len(solution(PUZZLE_INPUT, 50))
 print(f'Part 2: {part2}')

@@ -124,7 +124,7 @@ Day 10: [Elves Look, Elves Say](http://adventofcode.com/2015/day/10) | \*\*
 Day 11: [Corporate Policy](http://adventofcode.com/2015/day/11) | \*\*
 Day 12: [JSAbacusFramework.io](http://adventofcode.com/2015/day/12) | \*\*
 Day 13: [Knights of the Dinner Table](http://adventofcode.com/2015/day/13) | \*\*
-Day 14: [Reindeer Olympics](http://adventofcode.com/2015/day/14) |
+Day 14: [Reindeer Olympics](http://adventofcode.com/2015/day/14) | \*\*
 Day 15: [Science for Hungry People](http://adventofcode.com/2015/day/15) |
 Day 16: [Aunt Sue](http://adventofcode.com/2015/day/16) |
 Day 17: [No Such Thing as Too Much](http://adventofcode.com/2015/day/17) |

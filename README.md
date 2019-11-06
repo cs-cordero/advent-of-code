@@ -129,9 +129,9 @@ Day 15: [Science for Hungry People](http://adventofcode.com/2015/day/15) | \*\*
 Day 16: [Aunt Sue](http://adventofcode.com/2015/day/16) | \*\*
 Day 17: [No Such Thing as Too Much](http://adventofcode.com/2015/day/17) | \*\*
 Day 18: [Like a GIF For Your Yard](http://adventofcode.com/2015/day/18) | \*\*
-Day 19: [Medicine for Rudolph](http://adventofcode.com/2015/day/19) | \*
-Day 20: [Infinite Elves and Infinite Houses](http://adventofcode.com/2015/day/20) |
-Day 21: [RPG Simulator 20XX](http://adventofcode.com/2015/day/21) |
+Day 19: [Medicine for Rudolph](http://adventofcode.com/2015/day/19) | \*\*
+Day 20: [Infinite Elves and Infinite Houses](http://adventofcode.com/2015/day/20) | \*\*
+Day 21: [RPG Simulator 20XX](http://adventofcode.com/2015/day/21) | \*\*
 Day 22: [Wizard Simulator 20XX](http://adventofcode.com/2015/day/22) |
 Day 23: [Opening the Turing Lock](http://adventofcode.com/2015/day/23) |
 Day 24: [It Hangs in the Balance](http://adventofcode.com/2015/day/24) |

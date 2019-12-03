@@ -162,5 +162,5 @@ Day 20: [Infinite Elves and Infinite Houses](http://adventofcode.com/2015/day/20
 Day 21: [RPG Simulator 20XX](http://adventofcode.com/2015/day/21) | \*\*
 Day 22: [Wizard Simulator 20XX](http://adventofcode.com/2015/day/22) | \*\*
 Day 23: [Opening the Turing Lock](http://adventofcode.com/2015/day/23) | \*\*
-Day 24: [It Hangs in the Balance](http://adventofcode.com/2015/day/24) |
+Day 24: [It Hangs in the Balance](http://adventofcode.com/2015/day/24) | \*\*
 Day 25: [Let it Snow](http://adventofcode.com/2015/day/25) | \*

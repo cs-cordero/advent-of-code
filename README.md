@@ -3,6 +3,7 @@
 
 Advent of Code is a series of small programming puzzles for a variety of skill levels. They are self-contained and are just as appropriate for an expert who wants to stay sharp as they are for a beginner who is just learning to code. Each puzzle calls upon different skills and has two parts that build on a theme.
 
+- [http://adventofcode.com/2019](http://adventofcode.com/2019)
 - [http://adventofcode.com/2018](http://adventofcode.com/2018)
 - [http://adventofcode.com/2017](http://adventofcode.com/2017)
 - [http://adventofcode.com/2016](http://adventofcode.com/2016)
@@ -27,7 +28,7 @@ Challenge | Status
 Day 01: [The Tyranny of the Rocket Equation](http://adventofcode.com/2019/day/1) | \*\*
 Day 02: [Program Alarm](http://adventofcode.com/2019/day/2) | \*\*
 Day 03: [Crossed Wires](http://adventofcode.com/2019/day/3) | \*\*
-Day 04: [???](http://adventofcode.com/2019/day/4) | 
+Day 04: [Secure Container](http://adventofcode.com/2019/day/4) | \*\*
 Day 05: [???](http://adventofcode.com/2019/day/5) | 
 Day 06: [???](http://adventofcode.com/2019/day/6) | 
 Day 07: [???](http://adventofcode.com/2019/day/7) | 

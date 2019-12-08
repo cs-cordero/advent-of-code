@@ -1,11 +1,10 @@
 #!/bin/python3
 
-import re
 import hashlib
+import re
 
-
-SALT = 'ihaygndm'
-SALT_sample = 'abc'
+SALT = "ihaygndm"
+SALT_sample = "abc"
 KEY_STRETCH = 2016
 
 
@@ -18,8 +17,8 @@ def stretch_key(s, stretch_val):
 
 
 def day14(salt):
-    triple = re.compile(r'(\w)\1{2}')
-    quintuple = re.compile(r'(\w)\1{4}')
+    triple = re.compile(r"(\w)\1{2}")
+    quintuple = re.compile(r"(\w)\1{4}")
 
     keys = set()
     i = 0
@@ -29,17 +28,17 @@ def day14(salt):
         a = stretch_key(salt + str(i), KEY_STRETCH)
         a_m = quintuple.findall(a)
         for q in set(a_m):
-            for j in range(max(i-1000, 0), i):
+            for j in range(max(i - 1000, 0), i):
                 b = stretch_key(salt + str(j), KEY_STRETCH)
                 b_m = triple.search(b)
                 if b_m and q == b_m.group(1):
                     keys.add(j)
-                    
-                    print('%s from %d matched to %s on index %d'
-                          % (b, j, a, i))
+
+                    print("%s from %d matched to %s on index %d" % (b, j, a, i))
 
         i += 1
     return sorted(keys)[63]
 
-print('Sample: %d' % day14(SALT_sample))
-print('Challenge: %d' % day14(SALT))
+
+print("Sample: %d" % day14(SALT_sample))
+print("Challenge: %d" % day14(SALT))

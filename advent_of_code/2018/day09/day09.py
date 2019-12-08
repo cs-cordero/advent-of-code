@@ -1,4 +1,4 @@
-from collections import deque, defaultdict
+from collections import defaultdict, deque
 
 
 def solution(players, last_marble):
@@ -28,4 +28,4 @@ assert solution(17, 1104) == 2764
 assert solution(21, 6111) == 54718
 assert solution(30, 5807) == 37305
 print(solution(476, 71431))
-print(solution(476, 71431*100))
+print(solution(476, 71431 * 100))

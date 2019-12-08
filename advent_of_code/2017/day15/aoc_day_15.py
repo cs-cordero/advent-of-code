@@ -4,11 +4,13 @@ Generator A starts with 634, with factor 16807
 Generator B starts with 301, with factor 48271
 """
 
+
 def generator(num, factor, multiple=1):
     while True:
-        num = (num * factor) % (2**31-1)
+        num = (num * factor) % (2 ** 31 - 1)
         if num % multiple == 0:
-            yield bin(num & (2**16-1))
+            yield bin(num & (2 ** 16 - 1))
+
 
 def solution():
     genA = generator(634, 16807)
@@ -21,5 +23,6 @@ def solution():
 
     return part_1, part_2
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     print(solution())

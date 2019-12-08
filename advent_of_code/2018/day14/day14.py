@@ -1,8 +1,8 @@
-PUZZLE_INPUT = '580741'
+PUZZLE_INPUT = "580741"
 
 
 def solution(n):
-    recipes = ['3', '7']
+    recipes = ["3", "7"]
     elf1 = 0
     elf2 = 1
 
@@ -14,11 +14,11 @@ def solution(n):
         elf1 = (elf1 + score1 + 1) % len(recipes)
         elf2 = (elf2 + score2 + 1) % len(recipes)
 
-    return ''.join(recipes[iterations:iterations+10])
+    return "".join(recipes[iterations : iterations + 10])
 
 
 def solution2(n):
-    recipes = ['3', '7']
+    recipes = ["3", "7"]
     elf1 = 0
     elf2 = 1
 
@@ -33,22 +33,22 @@ def solution2(n):
 
         if recipes[-len_of_input:] == listified_n:
             return len(recipes) - len_of_input
-        elif recipes[-len_of_input-1:-1] == listified_n:
+        elif recipes[-len_of_input - 1 : -1] == listified_n:
             return len(recipes) - len_of_input - 1
 
     return len(recipes) - len_of_input
 
 
-assert solution('9') == '5158916779', solution(9)
-assert solution('5') == '0124515891'
-assert solution('18') == '9251071085'
-assert solution('2018') == '5941429882'
+assert solution("9") == "5158916779", solution(9)
+assert solution("5") == "0124515891"
+assert solution("18") == "9251071085"
+assert solution("2018") == "5941429882"
 part1 = solution(PUZZLE_INPUT)
-print(f'Part 1: {part1}')
+print(f"Part 1: {part1}")
 
-assert solution2('51589') == 9
-assert solution2('01245') == 5
-assert solution2('92510') == 18
-assert solution2('59414') == 2018
+assert solution2("51589") == 9
+assert solution2("01245") == 5
+assert solution2("92510") == 18
+assert solution2("59414") == 2018
 part2 = solution2(PUZZLE_INPUT)
-print(f'Part 2: {part2}')
+print(f"Part 2: {part2}")

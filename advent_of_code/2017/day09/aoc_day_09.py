@@ -12,30 +12,29 @@ def solution(stream):
             flag_bang = False
             continue
 
-        if char == '>':
+        if char == ">":
             # unflag the garbage flag if encounter unescaped >
             flag_garbage = False
-        elif char == '!':
+        elif char == "!":
             # flag the ignore flag if encounter unescaped !
             flag_bang = True
         elif flag_garbage:
             # as long as the garbage flag is flagged, keep skipping
             garbage_score += 1
             continue
-        elif char == '{':
+        elif char == "{":
             last_score += 1
-        elif char == '}':
+        elif char == "}":
             score += last_score
             last_score -= 1
-        elif char == '<':
+        elif char == "<":
             flag_garbage = True
     return score, garbage_score
 
 
-
-if __name__ == '__main__':
-    with open('aoc_day_09_input.txt') as f:
+if __name__ == "__main__":
+    with open("aoc_day_09_input.txt") as f:
         s = [line.strip() for line in f.readlines()][0]
     answer = solution(s)
-    print(f'Part 1: {answer[0]}')
-    print(f'Part 2: {answer[1]}')
+    print(f"Part 1: {answer[0]}")
+    print(f"Part 2: {answer[1]}")

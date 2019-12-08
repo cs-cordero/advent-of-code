@@ -1,6 +1,7 @@
 from collections import defaultdict
 from copy import deepcopy
 
+
 class Vector:
     def __init__(self, x, y):
         self.x = x
@@ -44,6 +45,7 @@ class Vector:
     def position(self):
         return self.x, self.y
 
+
 def solution(infecteds, iterations, part_two=False):
     sporifica = Vector(0, 0)
     direction = Vector(-1, 0)
@@ -60,7 +62,6 @@ def solution(infecteds, iterations, part_two=False):
             direction.turn_right()
             direction.turn_right()
 
-
         # sporifica cleans or infects
         if part_two:
             infecteds[sporifica.position] += 1
@@ -74,8 +75,9 @@ def solution(infecteds, iterations, part_two=False):
         sporifica += direction
     return counter
 
-if __name__ == '__main__':
-    with open('aoc_day_22_input.txt', 'r') as f:
+
+if __name__ == "__main__":
+    with open("aoc_day_22_input.txt", "r") as f:
         s = [[c for c in line.strip()] for line in f.readlines()]
 
     # s = [
@@ -85,11 +87,11 @@ if __name__ == '__main__':
     # ]
 
     infecteds = defaultdict(int)
-    offset = len(s)//2
-    for i in range(-(len(s)//2), len(s)//2+1):
-        for j in range(-(len(s[0])//2), len(s[0])//2+1):
-            if s[i+offset][j+offset] == '#':
+    offset = len(s) // 2
+    for i in range(-(len(s) // 2), len(s) // 2 + 1):
+        for j in range(-(len(s[0]) // 2), len(s[0]) // 2 + 1):
+            if s[i + offset][j + offset] == "#":
                 infecteds[(i, j)] = 2
 
-    print(f'Part 1: {solution(deepcopy(infecteds), 10000)}')
-    print(f'Part 2: {solution(deepcopy(infecteds), 10000000, True)}')
+    print(f"Part 1: {solution(deepcopy(infecteds), 10000)}")
+    print(f"Part 2: {solution(deepcopy(infecteds), 10000000, True)}")

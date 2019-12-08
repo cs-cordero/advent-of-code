@@ -1,5 +1,5 @@
 from collections import defaultdict
-from heapq import heappush, heappop, heapify
+from heapq import heapify, heappop, heappush
 
 
 def read_file(filepath):
@@ -18,10 +18,10 @@ def solution():
     graph = defaultdict(set)
     backwards_graph = defaultdict(set)
     visited_nodes = set()
-    order = ''
+    order = ""
 
-    for line in read_file('input.txt'):
-        _a, _b = line[5:].split('must be finished before step ')
+    for line in read_file("input.txt"):
+        _a, _b = line[5:].split("must be finished before step ")
         source, target = ord(_a[0]), ord(_b[0])
         graph[source].add(target)
         backwards_graph[target].add(source)
@@ -39,6 +39,7 @@ def solution():
                 heappush(queue, node)
     return order
 
+
 def solution2():
     graph = defaultdict(set)
     backwards_graph = defaultdict(set)
@@ -46,8 +47,8 @@ def solution2():
     workers = {}
     time = 0
 
-    for line in read_file('input.txt'):
-        _a, _b = line[5:].split('must be finished before step ')
+    for line in read_file("input.txt"):
+        _a, _b = line[5:].split("must be finished before step ")
         source, target = ord(_a[0]), ord(_b[0])
         graph[source].add(target)
         backwards_graph[target].add(source)
@@ -60,7 +61,7 @@ def solution2():
         # queue another worker if we can
         while queue and len(workers) < 5:
             next_node = heappop(queue)
-            workers[time + 60 + next_node - ord('A')] = next_node
+            workers[time + 60 + next_node - ord("A")] = next_node
 
         # worker completes work
         if time in workers:
@@ -74,6 +75,7 @@ def solution2():
 
         time += 1
     return time
+
 
 print(solution())
 print(solution2())

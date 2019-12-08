@@ -1,16 +1,16 @@
-from collections import deque
-from copy import deepcopy
-from typing import NamedTuple, Tuple, Iterable, Union, Dict, Optional, List, Set
 import enum
 import os
 import time
+from collections import deque
+from copy import deepcopy
+from typing import Dict, Iterable, List, NamedTuple, Optional, Set, Tuple, Union
 
 
 class EntityType(enum.Enum):
     value: str
-    GOBLIN = 'G'
-    ELF = 'E'
-    WALL = '#'
+    GOBLIN = "G"
+    ELF = "E"
+    WALL = "#"
 
 
 class Entity:
@@ -35,18 +35,18 @@ class Point(NamedTuple):
     x: int
     y: int
 
-    def __add__(self, other: Tuple[int, int]) -> 'Point':  # type: ignore
+    def __add__(self, other: Tuple[int, int]) -> "Point":  # type: ignore
         x1, y1 = self
         x2, y2 = other
-        return Point(x1+x2, y1+y2)
+        return Point(x1 + x2, y1 + y2)
 
     @property
-    def adjacent(self) -> Iterable['Point']:
+    def adjacent(self) -> Iterable["Point"]:
         for delta in [(0, -1), (-1, 0), (1, 0), (0, 1)]:
             yield self + delta
 
     @staticmethod
-    def coerce(point: 'GridKey') -> 'Point':
+    def coerce(point: "GridKey") -> "Point":
         if isinstance(point, Point) and type(point) == Point:
             return point
         return Point(*point)
@@ -59,9 +59,9 @@ class Grid:
     def __init__(self, raw_lines: str, elf_power: int) -> None:
         self._game_over = False
         self._grid: Dict[GridKey, Entity] = {}
-        for row_num, row in enumerate(raw_lines.strip().split('\n')):
+        for row_num, row in enumerate(raw_lines.strip().split("\n")):
             for col_num, col in enumerate(row.strip()):
-                if col == '.':
+                if col == ".":
                     continue
                 entity_type = EntityType(col)
                 entity = Entity(entity_type)
@@ -91,7 +91,7 @@ class Grid:
 
     @property
     def outcome(self) -> Tuple[EntityType, int]:
-        assert self.game_over, 'Game is still in progress. Keep calling play().'
+        assert self.game_over, "Game is still in progress. Keep calling play()."
         live_entities = list(self.live_entities.values())
 
         victors = live_entities[0].type
@@ -172,8 +172,7 @@ class Grid:
                     # Must get the target that is first in 'reading order'
                     bestx, besty = best[-1]
                     currentx, currenty = current[-1]
-                    if (currenty < besty
-                            or (currenty == besty and currentx < bestx)):
+                    if currenty < besty or (currenty == besty and currentx < bestx):
                         best = current
                         continue
 
@@ -189,7 +188,7 @@ class Grid:
         for position, entity in self.turn_order:
             if self.game_over:
                 if verbose:
-                    os.system('clear')
+                    os.system("clear")
                     print(self)
                 return self.game_over
 
@@ -201,7 +200,7 @@ class Grid:
                 if not path:
                     continue
                 current_position, next_position, *rest = path
-                assert current_position == position, 'Just a sanity check'
+                assert current_position == position, "Just a sanity check"
                 del self._grid[position]
                 self[next_position] = entity
                 attack_target = self.get_attack_target_from(next_position)
@@ -211,7 +210,7 @@ class Grid:
                 assert defending_entity is not None
                 defending_entity.hp -= entity.power
         if verbose:
-            os.system('clear')
+            os.system("clear")
             print(self)
         return False
 
@@ -221,19 +220,19 @@ class Grid:
     def __setitem__(self, key: GridKey, value: Entity) -> None:
         self._grid[key] = value
 
-    def copy(self) -> 'Grid':
+    def copy(self) -> "Grid":
         return deepcopy(self)
 
     def show_turn_order(self) -> None:
         _grid = self.copy()
         for i, turn in enumerate(_grid.turn_order):
-            _grid[turn] = i+1  # type: ignore
+            _grid[turn] = i + 1  # type: ignore
         print(repr(_grid))
 
     def show_targets(self, targeter: GridKey) -> None:
         _grid = self.copy()
         for target in self.get_targets(targeter):
-            _grid[target] = '!'  # type: ignore
+            _grid[target] = "!"  # type: ignore
         print(repr(_grid))
 
     def show_path(self, mover: GridKey) -> None:
@@ -241,40 +240,46 @@ class Grid:
         path = self.bfs(mover)
         assert path is not None
         for target in path[1:]:
-            _grid[target] = 'x'  # type: ignore
+            _grid[target] = "x"  # type: ignore
         print(repr(_grid))
 
     def as_string(self) -> str:
         representation = repr(self)
-        return ''.join(representation.split('\n'))
+        return "".join(representation.split("\n"))
 
     def __repr__(self) -> str:
         xs, ys = zip(*self._grid.keys())
         maxx, maxy = max(xs), max(ys)
         grid = []
-        for y in range(maxy+1):
-            row = ''
-            for x in range(maxx+1):
+        for y in range(maxy + 1):
+            row = ""
+            for x in range(maxx + 1):
                 entity = self._grid.get((x, y))
                 character = (
-                    '.' if entity is None or (not isinstance(entity, str)
-                                              and not entity.is_alive
-                                              and entity.type is not EntityType.WALL)
+                    "."
+                    if entity is None
+                    or (
+                        not isinstance(entity, str)
+                        and not entity.is_alive
+                        and entity.type is not EntityType.WALL
+                    )
                     else str(entity)
                 )
                 row += character
             grid.append(row)
-        return '\n'.join(grid)
+        return "\n".join(grid)
 
 
 def get_elf_count(grid: Grid) -> int:
-    return sum(entity.type is EntityType.ELF
-               for entity in grid.live_entities.values())
+    return sum(entity.type is EntityType.ELF for entity in grid.live_entities.values())
 
 
-def solution(grid_data: str, elf_power: int = 3,
-             allow_no_elf_death: bool = False,
-             verbose: bool = False) -> Tuple[EntityType, int]:
+def solution(
+    grid_data: str,
+    elf_power: int = 3,
+    allow_no_elf_death: bool = False,
+    verbose: bool = False,
+) -> Tuple[EntityType, int]:
     grid = Grid(grid_data, elf_power)
     starting_elf_count = get_elf_count(grid)
     game_round = 0
@@ -286,18 +291,20 @@ def solution(grid_data: str, elf_power: int = 3,
             return EntityType.GOBLIN, game_round
 
     victors, remaining_health = grid.outcome
-    return victors, game_round*remaining_health
+    return victors, game_round * remaining_health
 
 
 def solution2(grid_data: str) -> int:
     for elf_power in range(4, 300):
-        victor, remaining_health = solution(grid_data, elf_power, allow_no_elf_death=True)
+        victor, remaining_health = solution(
+            grid_data, elf_power, allow_no_elf_death=True
+        )
         if victor == EntityType.ELF:
             return remaining_health
-    assert False, 'Did not find a power where the elves won.'
+    assert False, "Did not find a power where the elves won."
 
 
-with open('input.txt') as f:
-    actual_initial = ''.join(f.readlines())
-print(f'Part 1: {solution(actual_initial, verbose=True)[1]}')
-print(f'Part 2: {solution2(actual_initial)}')
+with open("input.txt") as f:
+    actual_initial = "".join(f.readlines())
+print(f"Part 1: {solution(actual_initial, verbose=True)[1]}")
+print(f"Part 2: {solution2(actual_initial)}")

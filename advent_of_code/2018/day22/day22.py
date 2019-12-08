@@ -1,13 +1,11 @@
-from collections import deque, defaultdict
-from copy import copy
-from typing import NamedTuple, Tuple
 import enum
 import heapq
+from collections import defaultdict
+from typing import NamedTuple
 
-
-with open('input.txt') as f:
-    DEPTH = int(f.readline().strip().split(' ')[1])
-    TARGET = tuple(map(int, f.readline().strip().split(' ')[1].split(',')))
+with open("input.txt") as f:
+    DEPTH = int(f.readline().strip().split(" ")[1])
+    TARGET = tuple(map(int, f.readline().strip().split(" ")[1].split(",")))
 
 
 class RegionType(enum.Enum):
@@ -64,9 +62,9 @@ class Cave:
             elif x == 0:
                 geologic_index = y * 48271
             else:
-                self[(x-1, y)]
-                self[(x, y-1)]
-                geologic_index = self._storage[(x-1, y)] * self._storage[(x, y-1)]
+                self[(x - 1, y)]
+                self[(x, y - 1)]
+                geologic_index = self._storage[(x - 1, y)] * self._storage[(x, y - 1)]
 
             erosion_level = (geologic_index + self.depth) % 20183
             self._storage[key] = erosion_level
@@ -77,7 +75,7 @@ class Cave:
         assert len(key) == 2
         assert all(isinstance(val, int) for val in key)
         assert isinstance(value, int)
-        sef._storage[key] = value
+        self._storage[key] = value
 
 
 def adjacent_points(point):
@@ -99,7 +97,9 @@ def adjacent_points(point):
 
 def solution():
     cave = Cave(DEPTH, TARGET)
-    part1 = sum(cave[(x, y)].value for x in range(TARGET[0]+1) for y in range(TARGET[1]+1))
+    part1 = sum(
+        cave[(x, y)].value for x in range(TARGET[0] + 1) for y in range(TARGET[1] + 1)
+    )
 
     final_target = (*TARGET, Equipment.TORCH)
     time_distances = {(0, 0, Equipment.TORCH): 0, final_target: 1 << 31}
@@ -130,7 +130,9 @@ def solution():
                     heapq.heappush(queue, (next_minutes, next_node))
 
         # Add to Queue current node with second set of equipment
-        next_equipment = list(REGION_TYPE_TO_EQUIPMENT_MAP[cave[point]] - {equipment})[0]
+        next_equipment = list(REGION_TYPE_TO_EQUIPMENT_MAP[cave[point]] - {equipment})[
+            0
+        ]
         next_node = Node(*point, next_equipment)
         next_minutes = minutes + 7
         if next_minutes < time_distances.setdefault(next_node, 1 << 31):
@@ -139,6 +141,7 @@ def solution():
 
     assert False, "Could not reach the target!"
 
+
 part1, part2 = solution()
-print(f'Part1: {part1}')
-print(f'Part2: {part2}')
+print(f"Part1: {part1}")
+print(f"Part2: {part2}")

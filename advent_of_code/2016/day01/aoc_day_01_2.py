@@ -2,6 +2,7 @@
 
 # Advent of Code Day 1, Part 2
 
+
 def easter_bunny_headquarters(directions):
     # Array indicating number of times moved in N E S W order;
     current_location = [0, 0]
@@ -25,12 +26,11 @@ def easter_bunny_headquarters(directions):
             continue
         break
 
-
     return current_location, abs(current_location[0] + current_location[1])
 
 
 sample_1 = "R8, R4, R4, R8"
-print("Sample 1: {}".format(easter_bunny_headquarters(sample_1.split(', '))))
+print("Sample 1: {}".format(easter_bunny_headquarters(sample_1.split(", "))))
 
 advent_input = "L1, L3, L5, L3, R1, L4, L5, R1, R3, L5, R1, L3, L2, L3, R2, R2, L3, L3, R1, L2, R1, L3, L2, R4, R2, L5, R4, L5, R4, L2, R3, L2, R4, R1, L5, L4, R1, L2, R3, R1, R2, L4, R1, L2, R3, L2, L3, R5, L192, R4, L5, R4, L1, R4, L4, R2, L5, R45, L2, L5, R4, R5, L3, R5, R77, R2, R5, L5, R1, R4, L4, L4, R2, L4, L1, R191, R1, L1, L2, L2, L4, L3, R1, L3, R1, R5, R3, L1, L4, L2, L3, L1, L1, R5, L4, R1, L3, R1, L2, R1, R4, R5, L4, L2, R4, R5, L1, L2, R3, L4, R2, R2, R3, L2, L3, L5, R3, R1, L4, L3, R4, R2, R2, R2, R1, L4, R4, R1, R2, R1, L2, L2, R4, L1, L2, R3, L3, L5, L4, R4, L3, L1, L5, L3, L5, R5, L5, L4, L2, R1, L2, L4, L2, L4, L1, R4, R4, R5, R1, L4, R2, L4, L2, L4, R2, L4, L1, L2, R1, R4, R3, R2, R2, R5, L1, L2"
-print("Challenge: {}".format(easter_bunny_headquarters(advent_input.split(', '))))
+print("Challenge: {}".format(easter_bunny_headquarters(advent_input.split(", "))))

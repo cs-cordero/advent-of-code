@@ -16,10 +16,10 @@ class CartDirection(Enum):
 
 
 CART_SHAPE = {
-    '<': CartDirection.LEFT,
-    '>': CartDirection.RIGHT,
-    'v': CartDirection.DOWN,
-    '^': CartDirection.UP,
+    "<": CartDirection.LEFT,
+    ">": CartDirection.RIGHT,
+    "v": CartDirection.DOWN,
+    "^": CartDirection.UP,
 }
 
 
@@ -74,29 +74,31 @@ class Cart:
         px += dx
         py += dy
         self.position = (px, py)
-        if grid[py][px] == '\\':
+        if grid[py][px] == "\\":
             self.direction = (
                 self._turn_right()
                 if self.direction in (CartDirection.RIGHT, CartDirection.LEFT)
                 else self._turn_left()
             )
-        elif grid[py][px] == '/':
+        elif grid[py][px] == "/":
             self.direction = (
                 self._turn_right()
                 if self.direction in (CartDirection.UP, CartDirection.DOWN)
                 else self._turn_left()
             )
-        elif grid[py][px] == '+':
+        elif grid[py][px] == "+":
             self.turn()
         return self.position
 
     def __repr__(self):
         px, py = self.position
-        return f'<Cart: ({str(px).rjust(3)}, {str(py).rjust(3)}), {self.direction.name}>'
+        return (
+            f"<Cart: ({str(px).rjust(3)}, {str(py).rjust(3)}), {self.direction.name}>"
+        )
 
 
 def solution():
-    grid = [line for line in read_file('input.txt')]
+    grid = [line for line in read_file("input.txt")]
     carts = {}
     cart_positions = {}
     for row in range(len(grid)):
@@ -104,13 +106,13 @@ def solution():
             cart_direction = CART_SHAPE.get(char)
             if not cart_direction:
                 continue
-            cart_id = f'{col}{row}'
+            cart_id = f"{col}{row}"
             carts[cart_id] = Cart(cart_id, (col, row), cart_direction)
             cart_positions[(col, row)] = cart_id
 
     part_1 = None
     part_2 = None
-    fn_sorter = attrgetter('y', 'x')
+    fn_sorter = attrgetter("y", "x")
     while True:
         if len(carts) == 1:
             part_2 = list(carts.values())[0].position
@@ -133,5 +135,5 @@ def solution():
 
 
 part_1, part_2 = solution()
-print(f'Part 1: {part_1}')
-print(f'Part 2: {part_2}')
+print(f"Part 1: {part_1}")
+print(f"Part 2: {part_2}")

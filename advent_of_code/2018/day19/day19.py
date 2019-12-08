@@ -1,5 +1,4 @@
-from math import sqrt, floor
-
+from math import floor, sqrt
 
 TEST_DATA = """
 #ip 0
@@ -13,13 +12,13 @@ seti 9 0 5
 """
 
 
-def read_file(filepath, use_test_data = False):
+def read_file(filepath, use_test_data=False):
     if not use_test_data:
         with open(filepath) as f:
             for line in f.readlines():
                 yield line.strip()
     else:
-        for line in TEST_DATA.strip().split('\n'):
+        for line in TEST_DATA.strip().split("\n"):
             yield line.strip()
 
 
@@ -104,31 +103,42 @@ def eqrr(registers, A, B, C):
 
 
 OPERATIONS = {
-    'addr': addr, 'addi': addi,
-    'mulr': mulr, 'muli': muli,
-    'banr': banr, 'bani': bani,
-    'borr': borr, 'bori': bori,
-    'setr': setr, 'seti': seti,
-    'gtir': gtir, 'gtri': gtri,
-    'gtrr': gtrr, 'eqir': eqir,
-    'eqri': eqri, 'eqrr': eqrr,
+    "addr": addr,
+    "addi": addi,
+    "mulr": mulr,
+    "muli": muli,
+    "banr": banr,
+    "bani": bani,
+    "borr": borr,
+    "bori": bori,
+    "setr": setr,
+    "seti": seti,
+    "gtir": gtir,
+    "gtri": gtri,
+    "gtrr": gtrr,
+    "eqir": eqir,
+    "eqri": eqri,
+    "eqrr": eqrr,
 }
 
 
-def solution(use_test_data = False):
+def solution(use_test_data=False):
     registers = [0 for _ in range(6)]
-    ip_register, *instructions = read_file('input.txt', use_test_data)
-    ip_register = int(ip_register.split(' ')[1])
+    ip_register, *instructions = read_file("input.txt", use_test_data)
+    ip_register = int(ip_register.split(" ")[1])
     instructions = [
-        (OPERATIONS[instruction.split(' ')[0]], [int(x) for x in instruction.split(' ')[1:]])
+        (
+            OPERATIONS[instruction.split(" ")[0]],
+            [int(x) for x in instruction.split(" ")[1:]],
+        )
         for instruction in instructions
     ]
 
     ip = registers[ip_register]
     while ip < len(instructions):
-        DEBUG_ip = f'ip={str(ip).ljust(3)}'
+        DEBUG_ip = f"ip={str(ip).ljust(3)}"
         DEBUG_start = f'[{", ".join(str(x).rjust(6) for x in registers)}]'
-        DEBUG = f'{DEBUG_ip} {DEBUG_start}'
+        DEBUG = f"{DEBUG_ip} {DEBUG_start}"
         registers[ip_register] = ip
         operation, data = instructions[ip]
         operation(registers, *data)

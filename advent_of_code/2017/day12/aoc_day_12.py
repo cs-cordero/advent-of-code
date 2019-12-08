@@ -1,5 +1,6 @@
 from collections import deque
 
+
 class Node:
     def __init__(self, name, children):
         self.name = name
@@ -7,12 +8,13 @@ class Node:
         self.visited = False
 
     def __repr__(self):
-        return f'{self.name}: {self.children}'
+        return f"{self.name}: {self.children}"
+
 
 def solution(nodes):
     village = build_graph(nodes)
 
-    part_one = tag_group(village.get('0'), village)
+    part_one = tag_group(village.get("0"), village)
     part_two = 1
     for _, node in village.items():
         if node.visited:
@@ -21,11 +23,12 @@ def solution(nodes):
         tag_group(node, village)
     return part_one, part_two
 
+
 def build_graph(nodes):
     village = {}
     for node in nodes:
-        name, children = node.split(' <-> ')
-        program_node = village.get(name, Node(name, children.split(', ')))
+        name, children = node.split(" <-> ")
+        program_node = village.get(name, Node(name, children.split(", ")))
         village[name] = program_node
 
         for child in program_node.children:
@@ -33,6 +36,7 @@ def build_graph(nodes):
             if name not in child_node.children:
                 child_node.children.append(name)
     return village
+
 
 def tag_group(starting_node, village):
     queue = deque([starting_node])
@@ -48,9 +52,10 @@ def tag_group(starting_node, village):
             group_size += 1
     return group_size
 
-if __name__ == '__main__':
-    with open('aoc_day_12_input.txt', 'r') as f:
+
+if __name__ == "__main__":
+    with open("aoc_day_12_input.txt", "r") as f:
         s = [x.strip() for x in f.readlines()]
     answer = solution(s)
-    print('Part One: ', answer[0])
-    print('Part Two: ', answer[1])
+    print("Part One: ", answer[0])
+    print("Part Two: ", answer[1])

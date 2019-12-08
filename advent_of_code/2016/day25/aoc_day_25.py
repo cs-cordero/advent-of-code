@@ -10,9 +10,8 @@ def assembly_to_normal(a):
         solution.append(a % 2)
         a //= 2
 
-    solution = ''.join(map(str, solution))
-    return not (solution.count('11') or solution.count('00')) \
-               and solution[0] == '0'
+    solution = "".join(map(str, solution))
+    return not (solution.count("11") or solution.count("00")) and solution[0] == "0"
 
 
 def main():
@@ -23,5 +22,5 @@ def main():
         a += 1
 
 
-if __name__ == '__main__':
-    print('Day 25: %d' % main())
+if __name__ == "__main__":
+    print("Day 25: %d" % main())

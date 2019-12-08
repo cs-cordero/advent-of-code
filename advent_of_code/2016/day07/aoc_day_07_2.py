@@ -5,16 +5,18 @@ import re
 
 def find_all_aba(line):
     aba = []
-    for i in range(1, len(line)-1):
-        if (line[i-1:i+2] == ''.join(reversed(line[i-1:i+2])) and
-           line[i] != line[i-1]):
-            aba.append(line[i-1:i+2])
+    for i in range(1, len(line) - 1):
+        if (
+            line[i - 1 : i + 2] == "".join(reversed(line[i - 1 : i + 2]))
+            and line[i] != line[i - 1]
+        ):
+            aba.append(line[i - 1 : i + 2])
     return aba
 
 
 def internet_protocol_v7(IP):
-    supernets = re.split(r',', re.sub(r'\[\w+\]', r',', IP))
-    hypernets = re.findall(r'\[(\w+)\]', IP)
+    supernets = re.split(r",", re.sub(r"\[\w+\]", r",", IP))
+    hypernets = re.findall(r"\[(\w+)\]", IP)
 
     all_aba = []
     for supernet in supernets:
@@ -31,11 +33,11 @@ def internet_protocol_v7(IP):
 
 
 def main():
-    print('Sample 1: %s' % internet_protocol_v7('aba[bab]xyz'))
-    print('Sample 2: %s' % internet_protocol_v7('xyx[xyx]xyx'))
-    print('Sample 3: %s' % internet_protocol_v7('aaa[kek]eke'))
-    print('Sample 4: %s' % internet_protocol_v7('zazbz[bzb]cdb'))
-    with open('aoc_day_07_input.txt', 'r') as f:
+    print("Sample 1: %s" % internet_protocol_v7("aba[bab]xyz"))
+    print("Sample 2: %s" % internet_protocol_v7("xyx[xyx]xyx"))
+    print("Sample 3: %s" % internet_protocol_v7("aaa[kek]eke"))
+    print("Sample 4: %s" % internet_protocol_v7("zazbz[bzb]cdb"))
+    with open("aoc_day_07_input.txt", "r") as f:
         counter = 0
         for line in f:
             if internet_protocol_v7(line.strip()):
@@ -43,5 +45,5 @@ def main():
     return counter
 
 
-if __name__ == '__main__':
-    print('Challenge: %s' % main())
+if __name__ == "__main__":
+    print("Challenge: %s" % main())

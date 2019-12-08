@@ -1,21 +1,20 @@
-from copy import deepcopy
-from typing import NamedTuple, Iterable, Dict, Tuple
 import os
 import sys
-
+from copy import deepcopy
+from typing import Dict, Iterable, NamedTuple, Tuple
 
 TEST_DATA = [
-    '.#.#.#',
-    '...##.',
-    '#....#',
-    '..#...',
-    '#.#..#',
-    '####..',
+    ".#.#.#",
+    "...##.",
+    "#....#",
+    "..#...",
+    "#.#..#",
+    "####..",
 ]
 
 
 def read_file(filepath):
-    if 'test' not in sys.argv:
+    if "test" not in sys.argv:
         with open(filepath) as f:
             for line in f.readlines():
                 yield line.rstrip()
@@ -28,17 +27,22 @@ class Point2D(NamedTuple):
     x: int
     y: int
 
-    def __add__(self, other: 'Point2D') -> 'Point2D':
+    def __add__(self, other: "Point2D") -> "Point2D":
         x1, y1 = self
         x2, y2 = other
-        return Point2D(x1+x2, y1+y2)
+        return Point2D(x1 + x2, y1 + y2)
 
     @property
-    def neighboring_points(self) -> Iterable['Point2D']:
+    def neighboring_points(self) -> Iterable["Point2D"]:
         deltas = [
-            (-1, -1), (0, -1), (1, -1),
-            (-1,  0), (1,  0),
-            (-1,  1), (0,  1), (1,  1),
+            (-1, -1),
+            (0, -1),
+            (1, -1),
+            (-1, 0),
+            (1, 0),
+            (-1, 1),
+            (0, 1),
+            (1, 1),
         ]
         for delta in deltas:
             yield self + Point2D(*delta)
@@ -54,20 +58,22 @@ class Grid:
         self.maxy = max(ys)
 
     @staticmethod
-    def populate_from_input() -> 'Grid':
+    def populate_from_input() -> "Grid":
         grid = {}
-        for x, row in enumerate(read_file('aoc_day_18_input.txt')):
+        for x, row in enumerate(read_file("aoc_day_18_input.txt")):
             for y, col in enumerate(row):
-                grid[Point2D(x, y)] = col == '#'
+                grid[Point2D(x, y)] = col == "#"
         return Grid(grid)
 
     def __repr__(self) -> str:
         stringified = [
-            ''.join('#' if self.grid[Point2D(row, col)] else '.'
-                    for col in range(self.maxx+1))
-            for row in range(self.maxy+1)
+            "".join(
+                "#" if self.grid[Point2D(row, col)] else "."
+                for col in range(self.maxx + 1)
+            )
+            for row in range(self.maxy + 1)
         ]
-        return '\n'.join(stringified)
+        return "\n".join(stringified)
 
     def turn_corners_on(self) -> None:
         self.grid[Point2D(self.minx, self.miny)] = True
@@ -75,12 +81,11 @@ class Grid:
         self.grid[Point2D(self.maxx, self.miny)] = True
         self.grid[Point2D(self.maxx, self.maxy)] = True
 
-
     def play(self, part2: bool = False) -> None:
         old_grid = deepcopy(self.grid)
 
-        for row in range(self.maxy+1):
-            for col in range(self.maxx+1):
+        for row in range(self.maxy + 1):
+            for col in range(self.maxx + 1):
                 on_neighbors = 0
                 current_point = Point2D(row, col)
                 for neighbor in current_point.neighboring_points:
@@ -94,8 +99,8 @@ class Grid:
         if part2:
             self.turn_corners_on()
 
-        if 'verbose' in sys.argv:
-            os.system('clear')
+        if "verbose" in sys.argv:
+            os.system("clear")
             print(self)
 
 

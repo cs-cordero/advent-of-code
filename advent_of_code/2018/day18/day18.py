@@ -1,10 +1,8 @@
+import enum
 from collections.abc import MutableMapping
 from copy import deepcopy
 from functools import wraps
 from typing import NamedTuple
-import enum
-import os
-
 
 TEST_DATA = """
 .#.#...|#.
@@ -20,20 +18,20 @@ TEST_DATA = """
 """
 
 
-def read_file(filepath, use_test_data = False):
+def read_file(filepath, use_test_data=False):
     if not use_test_data:
         with open(filepath) as f:
             for line in f.readlines():
                 yield line.strip()
     else:
-        for line in TEST_DATA.strip().split('\n'):
+        for line in TEST_DATA.strip().split("\n"):
             yield line.strip()
 
 
 class PointType(enum.Enum):
-    GROUND = '.'
-    TREES = '|'
-    LUMBERYARD = '#'
+    GROUND = "."
+    TREES = "|"
+    LUMBERYARD = "#"
 
     def __repr__(self):
         return self.value
@@ -53,17 +51,25 @@ class Grid(MutableMapping):
             return Grid.Point(x1 + x2, y1 + y2)
 
         def __repr__(self):
-            return f'({self.x}, {self.y})'
+            return f"({self.x}, {self.y})"
 
-        def get_adjacent_points(self, *, minx = None, maxx = None,
-                                miny = None, maxy = None):
+        def get_adjacent_points(self, *, minx=None, maxx=None, miny=None, maxy=None):
             def generator():
-                for delta in ((0, -1), (-1, 0), (1, 0), (0, 1),
-                              (-1, -1), (1, -1), (-1, 1), (1, 1)):
+                for delta in (
+                    (0, -1),
+                    (-1, 0),
+                    (1, 0),
+                    (0, 1),
+                    (-1, -1),
+                    (1, -1),
+                    (-1, 1),
+                    (1, 1),
+                ):
                     yield self + delta
 
             return [
-                point for point in generator()
+                point
+                for point in generator()
                 if (minx is None or point.x >= minx)
                 and (maxx is None or point.x <= maxx)
                 and (miny is None or point.y >= miny)
@@ -84,17 +90,18 @@ class Grid(MutableMapping):
         @wraps(fn)
         def wrapper(self, *args, **kwargs):
             try:
-                key = kwargs.get('key', args[0])
+                key = kwargs.get("key", args[0])
             except KeyError:
                 raise Exception("Expected a tuple key!")
 
-            assert (isinstance(key, Grid.Point) or (
+            assert isinstance(key, Grid.Point) or (
                 isinstance(key, tuple)
                 and len(key) == 2
                 and all(isinstance(value, int) for value in key)
-            ))
+            )
 
             return fn(self, *args, **kwargs)
+
         return wrapper
 
     @_impose_key_restrictions
@@ -125,10 +132,7 @@ class Grid(MutableMapping):
         assert len(self) > 0, "No points to create a limit!"
         all_x, all_y = zip(*self)
         return Grid.Limit(
-            minx=min(all_x),
-            maxx=max(all_x),
-            miny=min(all_y),
-            maxy=max(all_y),
+            minx=min(all_x), maxx=max(all_x), miny=min(all_y), maxy=max(all_y)
         )
 
     def copy(self):
@@ -136,28 +140,26 @@ class Grid(MutableMapping):
 
     def show(self):
         limits = self.limits
-        for row in range(limits.miny, limits.maxy+1):
-            _row = ''
-            for col in range(limits.minx, limits.maxx+1):
+        for row in range(limits.miny, limits.maxy + 1):
+            _row = ""
+            for col in range(limits.minx, limits.maxx + 1):
                 _row += str(self[(col, row)])
             print(_row)
 
 
-
-def solution(use_test_data = False):
+def solution(use_test_data=False):
     grid = Grid()
     input_mapping = {
-        '.': PointType.GROUND,
-        '|': PointType.TREES,
-        '#': PointType.LUMBERYARD,
+        ".": PointType.GROUND,
+        "|": PointType.TREES,
+        "#": PointType.LUMBERYARD,
     }
-    for row, line in enumerate(read_file('input.txt', use_test_data)):
+    for row, line in enumerate(read_file("input.txt", use_test_data)):
         for col, value in enumerate(line):
             grid[(col, row)] = input_mapping[value]
 
     grid_limits = grid.limits._asdict()
-    patterns = []
-    cycle_found = None
+    # cycle_found = None
     for minute in range(1000000000):
         next_grid = grid.copy()
         for point, point_type in next_grid.items():
@@ -172,8 +174,10 @@ def solution(use_test_data = False):
                 if old_adjacent_point_types.count(PointType.LUMBERYARD) >= 3:
                     next_grid[point] = PointType.LUMBERYARD
             elif point_type is PointType.LUMBERYARD:
-                if not (old_adjacent_point_types.count(PointType.LUMBERYARD) >= 1
-                        and old_adjacent_point_types.count(PointType.TREES) >= 1):
+                if not (
+                    old_adjacent_point_types.count(PointType.LUMBERYARD) >= 1
+                    and old_adjacent_point_types.count(PointType.TREES) >= 1
+                ):
                     next_grid[point] = PointType.GROUND
         grid = next_grid
 
@@ -212,6 +216,7 @@ def solution(use_test_data = False):
     lumberyards = sum(zone is PointType.LUMBERYARD for zone in grid.values())
     resource_value = trees * lumberyards
     return resource_value
+
 
 resource_value = solution(False)
 print(resource_value)

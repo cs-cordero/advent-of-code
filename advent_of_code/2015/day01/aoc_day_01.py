@@ -2,7 +2,7 @@
 
 
 def aoc(instructions):
-    floor_map = { '(': 1, ')': -1 }
+    floor_map = {"(": 1, ")": -1}
 
     current_floor = 0
     visited_basement = False
@@ -11,11 +11,11 @@ def aoc(instructions):
         if not visited_basement and current_floor < 0:
             visited_basement = True
             visit = i + 1
-    print('Part 1:  Finished on floor #{}.'.format(current_floor))
-    print('Part 2:  Visited Basement on instruction #{}.'.format(visit))
+    print("Part 1:  Finished on floor #{}.".format(current_floor))
+    print("Part 2:  Visited Basement on instruction #{}.".format(visit))
 
 
-if __name__ == '__main__':
-    with open('aoc_day_01_input.txt') as f:
-        instructions = ''.join(f.read().splitlines())
+if __name__ == "__main__":
+    with open("aoc_day_01_input.txt") as f:
+        instructions = "".join(f.read().splitlines())
     aoc(instructions)

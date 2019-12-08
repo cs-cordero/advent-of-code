@@ -40,7 +40,7 @@ def solution2(data: List[int]) -> int:
 
 def intcode_computer(data: List[int], setting: int) -> Generator[int, int, None]:
     registers = {i: value for i, value in enumerate(data)}
-    next_input = (yield)
+    next_input = yield
     setting_has_been_set = False
 
     i = 0
@@ -58,7 +58,7 @@ def intcode_computer(data: List[int], setting: int) -> Generator[int, int, None]
             setting_has_been_set = True
             i += 2
         elif opcode == 4:
-            next_input = (yield get_value(registers, registers[i + 1], modes[0]))
+            next_input = yield get_value(registers, registers[i + 1], modes[0])
             i += 2
         elif opcode == 5:
             j = get_value(registers, registers[i + 1], modes[0])

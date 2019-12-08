@@ -1,5 +1,5 @@
 from collections import deque
-from typing import Dict, Optional, NamedTuple, List
+from typing import Dict, List, NamedTuple
 
 
 def read_file(filepath):
@@ -10,7 +10,7 @@ def read_file(filepath):
 
 class Node:
     def __init__(self) -> None:
-        self.children: Dict['Node', int] = {}
+        self.children: Dict["Node", int] = {}
 
 
 class QueueNode(NamedTuple):
@@ -20,9 +20,9 @@ class QueueNode(NamedTuple):
 
 def solution(part2: bool = False):
     locations = {}
-    for line in read_file('aoc_day_09_input.txt'):
-        path, distance = line.split(' = ')
-        source, target = path.split(' to ')
+    for line in read_file("aoc_day_09_input.txt"):
+        path, distance = line.split(" = ")
+        source, target = path.split(" to ")
         source_node = locations.setdefault(source, Node())
         target_node = locations.setdefault(target, Node())
         source_node.children[target_node] = int(distance)
@@ -36,11 +36,12 @@ def solution(part2: bool = False):
             path, distance_so_far = queue.popleft()
             current_city = path[-1]
             if len(path) == location_count:
-                if (shortest_or_longest_distance_traveled <= distance_so_far
-                        and not part2):
+                if (
+                    shortest_or_longest_distance_traveled <= distance_so_far
+                    and not part2
+                ):
                     continue
-                elif (shortest_or_longest_distance_traveled >= distance_so_far
-                      and part2):
+                elif shortest_or_longest_distance_traveled >= distance_so_far and part2:
                     continue
                 shortest_or_longest_distance_traveled = distance_so_far
 

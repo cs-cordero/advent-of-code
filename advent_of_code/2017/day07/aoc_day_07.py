@@ -1,6 +1,7 @@
 import re
 from collections import deque
 
+
 class Node:
     def __init__(self, name):
         self.name = name
@@ -9,9 +10,11 @@ class Node:
         self.cum_data = None
         self.children = []
 
+
 def solution(tree_root):
-    print(f'Part 1: {tree_root.name}')
-    print(f'Part 2: {find_imbalance(tree_root)}')
+    print(f"Part 1: {tree_root.name}")
+    print(f"Part 2: {find_imbalance(tree_root)}")
+
 
 def create_tree(nodes):
     """ Takes the raw data and generates a Tree. Returns root. """
@@ -28,18 +31,19 @@ def create_tree(nodes):
         node.cum_data = node.data
         if not node.children:
             return node.cum_data
-        node.cum_data += sum(calculate_cumulative_weight(child)
-                             for child in node.children)
+        node.cum_data += sum(
+            calculate_cumulative_weight(child) for child in node.children
+        )
         return node.cum_data
 
     all_nodes = {}
     for node in nodes:
-        split_node = node.split(' -> ')
-        parent = re.sub('[()]', '', split_node[0]).split(' ')
+        split_node = node.split(" -> ")
+        parent = re.sub("[()]", "", split_node[0]).split(" ")
         parent_node = all_nodes.setdefault(parent[0], Node(parent[0]))
         parent_node.data = parent_node.data or int(parent[1])
 
-        children = split_node[1].split(', ') if len(split_node) > 1 else []
+        children = split_node[1].split(", ") if len(split_node) > 1 else []
         for child in children:
             child_node = all_nodes.setdefault(child, Node(child))
             child_node.parent = parent_node
@@ -85,13 +89,12 @@ def find_imbalance(root):
                     queue.append(node.children[i])
                     break
     # node is now the imbalanced node
-    siblings = [sibling for sibling in node.parent.children
-                if not sibling is node]
+    siblings = [sibling for sibling in node.parent.children if sibling is not node]
     return node.data - (node.cum_data - siblings[0].cum_data)
 
 
-if __name__ == '__main__':
-    with open('aoc_day_07_input.txt') as f:
+if __name__ == "__main__":
+    with open("aoc_day_07_input.txt") as f:
         s = (line.strip() for line in f.readlines())
     tree = create_tree(s)
     solution(tree)

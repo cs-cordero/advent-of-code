@@ -1,14 +1,15 @@
-from functools import reduce
 from collections import deque
+from functools import reduce
 
-puzzle_input = 'amgozmfv'
+puzzle_input = "amgozmfv"
+
 
 def solution(s):
     grid = []
     sum_ones = 0
     for i in range(128):
-        khash = get_knot_hash(s + f'-{i}')
-        khash_bin = ''.join(bin(int(hx, 16))[2:].zfill(4) for hx in khash)
+        khash = get_knot_hash(s + f"-{i}")
+        khash_bin = "".join(bin(int(hx, 16))[2:].zfill(4) for hx in khash)
         grid.append([int(x) for x in khash_bin])
         sum_ones += sum(grid[-1])
 
@@ -27,17 +28,17 @@ def solution(s):
                 grid[current_x][current_y] = 0
 
                 if current_x - 1 >= 0:
-                    if grid[current_x-1][current_y] == 1:
-                        queue.append((current_x-1, current_y))
+                    if grid[current_x - 1][current_y] == 1:
+                        queue.append((current_x - 1, current_y))
                 if current_x + 1 < 128:
-                    if grid[current_x+1][current_y] == 1:
-                        queue.append((current_x+1, current_y))
+                    if grid[current_x + 1][current_y] == 1:
+                        queue.append((current_x + 1, current_y))
                 if current_y - 1 >= 0:
-                    if grid[current_x][current_y-1] == 1:
-                        queue.append((current_x, current_y-1))
+                    if grid[current_x][current_y - 1] == 1:
+                        queue.append((current_x, current_y - 1))
                 if current_y + 1 < 128:
-                    if grid[current_x][current_y+1] == 1:
-                        queue.append((current_x, current_y+1))
+                    if grid[current_x][current_y + 1] == 1:
+                        queue.append((current_x, current_y + 1))
 
     return sum_ones, regions
 
@@ -48,7 +49,7 @@ def get_knot_hash(s):
         left = current_position
         right = current_position + length - 1
         while left < right:
-            arr[left%mod], arr[right%mod] = arr[right%mod], arr[left%mod]
+            arr[left % mod], arr[right % mod] = arr[right % mod], arr[left % mod]
             left += 1
             right -= 1
         return arr
@@ -63,11 +64,13 @@ def get_knot_hash(s):
             position = (position + length + skip) % 256
             skip += 1
 
-    dense_hash = [reduce(lambda a, b: a^b, arr[i:i+16])
-                  for i in range(0, 256, 16)]
-    return ''.join('{:02x}'.format(num) for num in dense_hash)
+    dense_hash = [
+        reduce(lambda a, b: a ^ b, arr[i : i + 16]) for i in range(0, 256, 16)
+    ]
+    return "".join("{:02x}".format(num) for num in dense_hash)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     answer = solution(puzzle_input)
-    print(f'Part One: {answer[0]}')
-    print(f'Part Two: {answer[1]}')
+    print(f"Part One: {answer[0]}")
+    print(f"Part Two: {answer[1]}")

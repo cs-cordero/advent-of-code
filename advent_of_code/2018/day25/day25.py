@@ -7,8 +7,8 @@ class Point4D(NamedTuple):
     z: int
     t: int
 
-    def distance_to(self, other: 'Point4D') -> int:
-        return sum(abs(a-b) for a, b in zip(self, other))
+    def distance_to(self, other: "Point4D") -> int:
+        return sum(abs(a - b) for a, b in zip(self, other))
 
 
 def read_file(filepath):
@@ -19,7 +19,7 @@ def read_file(filepath):
 
 def solution():
     """ Brute force solution that takes a minute or two but who cares """
-    points = [Point4D(*map(int, line.split(','))) for line in read_file('input.txt')]
+    points = [Point4D(*map(int, line.split(","))) for line in read_file("input.txt")]
     constellations = []
 
     while points:

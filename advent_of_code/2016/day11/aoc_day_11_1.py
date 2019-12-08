@@ -1,22 +1,23 @@
 #!/bin/python3
 # -*- coding: utf-8 -*-
 
-import re
-import copy
 import collections
+import copy
+import re
 
 
 def floor_isValid(floors, floor):
     current_floor = floors[floor]
     # print('current_floor: {}'.format(current_floor))
-    generators = [gx[0] for gx in current_floor if gx[1] == 'generator']
+    generators = [gx[0] for gx in current_floor if gx[1] == "generator"]
     # print('generators: {}'.format(generators))
-    if not generators: return True
+    if not generators:
+        return True
 
     for item in current_floor:
-        if item[1] == 'microchip' and item[0] in generators:
+        if item[1] == "microchip" and item[0] in generators:
             continue
-        elif item[1] == 'microchip':
+        elif item[1] == "microchip":
             return False
 
     return True
@@ -43,7 +44,7 @@ class memoized(object):
 def get_combinations(floors, floor):
     current_floor = floors[floor]
     combinations = []
-    for i in range(len(current_floor)-1):
+    for i in range(len(current_floor) - 1):
         for j in range(i + 1, len(current_floor)):
             combinations.append([current_floor[i], current_floor[j]])
 
@@ -54,66 +55,75 @@ def get_combinations(floors, floor):
 @memoized
 def solve(floors, floor, steps):
     # base cases:
-        # if in memo, return
-        # else memoize
-        # if not a valid floor, return
-        # else if complete, then return true
-    
+    # if in memo, return
+    # else memoize
+    # if not a valid floor, return
+    # else if complete, then return true
+
     # copy the floorplan for restoration
     # loop over possible moves
-        # recurse backwards
-        # restore the floors
-        # recurse forwards
-        # restore the floors
+    # recurse backwards
+    # restore the floors
+    # recurse forwards
+    # restore the floors
     # return false
 
     # if memoized, the decorator will handle that for us.
-    if not floor_isValid(floors, floor): return False
+    if not floor_isValid(floors, floor):
+        return False
     if floor == 4 and not floors[1] and not floors[2] and not floors[3]:
         return steps
 
     temp_floorplan = copy.deepcopy(floors)
-    print('current floor %d: %s' % (floor, [' '.join(x) for x in floors[floor]]))
+    print("current floor %d: %s" % (floor, [" ".join(x) for x in floors[floor]]))
     combinations = get_combinations(floors, floor)
-    if floor > 1 and len(floors[floor-1]) > 0:
+    if floor > 1 and len(floors[floor - 1]) > 0:
         for moved_items in combinations:
-            if len(moved_items) > 1: continue
+            if len(moved_items) > 1:
+                continue
             for moved_item in moved_items:
-                print('moving: %s, %d <-- %d' % (' '.join(moved_item), floor-1, floor))
-                floors[floor-1].append(moved_item)
+                print(
+                    "moving: %s, %d <-- %d" % (" ".join(moved_item), floor - 1, floor)
+                )
+                floors[floor - 1].append(moved_item)
                 floors[floor].remove(moved_item)
 
-            sol = solve(floors, floor-1, steps + 1)
-            if sol: return sol
+            sol = solve(floors, floor - 1, steps + 1)
+            if sol:
+                return sol
             floors = copy.deepcopy(temp_floorplan)
 
     if floor < 4:
         for moved_items in combinations:
-            print('New step {}:'.format(steps))
+            print("New step {}:".format(steps))
             for moved_item in moved_items:
-                print('moving: %s, %d --> %d' % (' '.join(moved_item), floor, floor+1))
-                floors[floor+1].append(moved_item)
+                print(
+                    "moving: %s, %d --> %d" % (" ".join(moved_item), floor, floor + 1)
+                )
+                floors[floor + 1].append(moved_item)
                 floors[floor].remove(moved_item)
 
-            sol = solve(floors, floor+1, steps + 1)
-            if sol: return sol
+            sol = solve(floors, floor + 1, steps + 1)
+            if sol:
+                return sol
             floors = copy.deepcopy(temp_floorplan)
 
     return False
 
 
-def load_inputs(version='input'):
+def load_inputs(version="input"):
     floors = {}
-    with open('aoc_day_11_{}.txt'.format(version)) as f:
+    with open("aoc_day_11_{}.txt".format(version)) as f:
         i = 1
         for line in f:
             floors[i] = re.findall(
-                r'(\w+)\s*(?:-compatible )*(microchip|generator)',
-                line.strip())
+                r"(\w+)\s*(?:-compatible )*(microchip|generator)", line.strip()
+            )
             i += 1
     return floors
 
-floors = load_inputs('input')
+
+floors = load_inputs("input")
 # floors = {1: [('hydrogen','generator'), ('hydrogen','microchip'), ('lithium','microchip')]}
 print(solve(floors, 1, 0))
 

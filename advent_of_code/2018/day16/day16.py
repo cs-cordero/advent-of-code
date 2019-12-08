@@ -1,4 +1,4 @@
-from collections import deque, defaultdict
+from collections import defaultdict, deque
 from copy import deepcopy
 
 
@@ -90,35 +90,35 @@ def eqrr(registers, A, B, C):
 
 def solution():
     operations = {
-        'addr': addr,
-        'addi': addi,
-        'mulr': mulr,
-        'muli': muli,
-        'banr': banr,
-        'bani': bani,
-        'borr': borr,
-        'bori': bori,
-        'setr': setr,
-        'seti': seti,
-        'gtir': gtir,
-        'gtri': gtri,
-        'gtrr': gtrr,
-        'eqir': eqir,
-        'eqri': eqri,
-        'eqrr': eqrr,
+        "addr": addr,
+        "addi": addi,
+        "mulr": mulr,
+        "muli": muli,
+        "banr": banr,
+        "bani": bani,
+        "borr": borr,
+        "bori": bori,
+        "setr": setr,
+        "seti": seti,
+        "gtir": gtir,
+        "gtri": gtri,
+        "gtrr": gtrr,
+        "eqir": eqir,
+        "eqri": eqri,
+        "eqrr": eqrr,
     }
 
-    with open('input.txt') as f:
+    with open("input.txt") as f:
         lines = deque(f.readlines())
 
     count = 0
     opcode_matches = defaultdict(set)
     while lines:
-        before = list(map(int, lines.popleft().strip()[9:-1].split(', ')))
-        operation = list(map(int, lines.popleft().strip().split(' ')))
-        after = list(map(int, lines.popleft().strip()[9:-1].split(', ')))
+        before = list(map(int, lines.popleft().strip()[9:-1].split(", ")))
+        operation = list(map(int, lines.popleft().strip().split(" ")))
+        after = list(map(int, lines.popleft().strip()[9:-1].split(", ")))
         try:
-            lines.popleft() # empty line
+            lines.popleft()  # empty line
         except IndexError:
             pass
 
@@ -148,13 +148,12 @@ def solution():
             target_val -= val
 
     final_opcodes = {
-        key: operations[list(val)[0]]
-        for key, val in opcode_matches.items()
+        key: operations[list(val)[0]] for key, val in opcode_matches.items()
     }
 
     registers = after
-    for line in read_file('input2.txt'):
-        opcode, a, b, c = map(int, line.strip().split(' '))
+    for line in read_file("input2.txt"):
+        opcode, a, b, c = map(int, line.strip().split(" "))
         operation = final_opcodes[opcode]
         operation(registers, a, b, c)
 

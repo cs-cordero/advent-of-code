@@ -1,5 +1,3 @@
-from collections import deque
-
 with open("aoc_day_19_input.txt", "r") as f:
     lines = [line.strip() for line in f.readlines()]
 

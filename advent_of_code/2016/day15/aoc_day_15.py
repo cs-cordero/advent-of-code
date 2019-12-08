@@ -1,7 +1,7 @@
 #!/bin/python3
 
-import re
 import copy
+import re
 
 
 def increment(curr_pos, max_pos, inc):
@@ -31,18 +31,19 @@ def day15(curr_pos, max_pos):
 def load(fn):
     max_positions = []
     curr_positions = []
-    with open('aoc_day_15_{}.txt'.format(fn)) as f:
-        m = re.compile(r'^.*#(\d+)[\D]*(\d+).*positions;.*position (\d+)')
+    with open("aoc_day_15_{}.txt".format(fn)) as f:
+        m = re.compile(r"^.*#(\d+)[\D]*(\d+).*positions;.*position (\d+)")
         for line in f:
             r = m.search(line).groups()
             max_positions.append(int(r[1]))
-            curr_positions.append((int(r[2]) + (int(r[0])-1)) % int(r[1]))
+            curr_positions.append((int(r[2]) + (int(r[0]) - 1)) % int(r[1]))
     return curr_positions, max_positions
 
-curr_pos, max_pos = load('input')
+
+curr_pos, max_pos = load("input")
 # curr_pos, max_pos = load('sample')
-print('Part 1: {}'.format(day15(copy.deepcopy(curr_pos), max_pos)))
+print("Part 1: {}".format(day15(copy.deepcopy(curr_pos), max_pos)))
 
 curr_pos.append((0 + 6) % 11)
 max_pos.append(11)
-print('Part 2: {}'.format(day15(curr_pos, max_pos)))
+print("Part 2: {}".format(day15(curr_pos, max_pos)))

@@ -20,7 +20,7 @@ def is_one_character_apart(first, second):
 def solution():
     checksum_2s = 0
     checksum_3s = 0
-    for line in read_file('input.txt'):
+    for line in read_file("input.txt"):
         memo = defaultdict(int)
         for letter in line:
             memo[letter] += 1
@@ -32,13 +32,14 @@ def solution():
 
 
 def solution2():  # brute force
-    all_ids = [line for line in read_file('input.txt')]
-    for i in range(len(all_ids)-1):
+    all_ids = [line for line in read_file("input.txt")]
+    for i in range(len(all_ids) - 1):
         for j in range(1, len(all_ids)):
             first, second = all_ids[i], all_ids[j]
             if is_one_character_apart(first, second):
-                return ''.join(group[0] for group in zip(first, second)
-                               if group[0] == group[1])
+                return "".join(
+                    group[0] for group in zip(first, second) if group[0] == group[1]
+                )
 
 
 print(solution())

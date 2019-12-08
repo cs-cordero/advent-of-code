@@ -4,6 +4,7 @@ import collections
 
 ELF_COUNT = 3014603
 
+
 class Elf(object):
     def __init__(self, i):
         self.i = i
@@ -29,7 +30,7 @@ def solve_partone():
 def solve_parttwo():
     left = collections.deque()
     right = collections.deque()
-    for i in range(1, ELF_COUNT+1):
+    for i in range(1, ELF_COUNT + 1):
         if i < (ELF_COUNT // 2) + 1:
             left.append(i)
         else:
@@ -48,9 +49,9 @@ def solve_parttwo():
 
 
 def main():
-    print('Solve Part 1: %d' % solve_partone())
-    print('Solve Part 2: %d' % solve_parttwo())
+    print("Solve Part 1: %d" % solve_partone())
+    print("Solve Part 2: %d" % solve_parttwo())
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

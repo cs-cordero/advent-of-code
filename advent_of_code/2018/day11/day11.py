@@ -20,31 +20,33 @@ def get_grid_sums(grid, topleft):
     py -= 1
 
     mapping = {}
-    points_in_grid = [(px+x, py+y) for x in range(3) for y in range(3)]
+    points_in_grid = [(px + x, py + y) for x in range(3) for y in range(3)]
     current_sum = sum(grid[y][x] for x, y in points_in_grid)
     mapping[3] = current_sum
 
     for i in range(3, 300):
-        rgt_edge = [(px+x, py+i) for x in range(i+1)]
-        btm_edge = [(px+i, py+y) for y in range(i+1)][:-1]
+        rgt_edge = [(px + x, py + i) for x in range(i + 1)]
+        btm_edge = [(px + i, py + y) for y in range(i + 1)][:-1]
         next_edge = rgt_edge + btm_edge
 
         try:
             current_sum += sum(grid[y][x] for x, y in next_edge)
         except IndexError:
             break
-        mapping[i+1] = current_sum
+        mapping[i + 1] = current_sum
     return mapping
 
 
 def solution(serial):
     size = 300
-    grid = [[calculate_power_level((x, y), serial)
-             for x in range(1, size+1)] for y in range(1, size+1)]
+    grid = [
+        [calculate_power_level((x, y), serial) for x in range(1, size + 1)]
+        for y in range(1, size + 1)
+    ]
 
     mapping = {}
-    for x in range(1, size-1):
-        for y in range(1, size-1):
+    for x in range(1, size - 1):
+        for y in range(1, size - 1):
             next_map = get_grid_sums(grid, (x, y))
             for grid_size, power in next_map.items():
                 if grid_size not in mapping:

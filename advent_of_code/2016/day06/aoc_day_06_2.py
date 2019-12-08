@@ -13,7 +13,7 @@ def find_smallest(some_dict):
 
 def main():
     letters = [{} for i in range(8)]
-    with open('aoc_day_06_input.txt', 'r') as f:
+    with open("aoc_day_06_input.txt", "r") as f:
         for line in f:
             for i in range(len(line.strip())):
                 letters[i][line[i]] = letters[i].get(line[i], 0) + 1
@@ -21,9 +21,8 @@ def main():
     final = []
     for i in range(8):
         final.append(find_smallest(letters[i]))
-    return ''.join(final)
+    return "".join(final)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     print(main())
-    

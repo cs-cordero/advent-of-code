@@ -17,17 +17,17 @@ class String:
         count = 0
         i = 1
         while i < self.memory_character_count - 1:
-            if self.string[i] == '\\':
+            if self.string[i] == "\\":
                 i += 1
                 if i >= self.memory_character_count:
                     count += 1
                     break
-                if self.string[i] in ('\\', '"'):
+                if self.string[i] in ("\\", '"'):
                     i += 1
-                elif self.string[i] == 'x':
+                elif self.string[i] == "x":
                     i += 3
                 else:
-                    assert False, 'Invariant'
+                    assert False, "Invariant"
                 count += 1
                 continue
             count += 1
@@ -38,18 +38,22 @@ class String:
     def expanded_character_count(self) -> int:
         count = 0
         for char in self.string:
-            if char in ('\\', '"'):
+            if char in ("\\", '"'):
                 count += 1
             count += 1
         return count + 2
 
 
 def solution():
-    strings = [String(line) for line in read_file('aoc_day_08_input.txt')]
-    part1 =  sum(string.memory_character_count - string.literal_character_count
-                 for string in strings)
-    part2 =  sum(string.expanded_character_count - string.memory_character_count
-                 for string in strings)
+    strings = [String(line) for line in read_file("aoc_day_08_input.txt")]
+    part1 = sum(
+        string.memory_character_count - string.literal_character_count
+        for string in strings
+    )
+    part2 = sum(
+        string.expanded_character_count - string.memory_character_count
+        for string in strings
+    )
     return part1, part2
 
 

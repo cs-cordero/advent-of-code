@@ -8,9 +8,9 @@ def spread_plants(spread_patterns, state):
     for next_pot in range(4, len(state)):
         pattern.append(state[next_pot])
 
-        spread_result = spread_patterns.get(''.join(pattern))
+        spread_result = spread_patterns.get("".join(pattern))
         changing_pot = next_pot - 2
-        new_state[changing_pot] = spread_result or '.'
+        new_state[changing_pot] = spread_result or "."
 
         pattern.popleft()
     return new_state
@@ -18,20 +18,20 @@ def spread_plants(spread_patterns, state):
 
 def solution(n, verbose=False):
     spread_patterns = {}
-    with open('input.txt') as f:
+    with open("input.txt") as f:
         initial_state = f.readline()[15:].strip()
         f.readline()
         for line in f.readlines():
-            spread_pattern, result = line.strip().split(' => ')
+            spread_pattern, result = line.strip().split(" => ")
             spread_patterns[spread_pattern] = result
 
     state_padding_size = 1000
-    state = list('.' * state_padding_size + initial_state + '.' * state_padding_size)
+    state = list("." * state_padding_size + initial_state + "." * state_padding_size)
 
-    for i in range(1, n+1):
+    for i in range(1, n + 1):
         state = spread_plants(spread_patterns, state)
 
-    return sum(i-state_padding_size for i in range(len(state)) if state[i] == '#')
+    return sum(i - state_padding_size for i in range(len(state)) if state[i] == "#")
 
 
 print(solution(20))

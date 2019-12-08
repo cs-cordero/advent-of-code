@@ -40,23 +40,19 @@ def get_grid_limits(points):
 
 def solution():
     def parse_line(line):
-        a, b = line.split(', ')
+        a, b = line.split(", ")
         return (int(a), int(b))
 
-    all_points = {
-        i: parse_line(line)
-        for i, line in enumerate(read_file('input.txt'))
-    }
+    all_points = {i: parse_line(line) for i, line in enumerate(read_file("input.txt"))}
     infinite_points = set()
     closest_counts = defaultdict(int)
     count_within_region = 0
 
     minx, maxx, miny, maxy = get_grid_limits(all_points.values())
-    for x in range(minx, maxx+1):
-        for y in range(miny, maxy+1):
+    for x in range(minx, maxx + 1):
+        for y in range(miny, maxy + 1):
             closest_point, sum_of_distances = get_closest_point_and_sum_of_distances(
-                (x, y),
-                all_points
+                (x, y), all_points
             )
             if sum_of_distances < 10000:
                 count_within_region += 1

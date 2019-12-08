@@ -1,26 +1,26 @@
-from collections import deque
-from typing import Tuple, List, Set
 import sys
+from collections import deque
+from typing import List, Set, Tuple
 
 
 def get_data() -> Tuple[List[Tuple[str, str]], str]:
-    if 'test' in sys.argv:
+    if "test" in sys.argv:
         replacements = [
-            ('e', 'H'),
-            ('e', 'O'),
-            ('H', 'HO'),
-            ('H', 'OH'),
-            ('O', 'HH'),
+            ("e", "H"),
+            ("e", "O"),
+            ("H", "HO"),
+            ("H", "OH"),
+            ("O", "HH"),
         ]
-        molecule = 'HOHOHO'
+        molecule = "HOHOHO"
     else:
         replacements = []
-        with open('aoc_day_19_input.txt') as f:
+        with open("aoc_day_19_input.txt") as f:
             while True:
                 line = f.readline().strip()
                 if not line:
                     break
-                source, target = line.split(' => ')
+                source, target = line.split(" => ")
                 replacements.append((source, target))
             molecule = f.readline().strip()
 
@@ -33,10 +33,10 @@ def make_replacements(molecule: str, replacement: Tuple[str, str]) -> Set[str]:
     prev_i = -1
     while True:
         try:
-            i = molecule.index(source, prev_i+1)
+            i = molecule.index(source, prev_i + 1)
         except ValueError:
             break
-        result = f'{molecule[:i]}{target}{molecule[i+len(source):]}'
+        result = f"{molecule[:i]}{target}{molecule[i+len(source):]}"
         results.add(result)
         prev_i = i
     return results
@@ -54,8 +54,8 @@ def solution():
         replacement_dict.setdefault(replacement[0], []).append(replacement)
 
     queue = deque()
-    for starter in replacement_dict['e']:
-        queue.append(('e', starter, 0))
+    for starter in replacement_dict["e"]:
+        queue.append(("e", starter, 0))
 
     part2 = None
     seen = set()
@@ -70,7 +70,7 @@ def solution():
             seen.add(result)
 
             if result == target_molecule:
-                part2 = count+1
+                part2 = count + 1
                 break
 
             if len(result) >= len(target_molecule):
@@ -85,10 +85,10 @@ def solution():
                     a, b = next_replacement
                     if len(result) + len(b) - len(a) > len(target_molecule):
                         continue
-                    if count+1 > highest_count_seen:
-                        highest_count_seen = count+1
+                    if count + 1 > highest_count_seen:
+                        highest_count_seen = count + 1
                         print(highest_count_seen)
-                    queue.append((result, next_replacement, count+1))
+                    queue.append((result, next_replacement, count + 1))
         if part2:
             break
     return part1, part2

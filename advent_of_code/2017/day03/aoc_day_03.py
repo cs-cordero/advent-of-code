@@ -1,9 +1,9 @@
-
 def solution(target):
     if target == 1:
         return 0
     result = find_ring(target, 1, 1)
     return result, sum(result)
+
 
 def find_ring(target, num, width):
     min_in_ring = num + 1
@@ -12,6 +12,7 @@ def find_ring(target, num, width):
     if min_in_ring <= target and target <= max_in_ring:
         return width // 2, find_height(target, min_in_ring, max_in_ring, width)
     return find_ring(target, max_in_ring, width)
+
 
 def find_height(target, start_count, end_count, width):
     # check on right side of box

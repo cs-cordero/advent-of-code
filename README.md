@@ -32,7 +32,7 @@ Day 04: [Secure Container](http://adventofcode.com/2019/day/4) | \*\*
 Day 05: [Sunny with a Chance of Asteroids](http://adventofcode.com/2019/day/5) | \*\*
 Day 06: [Universal Orbit Map](http://adventofcode.com/2019/day/6) | \*\*
 Day 07: [Amplification Circuit](http://adventofcode.com/2019/day/7) | \*\*
-Day 08: [???](http://adventofcode.com/2019/day/8) | 
+Day 08: [Space Image Format](http://adventofcode.com/2019/day/8) | \*\*
 Day 09: [???](http://adventofcode.com/2019/day/9) | 
 Day 10: [???](http://adventofcode.com/2019/day/10) | 
 Day 11: [???](http://adventofcode.com/2019/day/11) | 
@@ -50,6 +50,7 @@ Day 22: [???](http://adventofcode.com/2019/day/22) |
 Day 23: [???](http://adventofcode.com/2019/day/23) |
 Day 24: [???](http://adventofcode.com/2019/day/24) |
 Day 25: [???](http://adventofcode.com/2019/day/25) | 
+
 ### 2018
 Challenge | Status
 --- | :---:

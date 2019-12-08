@@ -31,7 +31,7 @@ Day 03: [Crossed Wires](http://adventofcode.com/2019/day/3) | \*\*
 Day 04: [Secure Container](http://adventofcode.com/2019/day/4) | \*\*
 Day 05: [Sunny with a Chance of Asteroids](http://adventofcode.com/2019/day/5) | \*\*
 Day 06: [Universal Orbit Map](http://adventofcode.com/2019/day/6) | \*\*
-Day 07: [???](http://adventofcode.com/2019/day/7) | 
+Day 07: [Amplification Circuit](http://adventofcode.com/2019/day/7) | \*\*
 Day 08: [???](http://adventofcode.com/2019/day/8) | 
 Day 09: [???](http://adventofcode.com/2019/day/9) | 
 Day 10: [???](http://adventofcode.com/2019/day/10) | 

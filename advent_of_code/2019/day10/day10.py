@@ -1,7 +1,7 @@
-from heapq import heappush, heappop
-from math import atan, degrees
 from collections import defaultdict
-from typing import Dict, Generator, List, Tuple
+from heapq import heappop, heappush
+from math import atan, degrees
+from typing import Dict, List, Tuple
 
 
 def solution1(data: List[int]) -> int:
@@ -40,7 +40,7 @@ def solution2(data: List[int]) -> object:
 
 
 def get_asteroid_vantage_points(
-    data: List[int]
+    data: List[int],
 ) -> Dict[Tuple[int, int], Dict[float, list]]:
     asteroids = []
     for row_i, row in enumerate(data):

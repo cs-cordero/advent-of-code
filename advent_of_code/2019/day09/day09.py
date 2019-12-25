@@ -2,17 +2,21 @@ from collections import defaultdict
 from enum import Enum
 from typing import Dict, Generator, List, Tuple
 
+from intcode import IntcodeComputer
+
 
 def solution1(data: List[int]) -> int:
-    computer = intcode_computer(data, 1)
-    next(computer)
-    return computer.send(None)
+    computer = IntcodeComputer(data)
+    computer.send(1)
+    computer.run_until_blocked()
+    return computer.read()
 
 
 def solution2(data: List[int]) -> object:
-    computer = intcode_computer(data, 2)
-    next(computer)
-    return computer.send(None)
+    computer = IntcodeComputer(data)
+    computer.send(2)
+    computer.run_until_blocked()
+    return computer.read()
 
 
 class ParameterMode(Enum):

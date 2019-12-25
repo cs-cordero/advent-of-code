@@ -1,17 +1,15 @@
 from typing import List
 
+from intcode import IntcodeComputer
+
 
 def solution1(data: List[int], noun=12, verb=2) -> int:
-    pos = {i: value for i, value in enumerate(data)}
-    pos[1] = noun
-    pos[2] = verb
-
-    i = 0
-    while pos[i] != 99:
-        j, k = pos[pos[i + 1]], pos[pos[i + 2]]
-        pos[pos[i + 3]] = j + k if pos[i] == 1 else j * k
-        i += 4
-    return pos[0]
+    computer = IntcodeComputer(data)
+    computer.registers[1] = noun
+    computer.registers[2] = verb
+    while not computer.halted:
+        computer.run()
+    return computer.registers[0]
 
 
 def solution2(data: List[int]) -> int:

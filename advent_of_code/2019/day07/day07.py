@@ -2,15 +2,20 @@ from collections import deque
 from itertools import permutations
 from typing import Dict, Generator, List, Tuple
 
+from intcode import IntcodeComputer
+
 
 def solution1(data: List[int]) -> int:
     best = float("-inf")
     for phase_setting in permutations(range(5), 5):
         result = 0
         for amplifier in phase_setting:
-            computer = intcode_computer(data, amplifier)
-            next(computer)
-            result = computer.send(result)
+            computer = IntcodeComputer(data)
+            computer.send(amplifier)
+            computer.send(result)
+            while not computer.halted:
+                computer.run()
+            result = computer.read()
         best = max(best, result)
     return best
 
@@ -18,22 +23,22 @@ def solution1(data: List[int]) -> int:
 def solution2(data: List[int]) -> int:
     best = float("-inf")
     for phase_setting in permutations(range(5, 10), 5):
-        computers = deque(
-            [intcode_computer(data, amplifier) for amplifier in phase_setting]
-        )
-        for computer in computers:
-            next(computer)
+        computers = deque()
+        for amplifier in phase_setting:
+            computer = IntcodeComputer(data)
+            computer.send(amplifier)
+            computers.append(computer)
 
         result = 0
         i = 0
-        while computers:
+        while not all(computer.halted for computer in computers):
             computer = computers[i]
-            try:
-                result = computer.send(result)
-                i += 1
-                i %= 5
-            except StopIteration:
-                computers.remove(computer)
+            if not computer.halted:
+                computer.send(result)
+                computer.run_until_blocked()
+                result = computer.read()
+            i += 1
+            i %= 5
         best = max(best, result)
     return best
 

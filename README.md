@@ -41,7 +41,7 @@ Day 13: [Care Package](http://adventofcode.com/2019/day/13) | \*\*
 Day 14: [Space Stoichiometry](http://adventofcode.com/2019/day/14) | \*\*
 Day 15: [Oxygen System](http://adventofcode.com/2019/day/15) | \*\*
 Day 16: [Flawed Frequency Transmission](http://adventofcode.com/2019/day/16) | \*\*
-Day 17: [???](http://adventofcode.com/2019/day/17) | 
+Day 17: [Set and Forget](http://adventofcode.com/2019/day/17) | \*\*
 Day 18: [???](http://adventofcode.com/2019/day/18) | 
 Day 19: [???](http://adventofcode.com/2019/day/19) | 
 Day 20: [???](http://adventofcode.com/2019/day/20) | 

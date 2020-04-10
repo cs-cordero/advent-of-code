@@ -1,7 +1,4 @@
-from collections import defaultdict, deque
-from dataclasses import dataclass
-from heapq import heappop, heappush
-from typing import Dict, List, Tuple
+from typing import List
 
 
 def solution1(data: List[str]) -> str:

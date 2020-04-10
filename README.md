@@ -42,14 +42,14 @@ Day 14: [Space Stoichiometry](http://adventofcode.com/2019/day/14) | \*\*
 Day 15: [Oxygen System](http://adventofcode.com/2019/day/15) | \*\*
 Day 16: [Flawed Frequency Transmission](http://adventofcode.com/2019/day/16) | \*\*
 Day 17: [Set and Forget](http://adventofcode.com/2019/day/17) | \*\*
-Day 18: [???](http://adventofcode.com/2019/day/18) | 
-Day 19: [???](http://adventofcode.com/2019/day/19) | 
-Day 20: [???](http://adventofcode.com/2019/day/20) | 
-Day 21: [???](http://adventofcode.com/2019/day/21) | 
-Day 22: [???](http://adventofcode.com/2019/day/22) |
-Day 23: [???](http://adventofcode.com/2019/day/23) |
-Day 24: [???](http://adventofcode.com/2019/day/24) |
-Day 25: [???](http://adventofcode.com/2019/day/25) | 
+Day 18: [Many-Worlds Interpretation](http://adventofcode.com/2019/day/18) | \*\*
+Day 19: [Tractor Beam](http://adventofcode.com/2019/day/19) | \*\*
+Day 20: [Donut Maze](http://adventofcode.com/2019/day/20) | \*\*
+Day 21: [Springdroid Adventure](http://adventofcode.com/2019/day/21) | \*\*
+Day 22: [Slam Shuffle](http://adventofcode.com/2019/day/22) | \*\*
+Day 23: [Category Six](http://adventofcode.com/2019/day/23) | \*\*
+Day 24: [Planet of Discord](http://adventofcode.com/2019/day/24) | \*\*
+Day 25: [Cryostasis](http://adventofcode.com/2019/day/25) | \*\*
 
 ### 2018
 Challenge | Status

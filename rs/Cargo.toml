@@ -1,5 +1,5 @@
 [package]
-name = "day01"
+name = "advent_of_code"
 version = "0.1.0"
 authors = ["Christopher Cordero <ccordero@protonmail.com>"]
 edition = "2018"

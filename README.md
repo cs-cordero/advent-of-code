@@ -25,7 +25,7 @@
 ### 2020
 Challenge | Status
 --- | :---:
-Day 01: [???](http://adventofcode.com/2020/day/1) |
+Day 01: [Report Repair](http://adventofcode.com/2020/day/1) | ⭐⭐
 Day 02: [???](http://adventofcode.com/2020/day/2) |
 Day 03: [???](http://adventofcode.com/2020/day/3) |
 Day 04: [???](http://adventofcode.com/2020/day/4) |

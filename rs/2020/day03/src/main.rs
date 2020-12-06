@@ -4,16 +4,16 @@ fn main() {
     let lines = read_input_as_lines("2020/day03/src/input.txt");
 
     let answer1 = count_trees(&lines, 3, 1);
-    let answer2 = &[(1_usize, 1_usize), (3, 1), (5, 1), (7, 1), (1, 2)]
+    let answer2 = &[(1, 1), (3, 1), (5, 1), (7, 1), (1, 2)]
         .iter()
         .map(|(right, down)| count_trees(&lines, *right, *down))
-        .fold(1, |acc, trees| acc * trees);
+        .product::<usize>();
 
     println!("Part 1: {}", answer1);
     println!("Part 2: {}", answer2);
 }
 
-fn count_trees(grid: &Vec<String>, right: usize, down: usize) -> usize {
+fn count_trees(grid: &[String], right: usize, down: usize) -> usize {
     grid
         .iter()
         .enumerate()

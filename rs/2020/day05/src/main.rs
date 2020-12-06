@@ -19,14 +19,12 @@ fn main() {
             if !taken_seats.contains(&current_id) {
                 result = Some(current_id);
                 break;
-            } else {
-                if let Some(next_id) = match search_direction {
-                    1 => current_id.checked_add(1),
-                    -1 => current_id.checked_sub(1),
-                    _ => None
-                } {
-                    queue.push_back((next_id, search_direction));
-                }
+            } else if let Some(next_id) = match search_direction {
+                1 => current_id.checked_add(1),
+                -1 => current_id.checked_sub(1),
+                _ => None
+            } {
+                queue.push_back((next_id, search_direction));
             }
         }
         result.unwrap()

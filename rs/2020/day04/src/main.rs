@@ -35,7 +35,7 @@ fn main() {
                 .all(|required| {
                     passport
                         .get(required)
-                        .and_then(|value| Some(required.is_valid(value)))
+                        .map(|value| required.is_valid(value))
                         .unwrap_or(false)
                 })
         })
@@ -51,9 +51,9 @@ fn process_passports(input: String) -> Vec<HashMap<PassportField, String>> {
         .map(|chunk|
             chunk
                 .lines()
-                .flat_map(|line| line.split(" "))
+                .flat_map(|line| line.split(' '))
                 .map(|data| {
-                    let mut raw = data.split(":");
+                    let mut raw = data.split(':');
                     let key = raw.next().unwrap();
                     let value = raw.next().unwrap().to_owned();
                     (PassportField::from_str(key).unwrap(), value)
@@ -112,12 +112,7 @@ impl PassportField {
             Self::HairColor => {
                 &value[..1] == "#" && value[1..].chars().all(|c| c.is_ascii_hexdigit())
             },
-            Self::EyeColor => {
-                match value {
-                    "amb" | "blu" | "brn" | "gry" | "grn" | "hzl" | "oth" => true,
-                    _ => false
-                }
-            },
+            Self::EyeColor => matches!(value, "amb" | "blu" | "brn" | "gry" | "grn" | "hzl" | "oth"),
             Self::PassportID => value.len() == 9 && value.parse::<i32>().is_ok(),
             Self::CountryID => true,
         }

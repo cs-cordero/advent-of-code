@@ -3,7 +3,7 @@ use advent_of_code::*;
 fn main() {
     let parsed_lines: Vec<(u32, u32, char, String)> = read_input_as_lines("2020/day02/src/input.txt")
         .into_iter()
-        .map(|line| parse_line(line))
+        .map(parse_line)
         .collect();
 
     let answer1 = parsed_lines
@@ -30,10 +30,10 @@ fn main() {
 
 
 fn parse_line(line: String) -> (u32, u32, char, String) {
-    let mut split = line.split(" ");
+    let mut split = line.split(' ');
     let (low, high) = {
-        let range: Vec<u32> = split.next().unwrap().split("-").map(|s| s.parse::<u32>().unwrap()).collect();
-        (range[0].clone(), range[1].clone())
+        let range: Vec<u32> = split.next().unwrap().split('-').map(|s| s.parse::<u32>().unwrap()).collect();
+        (range[0], range[1])
     };
     let letter = first_char(split.next().unwrap()).unwrap();
     let password = split.next().unwrap().to_owned();

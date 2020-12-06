@@ -7,7 +7,7 @@ pub fn read_input_as_digits<P: AsRef<Path>>(path: P) -> Vec<u32> {
         .unwrap()
         .trim()
         .chars()
-        .map(|char| char.to_digit(10).expect(&format!("Failed to parse {}", char)))
+        .map(|char| char.to_digit(10).unwrap_or_else(|| panic!("Failed to parse {}", char)))
         .collect()
 }
 

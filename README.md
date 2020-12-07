@@ -31,7 +31,7 @@ Day 03: [Toboggan Trajectory](http://adventofcode.com/2020/day/3) | ⭐⭐
 Day 04: [Passport Processing](http://adventofcode.com/2020/day/4) | ⭐⭐
 Day 05: [Binary Boarding](http://adventofcode.com/2020/day/5) | ⭐⭐
 Day 06: [Custom Customs](http://adventofcode.com/2020/day/6) | ⭐⭐
-Day 07: [???](http://adventofcode.com/2020/day/7) |
+Day 07: [Handy Haversacks](http://adventofcode.com/2020/day/7) | ⭐⭐
 Day 08: [???](http://adventofcode.com/2020/day/8) |
 Day 09: [???](http://adventofcode.com/2020/day/9) |
 Day 10: [???](http://adventofcode.com/2020/day/10) |

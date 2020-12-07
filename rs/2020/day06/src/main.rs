@@ -9,20 +9,22 @@ fn main() {
 
     let answer1: u32 = groups
         .iter()
-        .map(|group| group
-            .split('\n')
-            .flat_map(|answers| answers.chars())
-            .collect::<HashSet<_>>()
-        )
+        .map(|group| {
+            group
+                .split('\n')
+                .flat_map(|answers| answers.chars())
+                .collect::<HashSet<_>>()
+        })
         .map(|unique_answers_for_group| unique_answers_for_group.len() as u32)
         .sum();
 
     let answer2: u32 = groups
         .iter()
-        .map(|group| group
-            .split('\n')
-            .map(|answers_for_single_person| answers_for_single_person.chars().collect::<HashSet<_>>())
-        )
+        .map(|group| {
+            group.split('\n').map(|answers_for_single_person| {
+                answers_for_single_person.chars().collect::<HashSet<_>>()
+            })
+        })
         .map(|mut group| {
             let first_person = group.next().unwrap();
             group.fold(first_person, |a, b| a.intersection(&b).cloned().collect())

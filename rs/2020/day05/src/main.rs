@@ -1,5 +1,5 @@
 use advent_of_code::*;
-use std::collections::{VecDeque, HashSet};
+use std::collections::{HashSet, VecDeque};
 
 fn main() {
     let taken_seats = read_input_as_lines("2020/day05/src/input.txt")
@@ -22,7 +22,7 @@ fn main() {
             } else if let Some(next_id) = match search_direction {
                 1 => current_id.checked_add(1),
                 -1 => current_id.checked_sub(1),
-                _ => None
+                _ => None,
             } {
                 queue.push_back((next_id, search_direction));
             }
@@ -36,20 +36,20 @@ fn main() {
 
 fn search_for_seat_id(slice: &str) -> usize {
     let len = slice.len();
-    let row = binary_search(0, 127, &slice[..len-3]);
-    let column = binary_search(0, 7, &slice[len-3..]);
+    let row = binary_search(0, 127, &slice[..len - 3]);
+    let column = binary_search(0, 7, &slice[len - 3..]);
     calculate_seat_id(row, column)
 }
 
 fn binary_search(mut low: usize, mut high: usize, slice: &str) -> usize {
-    let mut mid  = (low + high) / 2;
+    let mut mid = (low + high) / 2;
     for char in slice.chars() {
         match char {
             'F' | 'L' => high = mid,
             'B' | 'R' => low = mid + 1,
-            _ => panic!("Invalid character {}", char)
+            _ => panic!("Invalid character {}", char),
         }
-        mid  = (low + high) / 2;
+        mid = (low + high) / 2;
     }
     mid
 }

@@ -24,9 +24,9 @@ fn two_sum(values: &[i32], target: i32) -> Option<i32> {
 }
 
 fn three_sum(values: &[i32], target: i32) -> Option<i32> {
-    for i in 0..values.len()-2 {
+    for i in 0..values.len() - 2 {
         let num = values[i];
-        if let Some(two_sum_result) = two_sum(&values[i+1..], target - num) {
+        if let Some(two_sum_result) = two_sum(&values[i + 1..], target - num) {
             return Some(num * two_sum_result);
         }
     }

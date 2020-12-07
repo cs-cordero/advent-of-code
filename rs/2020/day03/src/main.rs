@@ -14,8 +14,7 @@ fn main() {
 }
 
 fn count_trees(grid: &[String], right: usize, down: usize) -> usize {
-    grid
-        .iter()
+    grid.iter()
         .enumerate()
         .skip(down)
         .filter(|(row, line)| {

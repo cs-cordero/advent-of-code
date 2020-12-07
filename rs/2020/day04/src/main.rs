@@ -30,14 +30,12 @@ fn main() {
     let answer2 = passports
         .iter()
         .filter(|passport| {
-            required_fields
-                .iter()
-                .all(|required| {
-                    passport
-                        .get(required)
-                        .map(|value| required.is_valid(value))
-                        .unwrap_or(false)
-                })
+            required_fields.iter().all(|required| {
+                passport
+                    .get(required)
+                    .map(|value| required.is_valid(value))
+                    .unwrap_or(false)
+            })
         })
         .count();
 
@@ -48,7 +46,7 @@ fn main() {
 fn process_passports(input: String) -> Vec<HashMap<PassportField, String>> {
     input
         .split("\n\n")
-        .map(|chunk|
+        .map(|chunk| {
             chunk
                 .lines()
                 .flat_map(|line| line.split(' '))
@@ -59,7 +57,7 @@ fn process_passports(input: String) -> Vec<HashMap<PassportField, String>> {
                     (PassportField::from_str(key).unwrap(), value)
                 })
                 .collect::<HashMap<_, _>>()
-        )
+        })
         .collect::<Vec<_>>()
 }
 
@@ -88,7 +86,7 @@ impl FromStr for PassportField {
             "ecl" => Ok(Self::EyeColor),
             "pid" => Ok(Self::PassportID),
             "cid" => Ok(Self::CountryID),
-            _ => Err(format!("Bad Passport Field {}", s))
+            _ => Err(format!("Bad Passport Field {}", s)),
         }
     }
 }
@@ -96,23 +94,39 @@ impl FromStr for PassportField {
 impl PassportField {
     pub fn is_valid(&self, value: &str) -> bool {
         match self {
-            Self::BirthYear => value.parse::<i32>().ok().map(|year| 1920 <= year && year <= 2002).unwrap_or(false),
-            Self::IssueYear => value.parse::<i32>().ok().map(|year| 2010 <= year && year <= 2020).unwrap_or(false),
-            Self::ExpirationYear => value.parse::<i32>().ok().map(|year| 2020 <= year && year <= 2030).unwrap_or(false),
+            Self::BirthYear => value
+                .parse::<i32>()
+                .ok()
+                .map(|year| 1920 <= year && year <= 2002)
+                .unwrap_or(false),
+            Self::IssueYear => value
+                .parse::<i32>()
+                .ok()
+                .map(|year| 2010 <= year && year <= 2020)
+                .unwrap_or(false),
+            Self::ExpirationYear => value
+                .parse::<i32>()
+                .ok()
+                .map(|year| 2020 <= year && year <= 2030)
+                .unwrap_or(false),
             Self::Height => {
                 let len = value.len();
-                value[..len-2].parse::<i32>().ok().map(|height|
-                    match &value[len-2..] {
+                value[..len - 2]
+                    .parse::<i32>()
+                    .ok()
+                    .map(|height| match &value[len - 2..] {
                         "cm" => 150 <= height && height <= 193,
                         "in" => 59 <= height && height <= 76,
-                        _ => false
-                    }
-                ).unwrap_or(false)
-            },
+                        _ => false,
+                    })
+                    .unwrap_or(false)
+            }
             Self::HairColor => {
                 &value[..1] == "#" && value[1..].chars().all(|c| c.is_ascii_hexdigit())
-            },
-            Self::EyeColor => matches!(value, "amb" | "blu" | "brn" | "gry" | "grn" | "hzl" | "oth"),
+            }
+            Self::EyeColor => {
+                matches!(value, "amb" | "blu" | "brn" | "gry" | "grn" | "hzl" | "oth")
+            }
             Self::PassportID => value.len() == 9 && value.parse::<i32>().is_ok(),
             Self::CountryID => true,
         }

@@ -39,3 +39,7 @@ path = "2020/day07/src/main.rs"
 [[example]]
 name = "2020-08"
 path = "2020/day08/src/main.rs"
+
+[[example]]
+name = "2020-09"
+path = "2020/day09/src/main.rs"

@@ -34,7 +34,7 @@ Day 06: [Custom Customs](http://adventofcode.com/2020/day/6) | ⭐⭐
 Day 07: [Handy Haversacks](http://adventofcode.com/2020/day/7) | ⭐⭐
 Day 08: [Handheld Halting](http://adventofcode.com/2020/day/8) | ⭐⭐
 Day 09: [Encoding Error](http://adventofcode.com/2020/day/9) | ⭐⭐
-Day 10: [???](http://adventofcode.com/2020/day/10) |
+Day 10: [Adapter Array](http://adventofcode.com/2020/day/10) | ⭐⭐
 Day 11: [???](http://adventofcode.com/2020/day/11) |
 Day 12: [???](http://adventofcode.com/2020/day/12) |
 Day 13: [???](http://adventofcode.com/2020/day/13) |

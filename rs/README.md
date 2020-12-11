@@ -23,23 +23,3 @@ cargo run --example 2020-01
 ```
 
 You'll want to add `use advent_of_code::*` at the top of each file.
-let answer2 = {
-let size = input.len();
-let mut dp = {
-let mut v = vec![0_i64; size];
-*v.last_mut().unwrap() = 1;
-v
-};
-
-        for (index, value) in input.iter().enumerate().rev().skip(1) {
-            println!("handlling {}", index);
-            let bound = min(index + 3, size);
-
-            let foo = ((index + 1)..bound)
-                .filter_map(|other_index| {
-                    input
-                        .get(other_index)
-                        .zip(dp.get(other_index))
-                        .filter(|(other_value, _)| *other_value - value <= 3)
-                        .map(|(_, dp_value)| dp_value)
-                })

@@ -41,7 +41,7 @@ Day 13: [Shuttle Search](http://adventofcode.com/2020/day/13) | ⭐⭐
 Day 14: [Docking Data](http://adventofcode.com/2020/day/14) | ⭐⭐
 Day 15: [Rambunctious Recitation](http://adventofcode.com/2020/day/15) | ⭐⭐
 Day 16: [Ticket Translation](http://adventofcode.com/2020/day/16) | ⭐⭐
-Day 17: [???](http://adventofcode.com/2020/day/17) |
+Day 17: [Conway Cubes](http://adventofcode.com/2020/day/17) | ⭐⭐
 Day 18: [???](http://adventofcode.com/2020/day/18) |
 Day 19: [???](http://adventofcode.com/2020/day/19) |
 Day 20: [???](http://adventofcode.com/2020/day/20) |

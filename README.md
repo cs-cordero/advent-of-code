@@ -45,7 +45,7 @@ Day 17: [Conway Cubes](http://adventofcode.com/2020/day/17) | ⭐⭐
 Day 18: [Operation Order](http://adventofcode.com/2020/day/18) | ⭐⭐
 Day 19: [Monster Messages](http://adventofcode.com/2020/day/19) | ⭐⭐
 Day 20: [Jurassic Jigsaw](http://adventofcode.com/2020/day/20) | ⭐⭐
-Day 21: [???](http://adventofcode.com/2020/day/21) |
+Day 21: [Allergen Assessment](http://adventofcode.com/2020/day/21) | ⭐⭐
 Day 22: [???](http://adventofcode.com/2020/day/22) |
 Day 23: [???](http://adventofcode.com/2020/day/23) |
 Day 24: [???](http://adventofcode.com/2020/day/24) |

@@ -47,7 +47,7 @@ Day 19: [Monster Messages](http://adventofcode.com/2020/day/19) | ⭐⭐
 Day 20: [Jurassic Jigsaw](http://adventofcode.com/2020/day/20) | ⭐⭐
 Day 21: [Allergen Assessment](http://adventofcode.com/2020/day/21) | ⭐⭐
 Day 22: [Crab Combat](http://adventofcode.com/2020/day/22) | ⭐⭐
-Day 23: [???](http://adventofcode.com/2020/day/23) |
+Day 23: [Crab Cups](http://adventofcode.com/2020/day/23) | ⭐⭐
 Day 24: [???](http://adventofcode.com/2020/day/24) |
 Day 25: [???](http://adventofcode.com/2020/day/25) |
 

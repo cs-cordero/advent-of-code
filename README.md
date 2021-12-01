@@ -26,7 +26,7 @@
 ### 2021
 Challenge | Status
 --- | :---:
-Day 01: [???](http://adventofcode.com/2021/day/1) | 
+Day 01: [Sonar Sweep](http://adventofcode.com/2021/day/1) | ⭐⭐
 Day 02: [???](http://adventofcode.com/2021/day/2) | 
 Day 03: [???](http://adventofcode.com/2021/day/3) | 
 Day 04: [???](http://adventofcode.com/2021/day/4) | 

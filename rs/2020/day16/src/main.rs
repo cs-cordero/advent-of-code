@@ -69,11 +69,11 @@ fn main() {
         .unwrap()
         .lines()
         .map(|line| {
-            let (rule_name, ranges) = split_once_from_left(line, ": ");
+            let (rule_name, ranges) = line.split_once(": ").unwrap();
             let parsed_ranges = ranges
                 .split(" or ")
                 .map(|raw_split| {
-                    let (low, high) = split_once_from_left(raw_split, "-");
+                    let (low, high) = raw_split.split_once("-").unwrap();
                     low.parse::<u32>().unwrap()..=high.parse::<u32>().unwrap()
                 })
                 .collect::<Vec<_>>();

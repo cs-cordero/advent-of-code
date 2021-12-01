@@ -10,7 +10,7 @@ fn main() {
         .split("\n\n")
         .map(|tile| {
             let mut tile_iter = tile.lines();
-            let (_, id) = split_once_from_right(tile_iter.next().unwrap(), " ");
+            let (_, id) = tile_iter.next().unwrap().rsplit_once(" ").unwrap();
             let tile_id = id[..id.len() - 1].parse::<u32>().unwrap();
             let tile = tile_iter
                 .map(|line| line.chars().collect::<Vec<_>>())

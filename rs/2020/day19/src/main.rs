@@ -33,7 +33,7 @@ fn parse_rules(s: &str) -> HashMap<usize, HashSet<String>> {
 
     let mut temp = HashMap::new();
     for line in s.lines() {
-        let (rule_id, raw_rule) = split_once_from_left(line, ": ");
+        let (rule_id, raw_rule) = line.split_once(": ").unwrap();
         let rule_id = rule_id.parse::<usize>().unwrap();
         match raw_rule {
             "\"a\"" | "\"b\"" => {

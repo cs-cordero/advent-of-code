@@ -45,10 +45,10 @@ fn build_graph(lines: &[String]) -> HashMap<String, Rc<RefCell<Bag>>> {
     let mut graph = HashMap::new();
     for line in lines {
         let (parent, children) = {
-            let (left, right) = split_once_from_left(line, " contain ");
+            let (left, right) = line.split_once(" contain ").unwrap();
 
             let parent = {
-                let (s, _) = split_once_from_right(left, " ");
+                let (s, _) = left.rsplit_once(" ").unwrap();
                 s.to_owned()
             };
 
@@ -59,7 +59,7 @@ fn build_graph(lines: &[String]) -> HashMap<String, Rc<RefCell<Bag>>> {
                     let first_space = child.find(' ').unwrap();
                     let quantity = child[..first_space].parse::<usize>().unwrap_or(0);
                     let description = {
-                        let (s, _) = split_once_from_right(&child[first_space + 1..], " ");
+                        let (s, _) = child[first_space + 1..].rsplit_once(" ").unwrap();
                         s.to_owned()
                     };
                     (quantity, description)

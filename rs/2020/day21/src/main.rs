@@ -9,7 +9,7 @@ fn main() {
         .into_iter()
         .for_each(|line| {
             let (ingredients, allergens) =
-                split_once_from_left(&line[..line.len() - 1], " (contains ");
+                line[..line.len() - 1].split_once(" (contains ").unwrap();
             let allergens = allergens
                 .split(", ")
                 .map(|s| s.to_owned())

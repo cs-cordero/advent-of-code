@@ -1,4 +1,4 @@
-use advent_of_code::{read_input_as_lines, split_once_from_left};
+use advent_of_code::*;
 use std::collections::HashMap;
 
 #[derive(Clone)]
@@ -79,7 +79,7 @@ fn process_inputs(input: &[String]) -> Vec<Command> {
     input
         .iter()
         .map(|line| {
-            let (lhs, rhs) = split_once_from_left(line, " = ");
+            let (lhs, rhs) = line.split_once(" = ").unwrap();
             match lhs {
                 "mask" => {
                     let bit_count = rhs.len();

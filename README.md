@@ -31,7 +31,7 @@ Day 02: [Dive!](http://adventofcode.com/2021/day/2) | ⭐⭐
 Day 03: [Binary Diagnostic](http://adventofcode.com/2021/day/3) | ⭐⭐
 Day 04: [Giant Squid](http://adventofcode.com/2021/day/4) | ⭐⭐
 Day 05: [Hydrothermal Venture](http://adventofcode.com/2021/day/5) | ⭐⭐
-Day 06: [???](http://adventofcode.com/2021/day/6) | 
+Day 06: [Lanternfish](http://adventofcode.com/2021/day/6) | ⭐⭐
 Day 07: [???](http://adventofcode.com/2021/day/7) | 
 Day 08: [???](http://adventofcode.com/2021/day/8) | 
 Day 09: [???](http://adventofcode.com/2021/day/9) | 

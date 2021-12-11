@@ -36,7 +36,7 @@ Day 07: [The Treachery of Whales](http://adventofcode.com/2021/day/7) | ⭐⭐
 Day 08: [Seven Segment Search](http://adventofcode.com/2021/day/8) | ⭐⭐
 Day 09: [Smoke Basin](http://adventofcode.com/2021/day/9) | ⭐⭐
 Day 10: [Syntax Scoring](http://adventofcode.com/2021/day/10) | ⭐⭐
-Day 11: [???](http://adventofcode.com/2021/day/11) | 
+Day 11: [Dumbo Octopus](http://adventofcode.com/2021/day/11) | ⭐⭐
 Day 12: [???](http://adventofcode.com/2021/day/12) | 
 Day 13: [???](http://adventofcode.com/2021/day/13) | 
 Day 14: [???](http://adventofcode.com/2021/day/14) | 

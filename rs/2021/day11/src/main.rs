@@ -80,35 +80,3 @@ fn step(octopuses: &mut [Vec<u8>]) -> usize {
 
     flashed.len()
 }
-
-fn get_adjacent_points(
-    point: (usize, usize),
-    limits_non_inclusive: (usize, usize),
-) -> Vec<(usize, usize)> {
-    let (row, col) = point;
-    let (row_limit, col_limit) = limits_non_inclusive;
-    let prev_row = row.checked_sub(1);
-    let next_row = row.checked_add(1).filter(|value| *value < row_limit);
-    let prev_col = col.checked_sub(1);
-    let next_col = col.checked_add(1).filter(|value| *value < col_limit);
-    let row = Some(row);
-    let col = Some(col);
-
-    let mut result = Vec::new();
-    for r in [prev_row, row, next_row] {
-        if r.is_none() {
-            continue;
-        }
-        for c in [prev_col, col, next_col] {
-            if r == row && c == col {
-                continue;
-            }
-            if c.is_none() {
-                continue;
-            }
-
-            result.push((r.unwrap(), c.unwrap()));
-        }
-    }
-    result
-}

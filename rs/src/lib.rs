@@ -86,3 +86,45 @@ pub fn count_chars(s: &str) -> HashMap<char, u32> {
 pub fn first_char(s: &str) -> Option<char> {
     s.chars().next()
 }
+
+/// Helper method that gets the 8 squares surrounding a given point in a 2D grid.
+/// Note that the point is (row, col), where (0, 0) is in the top-left corner.
+///
+/// Example:
+///     Given: point: (2, 2) limits_non_inclusive: (5, 5)
+///     Yields: vec![(1, 1), (1, 2), (1, 3), (2, 1), (2, 3), (3, 1), (3, 2), (3, 3)]
+///
+/// Example:
+///     Given: point: (2, 0) limits_non_inclusive: (3, 5)
+///     Yields: vec![(1, 0), (1, 1), (2, 1)]
+pub fn get_adjacent_points(
+    point: (usize, usize),
+    limits_non_inclusive: (usize, usize),
+) -> Vec<(usize, usize)> {
+    let (row, col) = point;
+    let (row_limit, col_limit) = limits_non_inclusive;
+    let prev_row = row.checked_sub(1).filter(|value| *value < row_limit);
+    let next_row = row.checked_add(1).filter(|value| *value < row_limit);
+    let prev_col = col.checked_sub(1).filter(|value| *value < col_limit);
+    let next_col = col.checked_add(1).filter(|value| *value < col_limit);
+    let row = Some(row);
+    let col = Some(col);
+
+    let mut result = Vec::new();
+    for r in [prev_row, row, next_row] {
+        if r.is_none() {
+            continue;
+        }
+        for c in [prev_col, col, next_col] {
+            if r == row && c == col {
+                continue;
+            }
+            if c.is_none() {
+                continue;
+            }
+
+            result.push((r.unwrap(), c.unwrap()));
+        }
+    }
+    result
+}

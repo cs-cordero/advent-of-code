@@ -1,5 +1,6 @@
 use std::collections::HashMap;
 use std::fs;
+use std::hash::Hash;
 use std::path::Path;
 
 /// All content in a file are read into an owned String.
@@ -127,4 +128,37 @@ pub fn get_adjacent_points(
         }
     }
     result
+}
+
+/// Takes a slice of hashable and cloneable items and counts them for you into a frequency map.
+pub fn get_frequency<T: Clone + Hash + Eq>(chars: &[T]) -> HashMap<T, usize> {
+    let mut result = HashMap::new();
+
+    for c in chars {
+        if let Some(entry) = result.get_mut(c) {
+            *entry += 1;
+        } else {
+            result.insert(c.clone(), 0);
+        }
+    }
+
+    result
+}
+
+/// Takes a slice of an orderable, copyable type and gives you a tuple containing
+/// the min and the max from it with one pass.
+pub fn get_min_and_max<T: Copy + Ord>(values: &[T]) -> (T, T) {
+    assert!(
+        !values.is_empty(),
+        "Slice must not be empty when calling get_min_and_max!"
+    );
+    let mut min = *values.get(0).unwrap();
+    let mut max = min;
+
+    for value in values {
+        min = std::cmp::min(min, *value);
+        max = std::cmp::max(max, *value);
+    }
+
+    (min, max)
 }

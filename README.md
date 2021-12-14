@@ -39,7 +39,7 @@ Day 10: [Syntax Scoring](http://adventofcode.com/2021/day/10) | ⭐⭐
 Day 11: [Dumbo Octopus](http://adventofcode.com/2021/day/11) | ⭐⭐
 Day 12: [Passage Pathing](http://adventofcode.com/2021/day/12) | ⭐⭐
 Day 13: [Transparent Origami](http://adventofcode.com/2021/day/13) | ⭐⭐
-Day 14: [???](http://adventofcode.com/2021/day/14) | 
+Day 14: [Extended Polymerization](http://adventofcode.com/2021/day/14) | ⭐⭐
 Day 15: [???](http://adventofcode.com/2021/day/15) | 
 Day 16: [???](http://adventofcode.com/2021/day/16) | 
 Day 17: [???](http://adventofcode.com/2021/day/17) | 

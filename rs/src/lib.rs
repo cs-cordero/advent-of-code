@@ -130,6 +130,37 @@ pub fn get_adjacent_points(
     result
 }
 
+/// Helper method that gets the 4 squares surrounding a given point in a 2D grid.
+/// Note that the point is (row, col), where (0, 0) is in the top-left corner.
+///
+/// Example:
+///     Given: point: (2, 2) limits_non_inclusive: (5, 5)
+///     Yields: vec![(1, 2), (3, 2), (2, 1), (2, 3)]
+///
+/// Example:
+///     Given: point: (2, 0) limits_non_inclusive: (3, 5)
+///     Yields: vec![(1, 0), (2, 1)]
+pub fn get_adjacent_points_manhattan(
+    point: (usize, usize),
+    limits_non_inclusive: (usize, usize),
+) -> Vec<(usize, usize)> {
+    let (row, col) = point;
+    let (row_limit, col_limit) = limits_non_inclusive;
+    let prev_row = row.checked_sub(1).filter(|value| *value < row_limit);
+    let next_row = row.checked_add(1).filter(|value| *value < row_limit);
+    let prev_col = col.checked_sub(1).filter(|value| *value < col_limit);
+    let next_col = col.checked_add(1).filter(|value| *value < col_limit);
+
+    let mut result = Vec::<(usize, usize)>::new();
+    for next_row in [prev_row, next_row].iter().flatten() {
+        result.push((*next_row, col));
+    }
+    for next_col in [prev_col, next_col].iter().flatten() {
+        result.push((row, *next_col));
+    }
+    result
+}
+
 /// Takes a slice of hashable and cloneable items and counts them for you into a frequency map.
 pub fn get_frequency<T: Clone + Hash + Eq>(chars: &[T]) -> HashMap<T, usize> {
     let mut result = HashMap::new();

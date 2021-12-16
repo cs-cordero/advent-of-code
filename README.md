@@ -41,7 +41,7 @@ Day 12: [Passage Pathing](http://adventofcode.com/2021/day/12) | ⭐⭐
 Day 13: [Transparent Origami](http://adventofcode.com/2021/day/13) | ⭐⭐
 Day 14: [Extended Polymerization](http://adventofcode.com/2021/day/14) | ⭐⭐
 Day 15: [Chiton](http://adventofcode.com/2021/day/15) | ⭐⭐
-Day 16: [???](http://adventofcode.com/2021/day/16) | 
+Day 16: [Packet Decoder](http://adventofcode.com/2021/day/16) | ⭐⭐
 Day 17: [???](http://adventofcode.com/2021/day/17) | 
 Day 18: [???](http://adventofcode.com/2021/day/18) | 
 Day 19: [???](http://adventofcode.com/2021/day/19) | 

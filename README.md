@@ -43,7 +43,7 @@ Day 14: [Extended Polymerization](http://adventofcode.com/2021/day/14) | ⭐⭐
 Day 15: [Chiton](http://adventofcode.com/2021/day/15) | ⭐⭐
 Day 16: [Packet Decoder](http://adventofcode.com/2021/day/16) | ⭐⭐
 Day 17: [Trick Shot](http://adventofcode.com/2021/day/17) | ⭐⭐
-Day 18: [???](http://adventofcode.com/2021/day/18) | 
+Day 18: [Snailfish](http://adventofcode.com/2021/day/18) | ⭐⭐
 Day 19: [???](http://adventofcode.com/2021/day/19) | 
 Day 20: [???](http://adventofcode.com/2021/day/20) | 
 Day 21: [???](http://adventofcode.com/2021/day/21) | 

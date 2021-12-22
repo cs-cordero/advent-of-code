@@ -44,7 +44,7 @@ Day 15: [Chiton](http://adventofcode.com/2021/day/15) | ⭐⭐
 Day 16: [Packet Decoder](http://adventofcode.com/2021/day/16) | ⭐⭐
 Day 17: [Trick Shot](http://adventofcode.com/2021/day/17) | ⭐⭐
 Day 18: [Snailfish](http://adventofcode.com/2021/day/18) | ⭐⭐
-Day 19: [???](http://adventofcode.com/2021/day/19) | 
+Day 19: [Beacon Scanner](http://adventofcode.com/2021/day/19) | ⭐⭐
 Day 20: [???](http://adventofcode.com/2021/day/20) | 
 Day 21: [???](http://adventofcode.com/2021/day/21) | 
 Day 22: [???](http://adventofcode.com/2021/day/22) | 

@@ -48,7 +48,7 @@ Day 19: [Beacon Scanner](http://adventofcode.com/2021/day/19) | ⭐⭐
 Day 20: [Trench Map](http://adventofcode.com/2021/day/20) | ⭐⭐
 Day 21: [Dirac Dice](http://adventofcode.com/2021/day/21) | ⭐⭐
 Day 22: [Reactor Reboot](http://adventofcode.com/2021/day/22) | ⭐⭐
-Day 23: [???](http://adventofcode.com/2021/day/23) | 
+Day 23: [Amphipod](http://adventofcode.com/2021/day/23) | ⭐⭐
 Day 24: [???](http://adventofcode.com/2021/day/24) | 
 Day 25: [???](http://adventofcode.com/2021/day/25) | 
 

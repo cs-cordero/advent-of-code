@@ -193,3 +193,11 @@ pub fn get_min_and_max<T: Copy + Ord>(values: &[T]) -> (T, T) {
 
     (min, max)
 }
+
+/// Gets the limits of a 2D Vec, where the limit is the non-inclusive
+/// row and column that signifies the end of the 2D Vec.
+pub fn get_limits<T>(values: &[Vec<T>]) -> (usize, usize) {
+    let col = values.get(0).map(|r| r.len()).unwrap_or(0);
+    let row = values.len();
+    (row, col)
+}

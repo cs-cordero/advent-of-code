@@ -207,3 +207,103 @@ path = "2021/day24/src/main.rs"
 [[example]]
 name = "2021-25"
 path = "2021/day25/src/main.rs"
+
+[[example]]
+name = "2022-01"
+path = "2022/day01/src/main.rs"
+
+[[example]]
+name = "2022-02"
+path = "2022/day02/src/main.rs"
+
+[[example]]
+name = "2022-03"
+path = "2022/day03/src/main.rs"
+
+[[example]]
+name = "2022-04"
+path = "2022/day04/src/main.rs"
+
+[[example]]
+name = "2022-05"
+path = "2022/day05/src/main.rs"
+
+[[example]]
+name = "2022-06"
+path = "2022/day06/src/main.rs"
+
+[[example]]
+name = "2022-07"
+path = "2022/day07/src/main.rs"
+
+[[example]]
+name = "2022-08"
+path = "2022/day08/src/main.rs"
+
+[[example]]
+name = "2022-09"
+path = "2022/day09/src/main.rs"
+
+[[example]]
+name = "2022-10"
+path = "2022/day10/src/main.rs"
+
+[[example]]
+name = "2022-11"
+path = "2022/day11/src/main.rs"
+
+[[example]]
+name = "2022-12"
+path = "2022/day12/src/main.rs"
+
+[[example]]
+name = "2022-13"
+path = "2022/day13/src/main.rs"
+
+[[example]]
+name = "2022-14"
+path = "2022/day14/src/main.rs"
+
+[[example]]
+name = "2022-15"
+path = "2022/day15/src/main.rs"
+
+[[example]]
+name = "2022-16"
+path = "2022/day16/src/main.rs"
+
+[[example]]
+name = "2022-17"
+path = "2022/day17/src/main.rs"
+
+[[example]]
+name = "2022-18"
+path = "2022/day18/src/main.rs"
+
+[[example]]
+name = "2022-19"
+path = "2022/day19/src/main.rs"
+
+[[example]]
+name = "2022-20"
+path = "2022/day20/src/main.rs"
+
+[[example]]
+name = "2022-21"
+path = "2022/day21/src/main.rs"
+
+[[example]]
+name = "2022-22"
+path = "2022/day22/src/main.rs"
+
+[[example]]
+name = "2022-23"
+path = "2022/day23/src/main.rs"
+
+[[example]]
+name = "2022-24"
+path = "2022/day24/src/main.rs"
+
+[[example]]
+name = "2022-25"
+path = "2022/day25/src/main.rs"

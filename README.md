@@ -28,7 +28,7 @@
 Challenge | Status
 --- | :---:
 Day 01: [Calorie Counting](http://adventofcode.com/2022/day/1) | ⭐⭐
-Day 02: [???](http://adventofcode.com/2022/day/2) |
+Day 02: [Rock Paper Scissors](http://adventofcode.com/2022/day/2) | ⭐⭐
 Day 03: [???](http://adventofcode.com/2022/day/3) |
 Day 04: [???](http://adventofcode.com/2022/day/4) |
 Day 05: [???](http://adventofcode.com/2022/day/5) |

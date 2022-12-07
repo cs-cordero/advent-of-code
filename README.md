@@ -33,7 +33,7 @@ Day 03: [Rucksack Reorganization](http://adventofcode.com/2022/day/3) | ⭐⭐
 Day 04: [Camp Cleanup](http://adventofcode.com/2022/day/4) | ⭐⭐
 Day 05: [Supply Stacks](http://adventofcode.com/2022/day/5) | ⭐⭐
 Day 06: [Tuning Trouble](http://adventofcode.com/2022/day/6) | ⭐⭐
-Day 07: [???](http://adventofcode.com/2022/day/7) |
+Day 07: [No Space Left On Device](http://adventofcode.com/2022/day/7) | ⭐⭐
 Day 08: [???](http://adventofcode.com/2022/day/8) |
 Day 09: [???](http://adventofcode.com/2022/day/9) |
 Day 10: [???](http://adventofcode.com/2022/day/10) |

@@ -36,7 +36,7 @@ Day 06: [Tuning Trouble](http://adventofcode.com/2022/day/6) | ⭐⭐
 Day 07: [No Space Left On Device](http://adventofcode.com/2022/day/7) | ⭐⭐
 Day 08: [Treetop Tree House](http://adventofcode.com/2022/day/8) | ⭐⭐
 Day 09: [Rope Bridge](http://adventofcode.com/2022/day/9) | ⭐⭐
-Day 10: [???](http://adventofcode.com/2022/day/10) |
+Day 10: [Cathode-Ray Tube](http://adventofcode.com/2022/day/10) | ⭐⭐
 Day 11: [???](http://adventofcode.com/2022/day/11) |
 Day 12: [???](http://adventofcode.com/2022/day/12) |
 Day 13: [???](http://adventofcode.com/2022/day/13) |

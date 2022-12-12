@@ -38,7 +38,7 @@ Day 08: [Treetop Tree House](http://adventofcode.com/2022/day/8) | ⭐⭐
 Day 09: [Rope Bridge](http://adventofcode.com/2022/day/9) | ⭐⭐
 Day 10: [Cathode-Ray Tube](http://adventofcode.com/2022/day/10) | ⭐⭐
 Day 11: [Monkey in the Middle](http://adventofcode.com/2022/day/11) | ⭐⭐
-Day 12: [???](http://adventofcode.com/2022/day/12) |
+Day 12: [Hill Climbing Algorithm](http://adventofcode.com/2022/day/12) | ⭐⭐
 Day 13: [???](http://adventofcode.com/2022/day/13) |
 Day 14: [???](http://adventofcode.com/2022/day/14) |
 Day 15: [???](http://adventofcode.com/2022/day/15) |

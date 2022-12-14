@@ -40,7 +40,7 @@ Day 10: [Cathode-Ray Tube](http://adventofcode.com/2022/day/10) | ⭐⭐
 Day 11: [Monkey in the Middle](http://adventofcode.com/2022/day/11) | ⭐⭐
 Day 12: [Hill Climbing Algorithm](http://adventofcode.com/2022/day/12) | ⭐⭐
 Day 13: [Distress Signal](http://adventofcode.com/2022/day/13) | ⭐⭐
-Day 14: [???](http://adventofcode.com/2022/day/14) |
+Day 14: [Regolith Reservoir](http://adventofcode.com/2022/day/14) | ⭐⭐
 Day 15: [???](http://adventofcode.com/2022/day/15) |
 Day 16: [???](http://adventofcode.com/2022/day/16) |
 Day 17: [???](http://adventofcode.com/2022/day/17) |

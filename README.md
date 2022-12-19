@@ -44,7 +44,7 @@ Day 14: [Regolith Reservoir](http://adventofcode.com/2022/day/14) | ⭐⭐
 Day 15: [Beacon Exclusion Zone](http://adventofcode.com/2022/day/15) | ⭐⭐
 Day 16: [Proboscidea Volcanium](http://adventofcode.com/2022/day/16) | ⭐⭐
 Day 17: [Pyroclastic Flow](http://adventofcode.com/2022/day/17) | ⭐⭐
-Day 18: [???](http://adventofcode.com/2022/day/18) |
+Day 18: [Boiling Boulders](http://adventofcode.com/2022/day/18) | ⭐⭐
 Day 19: [???](http://adventofcode.com/2022/day/19) |
 Day 20: [???](http://adventofcode.com/2022/day/20) |
 Day 21: [???](http://adventofcode.com/2022/day/21) |

@@ -12,6 +12,15 @@ pub fn read_input_as_string<P: AsRef<Path>>(path: P) -> String {
     fs::read_to_string(path).unwrap().trim().to_owned()
 }
 
+/// All content in a file are read into an owned String without trimming.
+///
+/// Example:
+///     Given:  "    597348"
+///     Yields: String::from("    597348")
+pub fn read_input_as_string_no_trim<P: AsRef<Path>>(path: P) -> String {
+    fs::read_to_string(path).unwrap()
+}
+
 /// Converts numbers in a file into a vector of individual digits
 /// All values in the file must be a number with radix 10.
 ///

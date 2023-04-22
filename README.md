@@ -49,7 +49,7 @@ Day 19: [Not Enough Minerals](http://adventofcode.com/2022/day/19) | ⭐⭐
 Day 20: [Grove Positioning System](http://adventofcode.com/2022/day/20) | ⭐⭐
 Day 21: [Monkey Math](http://adventofcode.com/2022/day/21) | ⭐⭐
 Day 22: [Monkey Map](http://adventofcode.com/2022/day/22) | ⭐⭐
-Day 23: [???](http://adventofcode.com/2022/day/23) |
+Day 23: [Unstable Diffusion](http://adventofcode.com/2022/day/23) | ⭐⭐
 Day 24: [???](http://adventofcode.com/2022/day/24) |
 Day 25: [???](http://adventofcode.com/2022/day/25) |
 

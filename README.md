@@ -51,7 +51,7 @@ Day 21: [Monkey Math](http://adventofcode.com/2022/day/21) | ⭐⭐
 Day 22: [Monkey Map](http://adventofcode.com/2022/day/22) | ⭐⭐
 Day 23: [Unstable Diffusion](http://adventofcode.com/2022/day/23) | ⭐⭐
 Day 24: [Blizzard Basin](http://adventofcode.com/2022/day/24) | ⭐⭐
-Day 25: [???](http://adventofcode.com/2022/day/25) |
+Day 25: [Full of Hot Air](http://adventofcode.com/2022/day/25) | ⭐⭐
 
 ### 2021
 Challenge | Status

@@ -30,7 +30,7 @@ Challenge | Status
 --- | :---:
 Day 01: [Trebuchet?!](http://adventofcode.com/2023/day/1) | ⭐⭐
 Day 02: [Cube Conundrum](http://adventofcode.com/2023/day/2) | ⭐⭐
-Day 03: [???](http://adventofcode.com/2023/day/3) |
+Day 03: [Gear Ratios](http://adventofcode.com/2023/day/3) | ⭐⭐
 Day 04: [???](http://adventofcode.com/2023/day/4) |
 Day 05: [???](http://adventofcode.com/2023/day/5) |
 Day 06: [???](http://adventofcode.com/2023/day/6) |

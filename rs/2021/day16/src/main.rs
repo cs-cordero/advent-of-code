@@ -1,5 +1,6 @@
-use advent_of_code::*;
 use std::collections::VecDeque;
+
+use advent_of_code::*;
 
 fn main() {
     let hex = read_input_as_string("2021/day16/src/input.txt")
@@ -110,7 +111,6 @@ fn consume_packet(bit_stream: &mut VecDeque<usize>) -> Packet {
 fn consume_bits(bit_stream: &mut VecDeque<usize>, packet_size: &mut usize, bits: usize) -> usize {
     *packet_size += bits;
     (0..bits)
-        .into_iter()
         .map(|_| bit_stream.pop_front().unwrap_or(0))
         .fold(0usize, |mut acc, bit| {
             assert!(bit == 0 || bit == 1);
@@ -152,7 +152,7 @@ fn sum_packet_versions(packet: &Packet) -> usize {
                 + data
                     .sub_packets
                     .iter()
-                    .map(|sub| sum_packet_versions(sub))
+                    .map(sum_packet_versions)
                     .sum::<usize>()
         }
     }
@@ -162,10 +162,7 @@ fn evaluate_packet(packet: &Packet) -> usize {
     match packet {
         Packet::Literal(data) => data.value,
         Packet::Operator(data) => {
-            let mut values = data
-                .sub_packets
-                .iter()
-                .map(|sub_packet| evaluate_packet(sub_packet));
+            let mut values = data.sub_packets.iter().map(evaluate_packet);
             match data.packet_type {
                 0 => values.sum(),
                 1 => values.product(),

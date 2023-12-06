@@ -169,14 +169,14 @@ fn main() {
         .trim()
         .lines()
         .map(|line| {
-            let (on_or_off, coordinates) = line.split_once(" ").unwrap();
+            let (on_or_off, coordinates) = line.split_once(' ').unwrap();
             let mut coordinates = coordinates.split(',');
             let x = coordinates.next().unwrap();
             let y = coordinates.next().unwrap();
             let z = coordinates.next().unwrap();
 
             let parse_coordinate = |s: &str| {
-                let (_, range) = s.split_once("=").unwrap();
+                let (_, range) = s.split_once('=').unwrap();
                 let (low, high) = range.split_once("..").unwrap();
                 let low = low.parse::<isize>().unwrap();
                 let high = high.parse::<isize>().unwrap();

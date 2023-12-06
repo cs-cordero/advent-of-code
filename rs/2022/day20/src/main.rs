@@ -1,8 +1,8 @@
 extern crate core;
 
+use advent_of_code::*;
 use std::collections::LinkedList;
 use std::rc::Rc;
-use advent_of_code::*;
 
 fn main() {
     let data = read_input_as_lines("2022/day20/src/input.txt")
@@ -88,7 +88,12 @@ fn mix(list: &mut LinkedList<Rc<i64>>, order: &[Rc<i64>]) {
 
 fn find_answer(list: &LinkedList<Rc<i64>>) -> i64 {
     let vec = list.iter().collect::<Vec<_>>();
-    let zero_index = vec.iter().enumerate().find(|(_, &rc)| (**rc) == 0).map(|(i, _)| i).unwrap();
+    let zero_index = vec
+        .iter()
+        .enumerate()
+        .find(|(_, &rc)| (**rc) == 0)
+        .map(|(i, _)| i)
+        .unwrap();
 
     let num1 = ***vec.get((zero_index + 1000) % vec.len()).unwrap();
     let num2 = ***vec.get((zero_index + 2000) % vec.len()).unwrap();

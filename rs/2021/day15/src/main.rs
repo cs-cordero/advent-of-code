@@ -1,5 +1,6 @@
-use advent_of_code::*;
 use std::collections::BinaryHeap;
+
+use advent_of_code::*;
 
 fn main() {
     let risk_levels = {
@@ -20,7 +21,7 @@ fn main() {
         let expanded_risk_levels = {
             let mut expanded = risk_levels;
             let target_row_count = expanded.len() * 5;
-            let target_col_count = expanded.get(0).unwrap().len() * 5;
+            let target_col_count = expanded.first().unwrap().len() * 5;
 
             // expand rows
             let mut prev_row_index = 0;
@@ -55,7 +56,7 @@ fn main() {
 }
 
 fn dijkstra(risk_levels: &[Vec<i32>]) -> i32 {
-    let (row_limit, col_limit) = { (risk_levels.len(), risk_levels.get(0).unwrap().len()) };
+    let (row_limit, col_limit) = { (risk_levels.len(), risk_levels.first().unwrap().len()) };
 
     let mut dijkstra = vec![vec![i32::MAX; col_limit]; row_limit];
     let mut max_heap = BinaryHeap::new();

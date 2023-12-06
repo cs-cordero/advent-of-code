@@ -3,6 +3,7 @@ extern crate core;
 use std::cell::RefCell;
 use std::collections::HashSet;
 use std::ops::Deref;
+
 use advent_of_code::*;
 
 struct RopeNode {
@@ -31,7 +32,7 @@ fn main() {
         .iter()
         .map(|line| {
             let (direction, count) = line.split_once(' ').unwrap();
-            let direction = direction.chars().into_iter().next().unwrap();
+            let direction = direction.chars().next().unwrap();
             let count = count.parse::<u32>().unwrap();
             (direction, count)
         })
@@ -40,7 +41,7 @@ fn main() {
     let solution1 = {
         let rope = vec![
             RefCell::new(RopeNode { x: 0, y: 0 }),
-            RefCell::new(RopeNode { x: 0, y: 0 })
+            RefCell::new(RopeNode { x: 0, y: 0 }),
         ];
 
         solve(rope, &input)
@@ -57,7 +58,7 @@ fn main() {
             RefCell::new(RopeNode { x: 0, y: 0 }),
             RefCell::new(RopeNode { x: 0, y: 0 }),
             RefCell::new(RopeNode { x: 0, y: 0 }),
-            RefCell::new(RopeNode { x: 0, y: 0 })
+            RefCell::new(RopeNode { x: 0, y: 0 }),
         ];
 
         solve(rope, &input)
@@ -73,11 +74,11 @@ fn solve(rope: Vec<RefCell<RopeNode>>, input: &[(char, u32)]) -> usize {
     for (direction, count) in input.iter() {
         for _ in 0..*count {
             match direction {
-                'U' => rope.get(0).unwrap().borrow_mut().x -= 1,
-                'D' => rope.get(0).unwrap().borrow_mut().x += 1,
-                'L' => rope.get(0).unwrap().borrow_mut().y -= 1,
-                'R' => rope.get(0).unwrap().borrow_mut().y += 1,
-                _ => panic!("oops")
+                'U' => rope.first().unwrap().borrow_mut().x -= 1,
+                'D' => rope.first().unwrap().borrow_mut().x += 1,
+                'L' => rope.first().unwrap().borrow_mut().y -= 1,
+                'R' => rope.first().unwrap().borrow_mut().y += 1,
+                _ => panic!("oops"),
             };
 
             rope_reacts(&rope);

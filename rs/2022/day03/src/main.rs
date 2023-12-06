@@ -1,5 +1,5 @@
-use std::collections::HashSet;
 use advent_of_code::*;
+use std::collections::HashSet;
 
 fn main() {
     let input = read_input_as_lines("2022/day03/src/input.txt");
@@ -23,7 +23,10 @@ fn main() {
             let elf1 = rucksack[0].chars().collect::<HashSet<_>>();
             let elf2 = rucksack[1].chars().collect::<HashSet<_>>();
             let elf3 = rucksack[2].chars().collect::<HashSet<_>>();
-            find_priority(elf1.intersection(&elf2.intersection(&elf3).copied().collect()).collect())
+            find_priority(
+                elf1.intersection(&elf2.intersection(&elf3).copied().collect())
+                    .collect(),
+            )
         })
         .sum();
 
@@ -32,15 +35,13 @@ fn main() {
 }
 
 fn find_priority(items: HashSet<&char>) -> i32 {
-    items.into_iter()
-        .copied()
-        .fold(0, |acc, item| {
-            if item.is_lowercase() {
-                acc + item as i32 - 96
-            } else if item.is_uppercase() {
-                acc + item as i32 - 64 + 26
-            } else {
-                panic!("Failed to find priority of item");
-            }
-        })
+    items.into_iter().copied().fold(0, |acc, item| {
+        if item.is_lowercase() {
+            acc + item as i32 - 96
+        } else if item.is_uppercase() {
+            acc + item as i32 - 64 + 26
+        } else {
+            panic!("Failed to find priority of item");
+        }
+    })
 }

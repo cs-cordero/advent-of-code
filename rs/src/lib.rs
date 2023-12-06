@@ -192,7 +192,7 @@ pub fn get_min_and_max<T: Copy + Ord>(values: &[T]) -> (T, T) {
         !values.is_empty(),
         "Slice must not be empty when calling get_min_and_max!"
     );
-    let mut min = *values.get(0).unwrap();
+    let mut min = *values.first().unwrap();
     let mut max = min;
 
     for value in values {
@@ -206,7 +206,7 @@ pub fn get_min_and_max<T: Copy + Ord>(values: &[T]) -> (T, T) {
 /// Gets the limits of a 2D Vec, where the limit is the non-inclusive
 /// row and column that signifies the end of the 2D Vec.
 pub fn get_limits<T>(values: &[Vec<T>]) -> (usize, usize) {
-    let col = values.get(0).map(|r| r.len()).unwrap_or(0);
+    let col = values.first().map(|r| r.len()).unwrap_or(0);
     let row = values.len();
     (row, col)
 }

@@ -1,7 +1,8 @@
-use advent_of_code::*;
 use std::cell::RefCell;
 use std::cmp::max;
 use std::collections::VecDeque;
+
+use advent_of_code::*;
 
 type SnailfishIndex = usize;
 
@@ -152,7 +153,7 @@ fn parse_graph(mut s: VecDeque<char>) -> (SnailfishIndex, Vec<Snailfish>) {
                 }
 
                 result.last().map(|snailfish| snailfish.id())
-            } else if next_char.is_digit(10) {
+            } else if next_char.is_ascii_digit() {
                 let mut value = next_char.to_digit(10).unwrap();
                 loop {
                     let next_char = remaining.pop_front().unwrap();
@@ -293,7 +294,7 @@ fn get_explode_configuration(
 /// exploder is expected to be a SnailfishIndex of a Pair.
 /// left and right is expected to be a SnailfishIndex of a Number ONLY.
 fn explode(
-    graph: &mut Vec<Snailfish>,
+    graph: &mut [Snailfish],
     exploder_index: SnailfishIndex,
     left: Option<SnailfishIndex>,
     right: Option<SnailfishIndex>,

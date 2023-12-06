@@ -61,7 +61,7 @@ fn main() {
                     .iter()
                     .filter(|(ingredient, ingredient_freq_map)| {
                         !solved_ingredient_to_allergen.contains_key(*ingredient)
-                            && ingredient_freq_map.get(&*allergen).unwrap() == allergen_freq
+                            && ingredient_freq_map.get(allergen.as_str()).unwrap() == allergen_freq
                     })
                     .map(|(ingredient, _)| ingredient.to_owned())
                     .collect::<Vec<_>>();

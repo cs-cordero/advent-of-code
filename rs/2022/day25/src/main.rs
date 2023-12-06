@@ -21,7 +21,7 @@ fn from_snafu(snafu: &str) -> i64 {
             '0' => 0,
             '1' => 1,
             '2' => 2,
-            _ => panic!("Invalid SNAFU number.")
+            _ => panic!("Invalid SNAFU number."),
         };
 
         decimal += value * u64::pow(5, place as u32) as i64;
@@ -88,7 +88,7 @@ fn to_snafu_helper(decimal: i64, digit_count: usize) -> String {
         0 => "0",
         1 => "1",
         2 => "2",
-        _ => panic!("Not possible")
+        _ => panic!("Not possible"),
     });
     result.push_str(&to_snafu_helper(next_decimal_value, digit_count - 1));
     result

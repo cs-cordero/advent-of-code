@@ -41,7 +41,7 @@ fn main() {
 
 fn binary_search(target: u64, bus_number: u64) -> u64 {
     let mut left = 0;
-    let mut right = std::u64::MAX as u64;
+    let mut right = std::u64::MAX;
     while left < right {
         let mid = (left + right) / 2;
         if let Some(time) = mid.checked_mul(bus_number) {

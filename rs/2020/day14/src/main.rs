@@ -1,23 +1,13 @@
-use advent_of_code::*;
 use std::collections::HashMap;
 
-#[derive(Clone)]
+use advent_of_code::*;
+
+#[derive(Clone, Default)]
 struct Mask {
     null_mask: u64,
     one_mask: u64,
     x_mask: u64,
     floating_combinations: Vec<u64>,
-}
-
-impl Default for Mask {
-    fn default() -> Self {
-        Mask {
-            null_mask: 0,
-            one_mask: 0,
-            x_mask: 0,
-            floating_combinations: Vec::new(),
-        }
-    }
 }
 
 struct AssignToAddress {
@@ -107,7 +97,7 @@ fn process_inputs(input: &[String]) -> Vec<Command> {
                             let val = *floating_combinations.get(i).unwrap();
                             floating_combinations.push(val | new_bit);
                         }
-                        floating_combinations.push(new_bit as u64);
+                        floating_combinations.push(new_bit);
                     }
                     floating_combinations.push(0);
 
@@ -119,7 +109,7 @@ fn process_inputs(input: &[String]) -> Vec<Command> {
                     })
                 }
                 _ => {
-                    let address = (&lhs[4..lhs.len() - 1]).parse().unwrap();
+                    let address = (lhs[4..lhs.len() - 1]).parse().unwrap();
                     let value = rhs.parse().unwrap();
                     Command::Assignment(AssignToAddress { address, value })
                 }

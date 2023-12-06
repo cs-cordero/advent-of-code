@@ -1,8 +1,8 @@
 extern crate core;
 
+use advent_of_code::*;
 use std::cmp::{max, min};
 use std::collections::HashSet;
-use advent_of_code::*;
 
 fn main() {
     let input = {

@@ -1,5 +1,6 @@
-use advent_of_code::*;
 use std::cmp::Ordering;
+
+use advent_of_code::*;
 
 struct Grid {
     grid: Vec<char>,
@@ -10,7 +11,7 @@ struct Grid {
 impl Grid {
     fn new() -> Self {
         let input_lines = read_input_as_lines("2020/day11/src/input.txt");
-        let stride = input_lines.get(0).unwrap().len();
+        let stride = input_lines.first().unwrap().len();
 
         let grid = input_lines
             .into_iter()
@@ -157,8 +158,8 @@ fn main() {
 #[inline]
 fn overloaded_checked_add(num: usize, rhs: i8) -> Option<usize> {
     match rhs.cmp(&0) {
-        Ordering::Less => num.checked_sub(rhs.abs() as usize),
+        Ordering::Less => num.checked_sub(rhs.unsigned_abs() as usize),
         Ordering::Equal => Some(num),
-        Ordering::Greater => num.checked_add(rhs.abs() as usize),
+        Ordering::Greater => num.checked_add(rhs.unsigned_abs() as usize),
     }
 }

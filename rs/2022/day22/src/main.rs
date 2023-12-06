@@ -13,7 +13,7 @@ enum Direction {
     Left,
     Right,
     Up,
-    Down
+    Down,
 }
 
 impl Direction {
@@ -49,7 +49,7 @@ impl Direction {
 enum Instruction {
     Move(usize),
     RotateLeft,
-    RotateRight
+    RotateRight,
 }
 
 enum CellType {
@@ -62,7 +62,7 @@ struct Cell {
     up: Option<MovementResult>,
     down: Option<MovementResult>,
     left: Option<MovementResult>,
-    right: Option<MovementResult>
+    right: Option<MovementResult>,
 }
 
 impl Cell {
@@ -84,13 +84,15 @@ struct MovementResult {
 
 impl MovementResult {
     pub fn new(new_coordinate: (usize, usize), new_facing: Direction) -> Self {
-        MovementResult { new_coordinate, new_facing }
+        MovementResult {
+            new_coordinate,
+            new_facing,
+        }
     }
 }
 
-
 fn main() {
-    let input  = read_input_as_string_no_trim("2022/day22/src/input.txt");
+    let input = read_input_as_string_no_trim("2022/day22/src/input.txt");
     let (raw_map, raw_instructions) = input.split_once("\n\n").unwrap();
 
     let instructions = parse_instructions(raw_instructions);
@@ -101,7 +103,10 @@ fn main() {
     println!("Part 2: {:?}", walk_and_find_score(&instructions, part2));
 }
 
-fn walk_and_find_score(instructions: &[Instruction], map: HashMap<(usize, usize), RefCell<Cell>>) -> usize {
+fn walk_and_find_score(
+    instructions: &[Instruction],
+    map: HashMap<(usize, usize), RefCell<Cell>>,
+) -> usize {
     // find starting point
     let mut position = {
         let mut col = 0;
@@ -170,7 +175,7 @@ fn parse_instructions(s: &str) -> Vec<Instruction> {
             match char {
                 'L' => result.push(Instruction::RotateLeft),
                 'R' => result.push(Instruction::RotateRight),
-                _ => panic!("Oops, got {}", char)
+                _ => panic!("Oops, got {}", char),
             }
         }
     }
@@ -236,10 +241,26 @@ fn parse_into_map_part1(input: &str) -> HashMap<(usize, usize), RefCell<Cell>> {
     }
 
     for (coord, cell) in map.iter() {
-        assert!(cell.borrow().up.is_some(), "Missing up coord for {:?}", coord);
-        assert!(cell.borrow().down.is_some(), "Missing down coord for {:?}", coord);
-        assert!(cell.borrow().left.is_some(), "Missing left coord for {:?}", coord);
-        assert!(cell.borrow().right.is_some(), "Missing right coord for {:?}", coord);
+        assert!(
+            cell.borrow().up.is_some(),
+            "Missing up coord for {:?}",
+            coord
+        );
+        assert!(
+            cell.borrow().down.is_some(),
+            "Missing down coord for {:?}",
+            coord
+        );
+        assert!(
+            cell.borrow().left.is_some(),
+            "Missing left coord for {:?}",
+            coord
+        );
+        assert!(
+            cell.borrow().right.is_some(),
+            "Missing right coord for {:?}",
+            coord
+        );
     }
 
     map
@@ -255,39 +276,69 @@ fn parse_into_map_part2(input: &str) -> HashMap<(usize, usize), RefCell<Cell>> {
     // F
 
     // a top goes with f left
-    let seam_a_top = (50..100).map(|col| ((0, col), Direction::Up)).collect::<Vec<_>>();
-    let seam_f_left = (150..200).map(|row| ((row, 0), Direction::Left)).collect::<Vec<_>>();
-    let seam_af = seam_a_top.into_iter().zip(seam_f_left.into_iter());
+    let seam_a_top = (50..100)
+        .map(|col| ((0, col), Direction::Up))
+        .collect::<Vec<_>>();
+    let seam_f_left = (150..200)
+        .map(|row| ((row, 0), Direction::Left))
+        .collect::<Vec<_>>();
+    let seam_af = seam_a_top.into_iter().zip(seam_f_left);
 
     // a left goes with d left reversed
-    let seam_a_left = (0..50).map(|row| ((row, 50), Direction::Left)).collect::<Vec<_>>();
-    let seam_d_left = (100..150).map(|row| ((row, 0), Direction::Left)).rev().collect::<Vec<_>>();
-    let seam_ad = seam_a_left.into_iter().zip(seam_d_left.into_iter());
+    let seam_a_left = (0..50)
+        .map(|row| ((row, 50), Direction::Left))
+        .collect::<Vec<_>>();
+    let seam_d_left = (100..150)
+        .map(|row| ((row, 0), Direction::Left))
+        .rev()
+        .collect::<Vec<_>>();
+    let seam_ad = seam_a_left.into_iter().zip(seam_d_left);
 
     // b top goes with f bottom
-    let seam_b_top = (100..150).map(|col| ((0, col), Direction::Up)).collect::<Vec<_>>();
-    let seam_f_bottom = (0..50).map(|col| ((199, col), Direction::Down)).collect::<Vec<_>>();
-    let seam_bf = seam_b_top.into_iter().zip(seam_f_bottom.into_iter());
+    let seam_b_top = (100..150)
+        .map(|col| ((0, col), Direction::Up))
+        .collect::<Vec<_>>();
+    let seam_f_bottom = (0..50)
+        .map(|col| ((199, col), Direction::Down))
+        .collect::<Vec<_>>();
+    let seam_bf = seam_b_top.into_iter().zip(seam_f_bottom);
 
     // b right goes with e right reversed
-    let seam_b_right = (0..50).map(|row| ((row, 149), Direction::Right)).collect::<Vec<_>>();
-    let seam_e_right = (100..150).map(|row| ((row, 99), Direction::Right)).rev().collect::<Vec<_>>();
-    let seam_be = seam_b_right.into_iter().zip(seam_e_right.into_iter());
+    let seam_b_right = (0..50)
+        .map(|row| ((row, 149), Direction::Right))
+        .collect::<Vec<_>>();
+    let seam_e_right = (100..150)
+        .map(|row| ((row, 99), Direction::Right))
+        .rev()
+        .collect::<Vec<_>>();
+    let seam_be = seam_b_right.into_iter().zip(seam_e_right);
 
     // b bottom goes with c right
-    let seam_b_bottom = (100..150).map(|col| ((49, col), Direction::Down)).collect::<Vec<_>>();
-    let seam_c_right = (50..100).map(|row| ((row, 99), Direction::Right)).collect::<Vec<_>>();
-    let seam_bc = seam_b_bottom.into_iter().zip(seam_c_right.into_iter());
+    let seam_b_bottom = (100..150)
+        .map(|col| ((49, col), Direction::Down))
+        .collect::<Vec<_>>();
+    let seam_c_right = (50..100)
+        .map(|row| ((row, 99), Direction::Right))
+        .collect::<Vec<_>>();
+    let seam_bc = seam_b_bottom.into_iter().zip(seam_c_right);
 
     // c left goes with d top
-    let seam_c_left = (50..100).map(|row| ((row, 50), Direction::Left)).collect::<Vec<_>>();
-    let seam_d_top = (0..50).map(|col| ((100, col), Direction::Up)).collect::<Vec<_>>();
-    let seam_cd = seam_c_left.into_iter().zip(seam_d_top.into_iter());
+    let seam_c_left = (50..100)
+        .map(|row| ((row, 50), Direction::Left))
+        .collect::<Vec<_>>();
+    let seam_d_top = (0..50)
+        .map(|col| ((100, col), Direction::Up))
+        .collect::<Vec<_>>();
+    let seam_cd = seam_c_left.into_iter().zip(seam_d_top);
 
     // e bottom goes with f right
-    let seam_e_bottom = (50..100).map(|col| ((149, col), Direction::Down)).collect::<Vec<_>>();
-    let seam_f_right = (150..200).map(|row| ((row, 49), Direction::Right)).collect::<Vec<_>>();
-    let seam_ef = seam_e_bottom.into_iter().zip(seam_f_right.into_iter());
+    let seam_e_bottom = (50..100)
+        .map(|col| ((149, col), Direction::Down))
+        .collect::<Vec<_>>();
+    let seam_f_right = (150..200)
+        .map(|row| ((row, 49), Direction::Right))
+        .collect::<Vec<_>>();
+    let seam_ef = seam_e_bottom.into_iter().zip(seam_f_right);
 
     let all_seams = seam_af
         .chain(seam_ad)
@@ -298,32 +349,90 @@ fn parse_into_map_part2(input: &str) -> HashMap<(usize, usize), RefCell<Cell>> {
         .chain(seam_ef);
 
     for ((seam1_coord, seam1_direction), (seam2_coord, seam2_direction)) in all_seams {
-        let mut seam1_cell = map.get(&seam1_coord)
+        let mut seam1_cell = map
+            .get(&seam1_coord)
             .unwrap_or_else(|| panic!("Failed to find {:?}", seam1_coord))
             .borrow_mut();
         match seam1_direction {
-            Direction::Up => seam1_cell.up = Some(MovementResult::new(seam2_coord, seam2_direction.rotate180())),
-            Direction::Down => seam1_cell.down = Some(MovementResult::new(seam2_coord, seam2_direction.rotate180())),
-            Direction::Left => seam1_cell.left = Some(MovementResult::new(seam2_coord, seam2_direction.rotate180())),
-            Direction::Right => seam1_cell.right = Some(MovementResult::new(seam2_coord, seam2_direction.rotate180())),
+            Direction::Up => {
+                seam1_cell.up = Some(MovementResult::new(
+                    seam2_coord,
+                    seam2_direction.rotate180(),
+                ))
+            }
+            Direction::Down => {
+                seam1_cell.down = Some(MovementResult::new(
+                    seam2_coord,
+                    seam2_direction.rotate180(),
+                ))
+            }
+            Direction::Left => {
+                seam1_cell.left = Some(MovementResult::new(
+                    seam2_coord,
+                    seam2_direction.rotate180(),
+                ))
+            }
+            Direction::Right => {
+                seam1_cell.right = Some(MovementResult::new(
+                    seam2_coord,
+                    seam2_direction.rotate180(),
+                ))
+            }
         }
 
-        let mut seam2_cell = map.get(&seam2_coord)
+        let mut seam2_cell = map
+            .get(&seam2_coord)
             .unwrap_or_else(|| panic!("Failed to find {:?}", seam2_coord))
             .borrow_mut();
         match seam2_direction {
-            Direction::Up => seam2_cell.up = Some(MovementResult::new(seam1_coord, seam1_direction.rotate180())),
-            Direction::Down => seam2_cell.down = Some(MovementResult::new(seam1_coord, seam1_direction.rotate180())),
-            Direction::Left => seam2_cell.left = Some(MovementResult::new(seam1_coord, seam1_direction.rotate180())),
-            Direction::Right => seam2_cell.right = Some(MovementResult::new(seam1_coord, seam1_direction.rotate180())),
+            Direction::Up => {
+                seam2_cell.up = Some(MovementResult::new(
+                    seam1_coord,
+                    seam1_direction.rotate180(),
+                ))
+            }
+            Direction::Down => {
+                seam2_cell.down = Some(MovementResult::new(
+                    seam1_coord,
+                    seam1_direction.rotate180(),
+                ))
+            }
+            Direction::Left => {
+                seam2_cell.left = Some(MovementResult::new(
+                    seam1_coord,
+                    seam1_direction.rotate180(),
+                ))
+            }
+            Direction::Right => {
+                seam2_cell.right = Some(MovementResult::new(
+                    seam1_coord,
+                    seam1_direction.rotate180(),
+                ))
+            }
         }
     }
 
     for (coord, cell) in map.iter() {
-        assert!(cell.borrow().up.is_some(), "Missing up coord for {:?}", coord);
-        assert!(cell.borrow().down.is_some(), "Missing down coord for {:?}", coord);
-        assert!(cell.borrow().left.is_some(), "Missing left coord for {:?}", coord);
-        assert!(cell.borrow().right.is_some(), "Missing right coord for {:?}", coord);
+        assert!(
+            cell.borrow().up.is_some(),
+            "Missing up coord for {:?}",
+            coord
+        );
+        assert!(
+            cell.borrow().down.is_some(),
+            "Missing down coord for {:?}",
+            coord
+        );
+        assert!(
+            cell.borrow().left.is_some(),
+            "Missing left coord for {:?}",
+            coord
+        );
+        assert!(
+            cell.borrow().right.is_some(),
+            "Missing right coord for {:?}",
+            coord
+        );
     }
 
     map
@@ -338,7 +447,7 @@ fn get_partially_filled_map(input: &str) -> HashMap<(usize, usize), RefCell<Cell
                     '.' => Cell::new(CellType::Open),
                     '#' => Cell::new(CellType::Wall),
                     ' ' => continue,
-                    _ => panic!("Got an invalid character {}.", value)
+                    _ => panic!("Got an invalid character {}.", value),
                 };
                 result.insert((row_index, col_index), RefCell::new(cell));
             }
@@ -365,12 +474,18 @@ fn get_partially_filled_map(input: &str) -> HashMap<(usize, usize), RefCell<Cell
 
             // stitch right
             if col_index + 1 < MAX_COL_SIZE && map.get(&(row_index, col_index + 1)).is_some() {
-                cell.right = Some(MovementResult::new((row_index, col_index + 1), Direction::Right));
+                cell.right = Some(MovementResult::new(
+                    (row_index, col_index + 1),
+                    Direction::Right,
+                ));
             }
 
             // stitch down
             if row_index + 1 < MAX_ROW_SIZE && map.get(&(row_index + 1, col_index)).is_some() {
-                cell.down = Some(MovementResult::new((row_index + 1, col_index), Direction::Down));
+                cell.down = Some(MovementResult::new(
+                    (row_index + 1, col_index),
+                    Direction::Down,
+                ));
             }
 
             // stitch left

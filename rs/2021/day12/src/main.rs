@@ -38,7 +38,7 @@ fn main() {
     let graph = {
         let mut result = HashMap::<String, Cave>::new();
         for line in read_input_as_lines("2021/day12/src/input.txt") {
-            let (source, target) = line.split_once("-").unwrap();
+            let (source, target) = line.split_once('-').unwrap();
             let source = source.to_string();
             let target = target.to_string();
             {

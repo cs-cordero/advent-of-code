@@ -42,7 +42,7 @@ fn count_numbers(input: &[i32], target: i32) -> i32 {
             let (_, result) = spoken_timestamps.entry(last_number).or_insert((-1, -1));
             *result
         };
-        spoken_timestamps.insert(last_number, (last, turn as i32));
+        spoken_timestamps.insert(last_number, (last, turn));
     }
 
     last_number

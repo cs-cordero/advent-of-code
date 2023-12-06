@@ -1,15 +1,18 @@
 extern crate core;
 
+use advent_of_code::*;
 use std::collections::{HashSet, VecDeque};
 use std::mem::MaybeUninit;
-use advent_of_code::*;
 
 fn main() {
     let (source_position, target_position, map) = {
         let mut source = MaybeUninit::<(isize, isize)>::uninit();
         let mut target = MaybeUninit::<(isize, isize)>::uninit();
         let mut map = Vec::new();
-        for (row_index, row) in read_input_as_lines("2022/day12/src/input.txt").into_iter().enumerate() {
+        for (row_index, row) in read_input_as_lines("2022/day12/src/input.txt")
+            .into_iter()
+            .enumerate()
+        {
             let mut map_row = Vec::new();
             for (col_index, height) in row.chars().enumerate() {
                 if height == 'S' {
@@ -38,9 +41,13 @@ fn main() {
     println!("Part 2: {:?}", solution2);
 }
 
-fn bfs(source_position: (isize, isize), target_position: (isize, isize), map: &Vec<Vec<char>>) -> Option<u32> {
+fn bfs(
+    source_position: (isize, isize),
+    target_position: (isize, isize),
+    map: &[Vec<char>],
+) -> Option<u32> {
     let limit_row = map.len() as isize;
-    let limit_col = map.get(0).unwrap().len() as isize;
+    let limit_col = map.first().unwrap().len() as isize;
 
     let mut queue = VecDeque::new();
     queue.push_back((source_position, 'a', 0));
@@ -60,7 +67,11 @@ fn bfs(source_position: (isize, isize), target_position: (isize, isize), map: &V
                 continue;
             }
 
-            let next_height = *map.get(new_x as usize).unwrap().get(new_y as usize).unwrap();
+            let next_height = *map
+                .get(new_x as usize)
+                .unwrap()
+                .get(new_y as usize)
+                .unwrap();
             if next_height as i8 - current_height as i8 > 1 {
                 continue;
             }
@@ -77,10 +88,9 @@ fn bfs(source_position: (isize, isize), target_position: (isize, isize), map: &V
     None
 }
 
-
-fn bfs2(begin: (isize, isize), map: &Vec<Vec<char>>) -> Option<u32> {
+fn bfs2(begin: (isize, isize), map: &[Vec<char>]) -> Option<u32> {
     let limit_row = map.len() as isize;
-    let limit_col = map.get(0).unwrap().len() as isize;
+    let limit_col = map.first().unwrap().len() as isize;
 
     let mut queue = VecDeque::new();
     queue.push_back((begin, 'z', 0));
@@ -100,7 +110,11 @@ fn bfs2(begin: (isize, isize), map: &Vec<Vec<char>>) -> Option<u32> {
                 continue;
             }
 
-            let next_height = *map.get(new_x as usize).unwrap().get(new_y as usize).unwrap();
+            let next_height = *map
+                .get(new_x as usize)
+                .unwrap()
+                .get(new_y as usize)
+                .unwrap();
             if (next_height as i8 - current_height as i8) < -1 {
                 continue;
             }

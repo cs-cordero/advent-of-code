@@ -20,7 +20,7 @@ fn main() {
         .collect::<Vec<_>>();
 
     let answer1 = {
-        let unique_counts = vec![2usize, 4, 3, 7];
+        let unique_counts = [2usize, 4, 3, 7];
         data.iter()
             .map(|(_, numbers)| {
                 numbers

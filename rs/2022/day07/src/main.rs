@@ -1,11 +1,11 @@
+use advent_of_code::*;
 use std::cmp::min;
 use std::collections::HashMap;
-use advent_of_code::*;
 
 struct File {
     name: String,
     size: usize,
-    sub_files: Vec<String>
+    sub_files: Vec<String>,
 }
 
 fn main() {
@@ -15,7 +15,11 @@ fn main() {
         let mut result = HashMap::new();
         result.insert(
             String::from("/"),
-            File { name: String::from("/"), size: 0, sub_files: Vec::new()}
+            File {
+                name: String::from("/"),
+                size: 0,
+                sub_files: Vec::new(),
+            },
         );
 
         let mut dir_stack: Vec<String> = Vec::new();
@@ -39,21 +43,18 @@ fn main() {
                 file.sub_files.push(name.clone());
 
                 if dir_or_size.starts_with("dir") {
-                    result.entry(name.clone())
-                        .or_insert_with(|| File {
-                            name: name.clone(),
-                            size: 0,
-                            sub_files: Vec::new()
-                        });
-
+                    result.entry(name.clone()).or_insert_with(|| File {
+                        name: name.clone(),
+                        size: 0,
+                        sub_files: Vec::new(),
+                    });
                 } else {
                     let size = dir_or_size.parse::<usize>().unwrap();
-                    result.entry(name.clone())
-                        .or_insert_with(|| File {
-                            name: name.clone(),
-                            size,
-                            sub_files: Vec::new()
-                        });
+                    result.entry(name.clone()).or_insert_with(|| File {
+                        name: name.clone(),
+                        size,
+                        sub_files: Vec::new(),
+                    });
                 }
             }
         }
@@ -108,7 +109,7 @@ fn calculate_directory_sizes(files_by_name: &HashMap<String, File>) -> HashMap<S
 fn helper(
     file: &File,
     files_by_name: &HashMap<String, File>,
-    sizes: &mut HashMap<String, usize>
+    sizes: &mut HashMap<String, usize>,
 ) -> usize {
     if let Some(size) = sizes.get(&file.name) {
         *size

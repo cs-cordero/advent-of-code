@@ -1,5 +1,5 @@
-use std::ops::RangeInclusive;
 use advent_of_code::*;
+use std::ops::RangeInclusive;
 
 fn main() {
     let input = read_input_as_lines("2022/day04/src/input.txt")
@@ -10,7 +10,8 @@ fn main() {
         })
         .collect::<Vec<_>>();
 
-    let part1: i32 = input.iter()
+    let part1: i32 = input
+        .iter()
         .map(|(left, right)| {
             let left_contains_right = left.start() <= right.start() && left.end() >= right.end();
             let right_contains_left = right.start() <= left.start() && right.end() >= left.end();
@@ -19,10 +20,9 @@ fn main() {
         })
         .sum();
 
-    let part2: i32 = input.iter()
-        .map(|(left, right)| {
-            i32::from(left.start() <= right.end() && left.end() >= right.start())
-        })
+    let part2: i32 = input
+        .iter()
+        .map(|(left, right)| i32::from(left.start() <= right.end() && left.end() >= right.start()))
         .sum();
 
     println!("Part 1: {:?}", part1);
@@ -30,7 +30,8 @@ fn main() {
 }
 
 fn parse_into_range(input: &str) -> RangeInclusive<i32> {
-    input.split_once('-')
+    input
+        .split_once('-')
         .map(|(lower, upper)| lower.parse::<i32>().unwrap()..=upper.parse::<i32>().unwrap())
         .unwrap()
 }

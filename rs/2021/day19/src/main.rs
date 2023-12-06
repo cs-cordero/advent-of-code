@@ -152,7 +152,7 @@ impl Scanner {
             let (_, num_raw) = (lines_iter.next().unwrap() as &str)
                 .split_once("scanner ")
                 .unwrap();
-            let (num_raw, _) = num_raw.split_once(" ").unwrap();
+            let (num_raw, _) = num_raw.split_once(' ').unwrap();
             num_raw.parse::<usize>().unwrap()
         };
         let beacons = lines_iter
@@ -300,8 +300,8 @@ fn main() {
 
         while !remaining.is_empty() {
             for i in 0..remaining.len() {
-                let mut scanner = remaining.get_mut(i).unwrap();
-                if let Some(location) = base.brute_force_has_overlap(&mut scanner) {
+                let scanner = remaining.get_mut(i).unwrap();
+                if let Some(location) = base.brute_force_has_overlap(scanner) {
                     scanner_locations.push(location);
                     let scanner = remaining.swap_remove(i);
                     base.combine(scanner);

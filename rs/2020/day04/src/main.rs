@@ -97,17 +97,17 @@ impl PassportField {
             Self::BirthYear => value
                 .parse::<i32>()
                 .ok()
-                .map(|year| 1920 <= year && year <= 2002)
+                .map(|year| (1920..=2002).contains(&year))
                 .unwrap_or(false),
             Self::IssueYear => value
                 .parse::<i32>()
                 .ok()
-                .map(|year| 2010 <= year && year <= 2020)
+                .map(|year| (2010..=2020).contains(&year))
                 .unwrap_or(false),
             Self::ExpirationYear => value
                 .parse::<i32>()
                 .ok()
-                .map(|year| 2020 <= year && year <= 2030)
+                .map(|year| (2020..=2030).contains(&year))
                 .unwrap_or(false),
             Self::Height => {
                 let len = value.len();
@@ -115,8 +115,8 @@ impl PassportField {
                     .parse::<i32>()
                     .ok()
                     .map(|height| match &value[len - 2..] {
-                        "cm" => 150 <= height && height <= 193,
-                        "in" => 59 <= height && height <= 76,
+                        "cm" => (150..=193).contains(&height),
+                        "in" => (59..=76).contains(&height),
                         _ => false,
                     })
                     .unwrap_or(false)

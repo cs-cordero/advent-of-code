@@ -70,10 +70,7 @@ fn find_rating(ratings: &[Vec<char>], rating_type: RatingType) -> u32 {
         };
 
         // apply bit criteria
-        ratings = ratings
-            .into_iter()
-            .filter(|rating| rating[index] == bit_criteria)
-            .collect();
+        ratings.retain(|rating| rating[index] == bit_criteria);
 
         // check for success
         if ratings.len() == 1 {

@@ -1,12 +1,16 @@
 extern crate core;
 
-use std::collections::HashSet;
 use advent_of_code::*;
+use std::collections::HashSet;
 
 fn main() {
     let input = read_input_as_lines("2022/day08/src/input.txt")
         .iter()
-        .map(|row| row.chars().map(|height| height.to_string().parse::<isize>().unwrap()).collect::<Vec<_>>())
+        .map(|row| {
+            row.chars()
+                .map(|height| height.to_string().parse::<isize>().unwrap())
+                .collect::<Vec<_>>()
+        })
         .collect::<Vec<_>>();
 
     let solution1 = {
@@ -64,14 +68,14 @@ fn main() {
 
         let mut best_scenic_score = 0;
 
-        for row_index in 1..row_len-1 {
-            for col_index in 1..col_len-1 {
+        for row_index in 1..row_len - 1 {
+            for col_index in 1..col_len - 1 {
                 let tree_house_height = *input.get(row_index).unwrap().get(col_index).unwrap();
 
                 // look up
                 let mut scenic_score_up = 0;
                 if row_index > 0 {
-                    for i in (0..=(row_index-1)).rev() {
+                    for i in (0..=(row_index - 1)).rev() {
                         let tree = *input.get(i).unwrap().get(col_index).unwrap();
                         scenic_score_up += 1;
                         if tree >= tree_house_height {
@@ -82,7 +86,7 @@ fn main() {
 
                 // look down
                 let mut scenic_score_down = 0;
-                for i in (row_index+1)..row_len {
+                for i in (row_index + 1)..row_len {
                     let tree = *input.get(i).unwrap().get(col_index).unwrap();
                     scenic_score_down += 1;
                     if tree >= tree_house_height {
@@ -104,7 +108,7 @@ fn main() {
 
                 // look right
                 let mut scenic_score_right = 0;
-                for j in (col_index+1)..col_len {
+                for j in (col_index + 1)..col_len {
                     let tree = *input.get(row_index).unwrap().get(j).unwrap();
                     scenic_score_right += 1;
                     if tree >= tree_house_height {
@@ -112,7 +116,8 @@ fn main() {
                     }
                 }
 
-                let scenic_score = scenic_score_up * scenic_score_down * scenic_score_left * scenic_score_right;
+                let scenic_score =
+                    scenic_score_up * scenic_score_down * scenic_score_left * scenic_score_right;
 
                 if scenic_score > best_scenic_score {
                     best_scenic_score = scenic_score;

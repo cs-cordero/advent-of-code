@@ -4,7 +4,7 @@ fn main() {
     let mut data = read_input_as_string("2022/day01/src/input.txt")
         .split("\n\n")
         .map(|elf| {
-            elf.split("\n")
+            elf.split('\n')
                 .map(|calories| calories.parse::<i32>().unwrap())
                 .sum::<i32>()
         })

@@ -15,11 +15,11 @@ static TARGET_COORDINATE: Point = (26, 120);
 #[derive(Hash, Eq, PartialEq)]
 enum CellType {
     Wall,
-    Blizzard(Point)
+    Blizzard(Point),
 }
 
 fn main() {
-    let input  = read_input_as_lines("2022/day24/src/input.txt");
+    let input = read_input_as_lines("2022/day24/src/input.txt");
     let mut map = parse_input_into_map(&input);
 
     let mut iterations_cache = Vec::new();
@@ -33,18 +33,28 @@ fn main() {
     iterations_cache.push(map);
 
     let part1 = bfs(&iterations_cache, 1, SOURCE_COORDINATE, TARGET_COORDINATE);
-    let back_to_start = bfs(&iterations_cache, part1, TARGET_COORDINATE, SOURCE_COORDINATE);
-    let part2 = bfs(&iterations_cache, back_to_start, SOURCE_COORDINATE, TARGET_COORDINATE);
+    let back_to_start = bfs(
+        &iterations_cache,
+        part1,
+        TARGET_COORDINATE,
+        SOURCE_COORDINATE,
+    );
+    let part2 = bfs(
+        &iterations_cache,
+        back_to_start,
+        SOURCE_COORDINATE,
+        TARGET_COORDINATE,
+    );
 
     println!("Part 1: {:?}", part1);
     println!("Part 2: {:?}", part2);
 }
 
 fn bfs(
-    cache: &Vec<HashMap<Point, HashSet<CellType>>>,
+    cache: &[HashMap<Point, HashSet<CellType>>],
     starting_minute: usize,
     source: Point,
-    target: Point
+    target: Point,
 ) -> usize {
     let mut seen = HashSet::new();
 
@@ -62,8 +72,9 @@ fn bfs(
             }
             continue;
         } else if !seen.insert((next_minute, current_position))
-                || next_minute >= best_minute
-                || cache.len() <= next_minute {
+            || next_minute >= best_minute
+            || cache.len() <= next_minute
+        {
             continue;
         }
 
@@ -75,12 +86,10 @@ fn bfs(
 
             let out_of_bounds = (next_row, next_col) != SOURCE_COORDINATE
                 && (next_row, next_col) != target
-                && (
-                    next_row < TOP_LIMIT
+                && (next_row < TOP_LIMIT
                     || next_row > BOTTOM_LIMIT
                     || next_col < LEFT_LIMIT
-                    || next_col > RIGHT_LIMIT
-                );
+                    || next_col > RIGHT_LIMIT);
             let next_pos_is_empty = next_map
                 .get(&(next_row, next_col))
                 .map(|entities| entities.is_empty())
@@ -112,7 +121,7 @@ fn parse_input_into_map(input: &[String]) -> HashMap<Point, HashSet<CellType>> {
                 'v' => Some(CellType::Blizzard((1, 0))),
                 '<' => Some(CellType::Blizzard((0, -1))),
                 '^' => Some(CellType::Blizzard((-1, 0))),
-                _ => None
+                _ => None,
             } {
                 let mut entities = HashSet::new();
                 entities.insert(new_cell);
@@ -131,7 +140,7 @@ fn simulate(map: &HashMap<Point, HashSet<CellType>>) -> HashMap<Point, HashSet<C
                 CellType::Wall => {
                     let entry = result.entry((*row, *col)).or_insert_with(HashSet::new);
                     entry.insert(CellType::Wall);
-                },
+                }
                 CellType::Blizzard((drow, dcol)) => {
                     let new_row = {
                         let candidate = row + drow;
@@ -153,8 +162,15 @@ fn simulate(map: &HashMap<Point, HashSet<CellType>>) -> HashMap<Point, HashSet<C
                             candidate
                         }
                     };
-                    let entry = result.entry((new_row, new_col)).or_insert_with(HashSet::new);
-                    assert!(entry.insert(CellType::Blizzard((*drow, *dcol))), "{:?} already had {:?}", (new_row, new_col), (*drow, *dcol));
+                    let entry = result
+                        .entry((new_row, new_col))
+                        .or_insert_with(HashSet::new);
+                    assert!(
+                        entry.insert(CellType::Blizzard((*drow, *dcol))),
+                        "{:?} already had {:?}",
+                        (new_row, new_col),
+                        (*drow, *dcol)
+                    );
                 }
             }
         }

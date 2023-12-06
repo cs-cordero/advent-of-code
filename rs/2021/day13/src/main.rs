@@ -19,7 +19,7 @@ fn main() {
         let points = raw_points
             .lines()
             .map(|line| {
-                let (col, row) = line.split_once(",").unwrap();
+                let (col, row) = line.split_once(',').unwrap();
                 (row.parse::<usize>().unwrap(), col.parse::<usize>().unwrap())
             })
             .collect::<HashSet<_>>();
@@ -28,7 +28,7 @@ fn main() {
             .lines()
             .map(|line| {
                 let line = &line["fold along ".len()..];
-                let (direction, location) = line.split_once("=").unwrap();
+                let (direction, location) = line.split_once('=').unwrap();
                 (
                     match direction {
                         "x" => FoldType::Vertical,

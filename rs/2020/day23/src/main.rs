@@ -24,7 +24,7 @@ fn main() {
     let answer1 = {
         let cups = build_linked_list(input.iter().copied());
 
-        let mut current_cup = Rc::clone(cups.get(input.get(0).unwrap()).unwrap());
+        let mut current_cup = Rc::clone(cups.get(input.first().unwrap()).unwrap());
         for _ in 0..100 {
             current_cup = play(&cups, current_cup, 9);
         }
@@ -42,7 +42,7 @@ fn main() {
     let answer2 = {
         let cups = build_linked_list(input.iter().copied().chain(10..=1000000));
 
-        let mut current_cup = Rc::clone(cups.get(input.get(0).unwrap()).unwrap());
+        let mut current_cup = Rc::clone(cups.get(input.first().unwrap()).unwrap());
         for _ in 0..10000000 {
             current_cup = play(&cups, current_cup, 1000000);
         }
@@ -80,8 +80,8 @@ fn play(
         }
         Rc::clone(nodes.get(&(result as u32)).unwrap())
     };
-    current.borrow_mut().next = Some(Weak::clone(&next3.borrow().next.as_ref().unwrap()));
-    next3.borrow_mut().next = Some(Weak::clone(&target.borrow().next.as_ref().unwrap()));
+    current.borrow_mut().next = Some(Weak::clone(next3.borrow().next.as_ref().unwrap()));
+    next3.borrow_mut().next = Some(Weak::clone(target.borrow().next.as_ref().unwrap()));
     target.borrow_mut().next = Some(Rc::downgrade(&next1));
     current.borrow().get_next()
 }

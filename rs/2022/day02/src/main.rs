@@ -33,7 +33,7 @@ fn main() {
 enum Choice {
     Rock,
     Paper,
-    Scissors
+    Scissors,
 }
 
 impl Choice {
@@ -42,7 +42,7 @@ impl Choice {
             "A" => Result::Ok(Choice::Rock),
             "B" => Result::Ok(Choice::Paper),
             "C" => Result::Ok(Choice::Scissors),
-            _ => Result::Err(String::from("Could not parse string into Choice"))
+            _ => Result::Err(String::from("Could not parse string into Choice")),
         }
     }
 
@@ -51,7 +51,7 @@ impl Choice {
             "X" => Result::Ok(Choice::Rock),
             "Y" => Result::Ok(Choice::Paper),
             "Z" => Result::Ok(Choice::Scissors),
-            _ => Result::Err(String::from("Could not parse string into Choice"))
+            _ => Result::Err(String::from("Could not parse string into Choice")),
         }
     }
 
@@ -61,20 +61,20 @@ impl Choice {
                 "X" => Result::Ok(Choice::Scissors),
                 "Y" => Result::Ok(Choice::Rock),
                 "Z" => Result::Ok(Choice::Paper),
-                _ => Result::Err(String::from("Could not parse string into Choice"))
-            }
+                _ => Result::Err(String::from("Could not parse string into Choice")),
+            },
             Choice::Paper => match s {
                 "X" => Result::Ok(Choice::Rock),
                 "Y" => Result::Ok(Choice::Paper),
                 "Z" => Result::Ok(Choice::Scissors),
-                _ => Result::Err(String::from("Could not parse string into Choice"))
-            }
+                _ => Result::Err(String::from("Could not parse string into Choice")),
+            },
             Choice::Scissors => match s {
                 "X" => Result::Ok(Choice::Paper),
                 "Y" => Result::Ok(Choice::Scissors),
                 "Z" => Result::Ok(Choice::Rock),
-                _ => Result::Err(String::from("Could not parse string into Choice"))
-            }
+                _ => Result::Err(String::from("Could not parse string into Choice")),
+            },
         }
     }
 }
@@ -90,18 +90,18 @@ fn get_score(opponent: &Choice, player: &Choice) -> i32 {
         Choice::Rock => match player {
             Choice::Rock => 3,
             Choice::Paper => 6,
-            Choice::Scissors => 0
-        }
+            Choice::Scissors => 0,
+        },
         Choice::Paper => match player {
             Choice::Rock => 0,
             Choice::Paper => 3,
-            Choice::Scissors => 6
-        }
+            Choice::Scissors => 6,
+        },
         Choice::Scissors => match player {
             Choice::Rock => 6,
             Choice::Paper => 0,
-            Choice::Scissors => 3
-        }
+            Choice::Scissors => 3,
+        },
     };
 
     score_for_choice + score_for_result

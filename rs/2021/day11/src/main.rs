@@ -1,5 +1,6 @@
-use advent_of_code::*;
 use std::collections::{HashSet, VecDeque};
+
+use advent_of_code::*;
 
 fn main() {
     let mut data = read_input_as_lines("2021/day11/src/input.txt")
@@ -11,7 +12,7 @@ fn main() {
         })
         .collect::<Vec<_>>();
     let row_count = data.len();
-    let col_count = data.get(0).unwrap().len();
+    let col_count = data.first().unwrap().len();
 
     let mut answer1 = 0;
 

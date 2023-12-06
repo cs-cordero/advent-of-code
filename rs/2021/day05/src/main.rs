@@ -9,8 +9,8 @@ fn main() {
         .into_iter()
         .map(|line| {
             let (begin, end) = line.split_once(" -> ").unwrap();
-            let (x1, y1) = begin.split_once(",").unwrap();
-            let (x2, y2) = end.split_once(",").unwrap();
+            let (x1, y1) = begin.split_once(',').unwrap();
+            let (x2, y2) = end.split_once(',').unwrap();
             let x1 = x1.parse::<i32>().unwrap();
             let y1 = y1.parse::<i32>().unwrap();
             let x2 = x2.parse::<i32>().unwrap();
@@ -66,8 +66,5 @@ fn get_overlap_count(data: &[(Point, Point)]) -> usize {
         draw_line(&mut freq, *begin, *end);
     }
 
-    freq.values()
-        .into_iter()
-        .filter(|count| **count > 1)
-        .count()
+    freq.values().filter(|count| **count > 1).count()
 }

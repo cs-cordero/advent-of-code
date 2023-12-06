@@ -1,8 +1,8 @@
 extern crate core;
 
+use advent_of_code::*;
 use std::collections::HashMap;
 use std::ops::{Add, Div, Mul, Sub};
-use advent_of_code::*;
 
 #[derive(Clone, Debug)]
 enum Operation {
@@ -23,7 +23,11 @@ fn main() {
                 (monkey, Operation::Value(value))
             } else {
                 let mut spec = spec.split(' ');
-                let (lhs, op, rhs) = (spec.next().unwrap(), spec.next().unwrap(), spec.next().unwrap());
+                let (lhs, op, rhs) = (
+                    spec.next().unwrap(),
+                    spec.next().unwrap(),
+                    spec.next().unwrap(),
+                );
                 let lhs = String::from(lhs);
                 let rhs = String::from(rhs);
                 (
@@ -33,8 +37,8 @@ fn main() {
                         "-" => Operation::Subtract(lhs, rhs),
                         "*" => Operation::Multiply(lhs, rhs),
                         "/" => Operation::Divide(lhs, rhs),
-                        _ => panic!()
-                    }
+                        _ => panic!(),
+                    },
                 )
             }
         })
@@ -54,7 +58,11 @@ fn main() {
             .iter()
             .map(|s| (*s).to_string())
             .collect::<Vec<_>>();
-        let non_humans = data.keys().filter(|monkey| !human_chain.contains(monkey)).cloned().collect::<Vec<_>>();
+        let non_humans = data
+            .keys()
+            .filter(|monkey| !human_chain.contains(monkey))
+            .cloned()
+            .collect::<Vec<_>>();
 
         for non_human in non_humans {
             dfs(&mut data, &non_human);
@@ -73,7 +81,7 @@ fn main() {
                     } else {
                         panic!();
                     }
-                },
+                }
                 Operation::Subtract(lhs, rhs) => {
                     if human_chain.contains(lhs) {
                         if let Some(Operation::Value(value)) = data.get(rhs) {
@@ -86,8 +94,7 @@ fn main() {
                     } else {
                         panic!();
                     };
-
-                },
+                }
                 Operation::Multiply(lhs, rhs) => {
                     let other = if human_chain.contains(lhs) { rhs } else { lhs };
                     if let Some(Operation::Value(value)) = data.get(other) {
@@ -96,16 +103,20 @@ fn main() {
                     } else {
                         panic!();
                     }
-                },
+                }
                 Operation::Divide(lhs, rhs) => {
-                    let other = if human_chain.contains(lhs) { rhs } else { panic!() };
+                    let other = if human_chain.contains(lhs) {
+                        rhs
+                    } else {
+                        panic!()
+                    };
                     if let Some(Operation::Value(value)) = data.get(other) {
                         coefficient /= *value as f64;
                         constant /= *value as f64;
                     } else {
                         panic!();
                     }
-                },
+                }
             };
         }
 
@@ -114,7 +125,11 @@ fn main() {
         } else {
             panic!();
         };
-        let other = if human_chain.contains(root_lhs) { root_rhs } else { root_lhs };
+        let other = if human_chain.contains(root_lhs) {
+            root_rhs
+        } else {
+            root_lhs
+        };
 
         if let Some(Operation::Value(value)) = data.get(other) {
             ((*value as f64 - constant) / coefficient).abs() as i64
@@ -132,18 +147,10 @@ fn dfs(graph: &mut HashMap<String, Operation>, current: &str) -> i64 {
 
     let (func, lhs, rhs): (fn(i64, i64) -> i64, String, String) = match operation {
         Operation::Value(value) => return *value,
-        Operation::Add(lhs, rhs) => {
-            (i64::add, lhs.to_owned(), rhs.to_owned())
-        }
-        Operation::Subtract(lhs, rhs) => {
-            (i64::sub, lhs.to_owned(), rhs.to_owned())
-        }
-        Operation::Multiply(lhs, rhs) => {
-            (i64::mul, lhs.to_owned(), rhs.to_owned())
-        }
-        Operation::Divide(lhs, rhs) => {
-            (i64::div, lhs.to_owned(), rhs.to_owned())
-        }
+        Operation::Add(lhs, rhs) => (i64::add, lhs.to_owned(), rhs.to_owned()),
+        Operation::Subtract(lhs, rhs) => (i64::sub, lhs.to_owned(), rhs.to_owned()),
+        Operation::Multiply(lhs, rhs) => (i64::mul, lhs.to_owned(), rhs.to_owned()),
+        Operation::Divide(lhs, rhs) => (i64::div, lhs.to_owned(), rhs.to_owned()),
     };
 
     let lhs = dfs(graph, &lhs);
@@ -154,7 +161,11 @@ fn dfs(graph: &mut HashMap<String, Operation>, current: &str) -> i64 {
     result
 }
 
-fn in_humn_chain<'a>(graph: &'a HashMap<String, Operation>, current: Vec<&'a str>, monkey: &'a str) -> Option<Vec<&'a str>> {
+fn in_humn_chain<'a>(
+    graph: &'a HashMap<String, Operation>,
+    current: Vec<&'a str>,
+    monkey: &'a str,
+) -> Option<Vec<&'a str>> {
     if monkey == "humn" {
         return Some(current);
     }

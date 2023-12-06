@@ -1,6 +1,7 @@
 extern crate core;
 
 use std::collections::VecDeque;
+
 use advent_of_code::*;
 
 fn main() {
@@ -17,13 +18,19 @@ fn main() {
         }
 
         monkeys.sort_by_key(|monkey| monkey.inspections);
-        monkeys.iter().rev().take(2).map(|monkey| monkey.inspections).product::<u64>()
+        monkeys
+            .iter()
+            .rev()
+            .take(2)
+            .map(|monkey| monkey.inspections)
+            .product::<u64>()
     };
 
     let solution2 = {
         let mut monkeys = monkeys.to_vec();
 
-        let divisor = monkeys.iter()
+        let divisor = monkeys
+            .iter()
             .map(|monkey| monkey.test.divisible_by)
             .product::<u64>();
 
@@ -34,7 +41,12 @@ fn main() {
         }
 
         monkeys.sort_by_key(|monkey| monkey.inspections);
-        monkeys.iter().rev().take(2).map(|monkey| monkey.inspections).product::<u64>()
+        monkeys
+            .iter()
+            .rev()
+            .take(2)
+            .map(|monkey| monkey.inspections)
+            .product::<u64>()
     };
 
     println!("Part 1: {:?}", solution1);
@@ -45,14 +57,14 @@ fn main() {
 enum Operation {
     Add(u64),
     Mul(u64),
-    Squared
+    Squared,
 }
 
 #[derive(Clone)]
 struct Test {
     divisible_by: u64,
     on_success: usize,
-    on_failure: usize
+    on_failure: usize,
 }
 
 #[derive(Clone)]
@@ -60,7 +72,7 @@ struct Monkey {
     items: VecDeque<u64>,
     operation: Operation,
     test: Test,
-    inspections: u64
+    inspections: u64,
 }
 
 impl Monkey {
@@ -71,8 +83,7 @@ impl Monkey {
         let items = {
             let line = lines.next().unwrap();
             let (_, data) = line.split_once("items: ").unwrap();
-            data
-                .split(", ")
+            data.split(", ")
                 .map(|value| value.parse::<u64>().unwrap())
                 .collect::<VecDeque<_>>()
         };
@@ -110,21 +121,21 @@ impl Monkey {
         let test = Test {
             divisible_by: test_value,
             on_success: success_value,
-            on_failure: fail_value
+            on_failure: fail_value,
         };
 
         Monkey {
             items,
             operation,
             test,
-            inspections: 0
+            inspections: 0,
         }
     }
 }
 
-fn play_round<F: Fn(u64) -> u64>(monkeys: &mut Vec<Monkey>, adjustment: F) {
+fn play_round<F: Fn(u64) -> u64>(monkeys: &mut [Monkey], adjustment: F) {
     for i in 0..monkeys.len() {
-        let mut current_monkey = monkeys.get_mut(i).unwrap();
+        let current_monkey = monkeys.get_mut(i).unwrap();
 
         let mut temp = Vec::new();
 
@@ -134,7 +145,7 @@ fn play_round<F: Fn(u64) -> u64>(monkeys: &mut Vec<Monkey>, adjustment: F) {
             let new = match current_monkey.operation {
                 Operation::Add(value) => item + value,
                 Operation::Mul(value) => item * value,
-                Operation::Squared => item * item
+                Operation::Squared => item * item,
             };
 
             let new = adjustment(new);

@@ -7,7 +7,7 @@ struct Number {
     value: u32,
     col_start: usize,
     col_end: usize,
-    row: usize
+    row: usize,
 }
 
 fn main() {
@@ -35,7 +35,7 @@ fn main() {
                         value: number,
                         col_start,
                         col_end,
-                        row
+                        row,
                     };
                     numbers.insert(new_number);
                 }
@@ -55,7 +55,7 @@ fn main() {
                 value: number,
                 col_start,
                 col_end,
-                row
+                row,
             };
             numbers.insert(new_number);
         }
@@ -66,28 +66,29 @@ fn main() {
 
         for (row, col, _) in symbols.iter().copied() {
             let surrounding = [
-                    // previous row
-                    row.checked_sub(1).zip(col.checked_sub(1)),
-                    row.checked_sub(1).map(|value| (value, col)),
-                    row.checked_sub(1).map(|value| (value, col + 1)),
-
-                    // current row
-                    col.checked_sub(1).map(|value| (row, value)),
-                    Some((row, col + 1)),
-
-                    // next row
-                    col.checked_sub(1).map(|value| (row + 1, value)),
-                    Some((row + 1, col)),
-                    Some((row + 1, col + 1)),
-                ]
-                .into_iter()
-                .filter_map(|v| v)
-                .collect::<Vec<_>>();
+                // previous row
+                row.checked_sub(1).zip(col.checked_sub(1)),
+                row.checked_sub(1).map(|value| (value, col)),
+                row.checked_sub(1).map(|value| (value, col + 1)),
+                // current row
+                col.checked_sub(1).map(|value| (row, value)),
+                Some((row, col + 1)),
+                // next row
+                col.checked_sub(1).map(|value| (row + 1, value)),
+                Some((row + 1, col)),
+                Some((row + 1, col + 1)),
+            ]
+            .into_iter()
+            .flatten()
+            .collect::<Vec<_>>();
 
             for (other_row, other_col) in surrounding {
-                let part_numbers = non_part_numbers.iter()
+                let part_numbers = non_part_numbers
+                    .iter()
                     .filter(|number| {
-                        number.row == other_row && number.col_start <= other_col && other_col <= number.col_end
+                        number.row == other_row
+                            && number.col_start <= other_col
+                            && other_col <= number.col_end
                     })
                     .copied()
                     .collect::<Vec<_>>();
@@ -98,41 +99,40 @@ fn main() {
             }
         }
 
-        numbers.difference(&non_part_numbers)
-            .into_iter()
+        numbers
+            .difference(&non_part_numbers)
             .map(|number| number.value)
             .sum::<u32>()
     };
 
     let part2 = {
-        symbols.iter()
+        symbols
+            .iter()
             .filter(|(_, _, char)| *char == '*')
             .filter_map(|(row, col, _)| {
                 let surrounding = [
-                        // previous row
-                        row.checked_sub(1).zip(col.checked_sub(1)),
-                        row.checked_sub(1).map(|value| (value, *col)),
-                        row.checked_sub(1).map(|value| (value, col + 1)),
-
-                        // current row
-                        col.checked_sub(1).map(|value| (*row, value)),
-                        Some((*row, col + 1)),
-
-                        // next row
-                        col.checked_sub(1).map(|value| (row + 1, value)),
-                        Some((row + 1, *col)),
-                        Some((row + 1, col + 1)),
-                    ]
-                    .into_iter()
-                    .filter_map(|v| {
-                        v.and_then(|(row, col)| {
-                            numbers.iter().find(|number| {
-                                number.row == row && number.col_start <= col && col <= number.col_end
-                            })
+                    // previous row
+                    row.checked_sub(1).zip(col.checked_sub(1)),
+                    row.checked_sub(1).map(|value| (value, *col)),
+                    row.checked_sub(1).map(|value| (value, col + 1)),
+                    // current row
+                    col.checked_sub(1).map(|value| (*row, value)),
+                    Some((*row, col + 1)),
+                    // next row
+                    col.checked_sub(1).map(|value| (row + 1, value)),
+                    Some((row + 1, *col)),
+                    Some((row + 1, col + 1)),
+                ]
+                .into_iter()
+                .filter_map(|v| {
+                    v.and_then(|(row, col)| {
+                        numbers.iter().find(|number| {
+                            number.row == row && number.col_start <= col && col <= number.col_end
                         })
                     })
-                    .copied()
-                    .collect::<HashSet<_>>();
+                })
+                .copied()
+                .collect::<HashSet<_>>();
 
                 if surrounding.len() != 2 {
                     None

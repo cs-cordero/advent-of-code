@@ -73,7 +73,7 @@ fn main() {
             let parsed_ranges = ranges
                 .split(" or ")
                 .map(|raw_split| {
-                    let (low, high) = raw_split.split_once("-").unwrap();
+                    let (low, high) = raw_split.split_once('-').unwrap();
                     low.parse::<u32>().unwrap()..=high.parse::<u32>().unwrap()
                 })
                 .collect::<Vec<_>>();

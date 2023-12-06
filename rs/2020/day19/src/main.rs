@@ -76,7 +76,7 @@ fn recursive_rule_parsing<'a>(
             .collect::<Vec<_>>();
 
         for i in indexes.iter() {
-            if !visiting.contains(&i) {
+            if !visiting.contains(i) {
                 result = recursive_rule_parsing(result, visiting, raw_rules, *i);
                 visiting.insert(*i);
             }
@@ -105,7 +105,7 @@ fn combine(
     let possible_rules_at_i = raw_rules.get(&ordered_rules[i]).unwrap();
     for possible_rule in possible_rules_at_i {
         let mut s = s.clone();
-        s.push_str(&possible_rule);
+        s.push_str(possible_rule);
         result.extend(combine(s, i + 1, ordered_rules, raw_rules));
     }
 

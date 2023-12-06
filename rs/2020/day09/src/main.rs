@@ -1,6 +1,7 @@
-use advent_of_code::*;
 use std::cmp::Ordering;
 use std::collections::{BTreeMap, VecDeque};
+
+use advent_of_code::*;
 
 fn main() {
     let input = read_input_as_lines("2020/day09/src/input.txt")
@@ -28,7 +29,7 @@ fn part_1(values: &[u64]) -> u64 {
     for value in values.iter().copied().skip(25) {
         let window_as_slice = window
             .iter()
-            .flat_map(|(key, count)| (0..*count).into_iter().map(move |_| *key))
+            .flat_map(|(key, count)| (0..*count).map(move |_| *key))
             .collect::<Vec<_>>();
 
         if !is_valid(&window_as_slice, value) {

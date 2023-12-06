@@ -4,7 +4,7 @@ fn main() {
     let data = read_input_as_lines("2021/day02/src/input.txt")
         .into_iter()
         .map(|line| {
-            let (a, b) = line.split_once(" ").unwrap();
+            let (a, b) = line.split_once(' ').unwrap();
             (a.to_owned(), b.parse::<i32>().unwrap())
         })
         .collect::<Vec<_>>();

@@ -1,16 +1,16 @@
 extern crate core;
 
+use advent_of_code::*;
 use std::cmp::{max, min, Ordering};
 use std::collections::HashMap;
 use std::str::FromStr;
-use advent_of_code::*;
 
 #[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
 enum Resource {
     Ore,
     Clay,
     Obsidian,
-    Geode
+    Geode,
 }
 
 #[derive(Debug)]
@@ -47,15 +47,13 @@ impl FromStr for Blueprint {
         let raw_obsidian = costs.next().unwrap();
         let raw_geode = costs.next().unwrap();
 
-        Ok(
-            Blueprint {
-                id,
-                bot_cost_ore: process_raw_str(raw_ore),
-                bot_cost_clay: process_raw_str(raw_clay),
-                bot_cost_obsidian: process_raw_str(raw_obsidian),
-                bot_cost_geode: process_raw_str(raw_geode)
-            }
-        )
+        Ok(Blueprint {
+            id,
+            bot_cost_ore: process_raw_str(raw_ore),
+            bot_cost_clay: process_raw_str(raw_clay),
+            bot_cost_obsidian: process_raw_str(raw_obsidian),
+            bot_cost_geode: process_raw_str(raw_geode),
+        })
     }
 }
 
@@ -85,7 +83,14 @@ fn process_raw_str(s: &str) -> HashMap<Resource, u32> {
 
 fn play(blueprint: &Blueprint, max_minutes: u32) -> u32 {
     let mut best = 0;
-    play_helper(&mut best, blueprint, max_minutes, (1, 0, 0, 0), (0, 0, 0, 0), 0)
+    play_helper(
+        &mut best,
+        blueprint,
+        max_minutes,
+        (1, 0, 0, 0),
+        (0, 0, 0, 0),
+        0,
+    )
 }
 
 fn play_helper(
@@ -94,9 +99,10 @@ fn play_helper(
     max_minutes: u32,
     robot_counts: (u32, u32, u32, u32),
     resource_counts: (u32, u32, u32, u32),
-    current_minute: u32
+    current_minute: u32,
 ) -> u32 {
-    let (max_ore_bots, max_clay_bots, max_obsidian_bots, max_geode_bots) = get_max_bot_counts(blueprint);
+    let (max_ore_bots, max_clay_bots, max_obsidian_bots, max_geode_bots) =
+        get_max_bot_counts(blueprint);
 
     match current_minute.cmp(&max_minutes) {
         Ordering::Equal => {
@@ -105,12 +111,18 @@ fn play_helper(
                 *best = geode_count;
             }
             return *best;
-        },
+        }
         Ordering::Greater => panic!(),
         Ordering::Less => {}
     }
 
-    if !rudimentary_filter(best, current_minute, max_minutes, robot_counts.3, resource_counts.3) {
+    if !rudimentary_filter(
+        best,
+        current_minute,
+        max_minutes,
+        robot_counts.3,
+        resource_counts.3,
+    ) {
         return *best;
     }
 
@@ -118,13 +130,18 @@ fn play_helper(
     let (ore, clay, obsidian, geode) = resource_counts;
 
     let mut max_geodes = 0;
-    for desired_bot_type in [Resource::Geode, Resource::Obsidian, Resource::Clay, Resource::Ore] {
+    for desired_bot_type in [
+        Resource::Geode,
+        Resource::Obsidian,
+        Resource::Clay,
+        Resource::Ore,
+    ] {
         // if we've hit the max bots needed for this desired bot type.
         if match desired_bot_type {
             Resource::Ore => robot_ore >= max_ore_bots,
             Resource::Clay => robot_clay >= max_clay_bots,
             Resource::Obsidian => robot_obsidian >= max_obsidian_bots,
-            Resource::Geode => robot_geode >= max_geode_bots
+            Resource::Geode => robot_geode >= max_geode_bots,
         } {
             continue;
         }
@@ -186,7 +203,12 @@ fn play_helper(
                 }
             }
 
-            let next_robot_counts = (next_robot_ore, next_robot_clay, next_robot_obsidian, next_robot_geode);
+            let next_robot_counts = (
+                next_robot_ore,
+                next_robot_clay,
+                next_robot_obsidian,
+                next_robot_geode,
+            );
             let next_counts = (next_ore, next_clay, next_obsidian, next_geode);
 
             max_geodes = max(
@@ -197,8 +219,8 @@ fn play_helper(
                     max_minutes,
                     next_robot_counts,
                     next_counts,
-                    next_minutes
-                )
+                    next_minutes,
+                ),
             );
         }
     }
@@ -210,7 +232,7 @@ fn rudimentary_filter(
     current_minutes: u32,
     max_minutes: u32,
     geode_robot_count: u32,
-    geode_count: u32
+    geode_count: u32,
 ) -> bool {
     let mut count = geode_count;
     let mut robots = geode_robot_count;
@@ -225,7 +247,7 @@ fn rudimentary_filter(
 fn minutes_to_generate_robot(
     cost: &HashMap<Resource, u32>,
     resources: (u32, u32, u32, u32),
-    robots: (u32, u32, u32, u32)
+    robots: (u32, u32, u32, u32),
 ) -> Option<u32> {
     let mut result = -1;
 
@@ -262,17 +284,17 @@ fn get_max_bot_counts(blueprint: &Blueprint) -> (u32, u32, u32, u32) {
     let mut clay = 0;
     let mut obsidian = 0;
 
-    blueprint.bot_cost_ore.iter()
+    blueprint
+        .bot_cost_ore
+        .iter()
         .chain(&blueprint.bot_cost_clay)
         .chain(&blueprint.bot_cost_obsidian)
         .chain(&blueprint.bot_cost_geode)
-        .for_each(|(resource, &count)| {
-            match resource {
-                Resource::Ore => ore = max(ore, count),
-                Resource::Clay => clay = max(clay, count),
-                Resource::Obsidian => obsidian = max(obsidian, count),
-                _ => {}
-            }
+        .for_each(|(resource, &count)| match resource {
+            Resource::Ore => ore = max(ore, count),
+            Resource::Clay => clay = max(clay, count),
+            Resource::Obsidian => obsidian = max(obsidian, count),
+            _ => {}
         });
 
     (ore, clay, obsidian, u32::MAX)
@@ -293,7 +315,8 @@ fn main() {
         })
         .sum::<u32>();
 
-    let solution2 = input.iter()
+    let solution2 = input
+        .iter()
         .take(3)
         .map(|blueprint| play(blueprint, 32))
         .product::<u32>();

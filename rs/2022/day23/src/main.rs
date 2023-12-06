@@ -9,7 +9,7 @@ type Point = (isize, isize);
 type Predicate = fn(&HashSet<Point>, Point) -> Option<Point>;
 
 fn main() {
-    let input  = read_input_as_lines("2022/day23/src/input.txt");
+    let input = read_input_as_lines("2022/day23/src/input.txt");
 
     let part1 = {
         let mut elf_locations = parse_into_elf_locations(&input);
@@ -33,8 +33,6 @@ fn main() {
             min_col = min(min_col, *col);
             max_col = max(max_col, *col);
         }
-
-
 
         let total_size = (max_row - min_row + 1) * (max_col - min_col + 1);
         total_size - elf_locations.len() as isize
@@ -123,7 +121,12 @@ fn play_round(elves: &HashSet<Point>, predicates: &VecDeque<Predicate>) -> HashS
             assert!(new_elf_locations.insert(new_position));
         } else {
             for old_position in &old_positions {
-                assert!(new_elf_locations.insert(*old_position), "Failed: new_position {:?}, old_positions: {:?}", old_position, old_positions);
+                assert!(
+                    new_elf_locations.insert(*old_position),
+                    "Failed: new_position {:?}, old_positions: {:?}",
+                    old_position,
+                    old_positions
+                );
             }
         }
     }
@@ -180,15 +183,20 @@ fn check_east(elves: &HashSet<Point>, (row, col): Point) -> Option<Point> {
 }
 
 static CHECKS_ALL: [Point; 8] = [
-    (-1, -1), (-1, 0), (-1, 1),
-    ( 0, -1),          ( 0, 1),
-    ( 1, -1), ( 1, 0), ( 1, 1),
+    (-1, -1),
+    (-1, 0),
+    (-1, 1),
+    (0, -1),
+    (0, 1),
+    (1, -1),
+    (1, 0),
+    (1, 1),
 ];
 fn check_if_isolated(elves: &HashSet<Point>, (row, col): Point) -> bool {
     for &(delta_row, delta_col) in CHECKS_ALL.iter() {
         let test_position = ((row + delta_row), (col + delta_col));
         if elves.contains(&test_position) {
-            return false
+            return false;
         }
     }
 

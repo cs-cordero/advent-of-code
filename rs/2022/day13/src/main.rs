@@ -5,7 +5,7 @@ use advent_of_code::*;
 #[derive(Debug)]
 enum Element {
     Value(u32),
-    List(Vec<Element>)
+    List(Vec<Element>),
 }
 
 fn main() {
@@ -57,7 +57,12 @@ fn parse(s: &mut impl Iterator<Item = char>) -> Element {
             temp_digit_store.push(char);
             continue;
         } else if !temp_digit_store.is_empty() {
-            let number = temp_digit_store.iter().copied().collect::<String>().parse::<u32>().unwrap();
+            let number = temp_digit_store
+                .iter()
+                .copied()
+                .collect::<String>()
+                .parse::<u32>()
+                .unwrap();
             temp_digit_store.clear();
 
             list.push(Element::Value(number));
@@ -67,12 +72,12 @@ fn parse(s: &mut impl Iterator<Item = char>) -> Element {
             '[' => {
                 let inner_element = parse(s);
                 list.push(inner_element);
-            },
+            }
             ']' => {
                 break;
-            },
+            }
             ',' => continue,
-            _ => panic!("bad char:  {}", char)
+            _ => panic!("bad char:  {}", char),
         }
     }
 

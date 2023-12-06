@@ -1,23 +1,24 @@
-use std::cmp::min;
 use advent_of_code::*;
+use std::cmp::min;
 
 fn main() {
     let data = read_input_as_lines("2023/day01/src/input.txt");
 
     let part1 = get_calibration_value(&data);
     let part2 = get_calibration_value(
-        &data.iter()
+        &data
+            .iter()
             .map(|line| {
                 let mut new_line = Vec::<char>::new();
                 let chars = line.chars().collect::<Vec<char>>();
                 for (i, c) in line.chars().enumerate() {
-                    if c.is_digit(10) {
+                    if c.is_ascii_digit() {
                         new_line.push(c)
                     } else {
                         let l = chars.len();
-                        let three_char = &chars[i..min(l, i+3)].iter().collect::<String>();
-                        let four_char = &chars[i..min(l, i+4)].iter().collect::<String>();
-                        let five_char = &chars[i..min(l, i+5)].iter().collect::<String>();
+                        let three_char = &chars[i..min(l, i + 3)].iter().collect::<String>();
+                        let four_char = &chars[i..min(l, i + 4)].iter().collect::<String>();
+                        let five_char = &chars[i..min(l, i + 5)].iter().collect::<String>();
                         if three_char == "one" {
                             new_line.push('1');
                         } else if three_char == "two" {
@@ -41,7 +42,7 @@ fn main() {
                 }
                 new_line.iter().collect()
             })
-            .collect::<Vec<_>>()
+            .collect::<Vec<_>>(),
     );
 
     println!("Part 1: {:?}", part1);
@@ -49,12 +50,13 @@ fn main() {
 }
 
 fn get_calibration_value(values: &[String]) -> u32 {
-    values.iter()
+    values
+        .iter()
         .map(|value| {
             let mut left = Option::<u32>::None;
             let mut right = Option::<u32>::None;
             for char in value.chars() {
-                if char.is_digit(10) {
+                if char.is_ascii_digit() {
                     if left.is_none() {
                         left = char.to_digit(10);
                     }

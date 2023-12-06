@@ -97,11 +97,11 @@ fn main() {
     let instructions = read_input_as_lines("2021/day24/src/input.txt")
         .into_iter()
         .map(|line| {
-            let (operation, arguments) = line.split_once(" ").unwrap();
+            let (operation, arguments) = line.split_once(' ').unwrap();
             match operation {
                 "inp" => MonadOperation::Inp(arguments.to_string()),
                 _ => {
-                    let (lhs, rhs) = arguments.split_once(" ").unwrap();
+                    let (lhs, rhs) = arguments.split_once(' ').unwrap();
                     let lhs = lhs.to_string();
                     let rhs = rhs.to_string();
                     match operation {

@@ -1,5 +1,5 @@
-use std::iter::FromIterator;
 use advent_of_code::*;
+use std::iter::FromIterator;
 
 fn main() {
     let input = read_input_as_string("2022/day05/src/input.txt");
@@ -79,8 +79,8 @@ fn part2(mut stacks: Vec<Vec<char>>, moves: &[(usize, usize, usize)]) -> String 
             temp.push(moved_char);
         }
 
-        while !temp.is_empty() {
-            stacks.get_mut(*target_index).unwrap().push(temp.pop().unwrap());
+        while let Some(element) = temp.pop() {
+            stacks.get_mut(*target_index).unwrap().push(element);
         }
     }
 

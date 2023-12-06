@@ -5,7 +5,7 @@ fn main() {
     let instructions = read_input_as_lines("2020/day08/src/input.txt")
         .into_iter()
         .map(|line| {
-            let (command, value) = line.split_once(" ").unwrap();
+            let (command, value) = line.split_once(' ').unwrap();
             (
                 command.to_owned(),
                 value

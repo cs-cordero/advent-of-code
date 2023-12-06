@@ -10,7 +10,7 @@ fn main() {
         .split("\n\n")
         .map(|tile| {
             let mut tile_iter = tile.lines();
-            let (_, id) = tile_iter.next().unwrap().rsplit_once(" ").unwrap();
+            let (_, id) = tile_iter.next().unwrap().rsplit_once(' ').unwrap();
             let tile_id = id[..id.len() - 1].parse::<u32>().unwrap();
             let tile = tile_iter
                 .map(|line| line.chars().collect::<Vec<_>>())
@@ -133,7 +133,7 @@ fn build_image(jigsaw: &[Vec<(u32, Image)>]) -> Image {
                 .map(|(_, image)| {
                     image[1..image.len() - 1]
                         .iter()
-                        .map(|row| row[1..row.len() - 1].iter().copied().collect::<Vec<_>>())
+                        .map(|row| row[1..row.len() - 1].to_vec())
                         .collect::<Vec<_>>()
                 })
                 .collect::<Vec<_>>()
@@ -144,8 +144,8 @@ fn build_image(jigsaw: &[Vec<(u32, Image)>]) -> Image {
 
 fn combine_image_row(row: Vec<Image>) -> Image {
     let image_count = row.len();
-    let inner_row_count = row.get(0).unwrap().len();
-    let inner_col_count = row.get(0).unwrap().get(0).unwrap().len();
+    let inner_row_count = row.first().unwrap().len();
+    let inner_col_count = row.first().unwrap().first().unwrap().len();
 
     (0..inner_row_count)
         .map(|i| {
@@ -188,8 +188,8 @@ fn find_monster(image: &[Vec<char>], row: usize, col: usize) -> bool {
                 _ => usize::checked_add,
             };
 
-            operator(row, offset_row.abs() as usize)
-                .zip(col.checked_add(offset_col.abs() as usize))
+            operator(row, offset_row.unsigned_abs() as usize)
+                .zip(col.checked_add(offset_col.unsigned_abs() as usize))
                 .and_then(|(r, c)| image.get(r).and_then(|r| r.get(c)))
                 .filter(|&&character| character == '#')
                 .is_some()
@@ -220,7 +220,7 @@ fn find_orientation_matching_condition<F: FnMut(&Image) -> bool>(
 #[inline]
 fn transpose_image(image: Image) -> Image {
     let row_size = image.len();
-    let col_size = image.get(0).unwrap().len();
+    let col_size = image.first().unwrap().len();
     (0..col_size)
         .map(|c| (0..row_size).map(|r| image[r][c]).collect::<Vec<_>>())
         .collect::<Vec<_>>()

@@ -10,13 +10,13 @@ fn main() {
             let (_, line) = line.split_once(": ").unwrap();
             let (winning, play) = line.split_once(" | ").unwrap();
             let winning = winning
-                .split(" ")
+                .split(' ')
                 .filter(|v| !v.is_empty())
                 .map(|num| num.parse::<u32>().unwrap())
                 .collect::<HashSet<_>>();
 
             let play = play
-                .split(" ")
+                .split(' ')
                 .filter(|v| !v.is_empty())
                 .map(|num| num.parse::<u32>().unwrap())
                 .collect::<HashSet<_>>();
@@ -38,13 +38,8 @@ fn main() {
         .sum::<u32>();
 
     let part2 = {
-        let mut card_counts = {
-            let mut result = Vec::<u32>::with_capacity(data.len());
-            for _ in 0..data.len() {
-                result.push(1);
-            }
-            result
-        };
+        let mut card_counts = Vec::new();
+        card_counts.resize(data.len(), 1);
 
         for (i, (winning, played)) in data.iter().enumerate() {
             let match_count = winning.intersection(played).count();

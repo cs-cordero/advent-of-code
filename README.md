@@ -34,7 +34,7 @@ Day 03: [Gear Ratios](http://adventofcode.com/2023/day/3) | ⭐⭐
 Day 04: [Scratch Cards](http://adventofcode.com/2023/day/4) | ⭐⭐
 Day 05: [If You Give A Seed A Fertilizer](http://adventofcode.com/2023/day/5) | ⭐⭐
 Day 06: [Wait For It](http://adventofcode.com/2023/day/6) | ⭐⭐
-Day 07: [???](http://adventofcode.com/2023/day/7) |
+Day 07: [Camel Cards](http://adventofcode.com/2023/day/7) | ⭐⭐
 Day 08: [???](http://adventofcode.com/2023/day/8) |
 Day 09: [???](http://adventofcode.com/2023/day/9) |
 Day 10: [???](http://adventofcode.com/2023/day/10) |

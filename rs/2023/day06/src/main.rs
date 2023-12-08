@@ -4,7 +4,7 @@ fn main() {
     let part1: u32 = {
         let races = {
             let raw = read_input_as_string("2023/day06/src/input.txt");
-            let (times, distances) = raw.split_once("\n").unwrap();
+            let (times, distances) = raw.split_once('\n').unwrap();
 
             times
                 .split_ascii_whitespace()
@@ -46,7 +46,7 @@ fn main() {
 
     let part2 = {
         let raw = read_input_as_string("2023/day06/src/input.txt");
-        let (times, distances) = raw.split_once("\n").unwrap();
+        let (times, distances) = raw.split_once('\n').unwrap();
 
         let time = times
             .split_ascii_whitespace()

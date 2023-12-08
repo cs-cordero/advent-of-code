@@ -35,7 +35,7 @@ Day 04: [Scratch Cards](http://adventofcode.com/2023/day/4) | ⭐⭐
 Day 05: [If You Give A Seed A Fertilizer](http://adventofcode.com/2023/day/5) | ⭐⭐
 Day 06: [Wait For It](http://adventofcode.com/2023/day/6) | ⭐⭐
 Day 07: [Camel Cards](http://adventofcode.com/2023/day/7) | ⭐⭐
-Day 08: [???](http://adventofcode.com/2023/day/8) |
+Day 08: [Haunted Wasteland](http://adventofcode.com/2023/day/8) | ⭐⭐
 Day 09: [???](http://adventofcode.com/2023/day/9) |
 Day 10: [???](http://adventofcode.com/2023/day/10) |
 Day 11: [???](http://adventofcode.com/2023/day/11) |

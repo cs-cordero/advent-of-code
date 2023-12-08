@@ -210,3 +210,21 @@ pub fn get_limits<T>(values: &[Vec<T>]) -> (usize, usize) {
     let row = values.len();
     (row, col)
 }
+
+/// Finds the greatest common denominator between two numbers using Euclid's algorithm.
+pub fn gcd(a: u64, b: u64) -> u64 {
+    let mut a = a;
+    let mut b = b;
+    while b > 0 {
+        let prev_b = b;
+        b = a % b;
+        a = prev_b;
+    }
+
+    a
+}
+
+/// Finds the lowest common multiple between two numbers
+pub fn lcm(a: u64, b: u64) -> u64 {
+    a * b / gcd(a, b)
+}

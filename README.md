@@ -38,7 +38,7 @@ Day 07: [Camel Cards](http://adventofcode.com/2023/day/7) | ⭐⭐
 Day 08: [Haunted Wasteland](http://adventofcode.com/2023/day/8) | ⭐⭐
 Day 09: [Mirage Maintenance](http://adventofcode.com/2023/day/9) | ⭐⭐
 Day 10: [Pipe Maze](http://adventofcode.com/2023/day/10) | ⭐⭐
-Day 11: [???](http://adventofcode.com/2023/day/11) |
+Day 11: [Cosmic Expansion](http://adventofcode.com/2023/day/11) | ⭐⭐
 Day 12: [???](http://adventofcode.com/2023/day/12) |
 Day 13: [???](http://adventofcode.com/2023/day/13) |
 Day 14: [???](http://adventofcode.com/2023/day/14) |
